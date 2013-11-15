@@ -5321,7 +5321,6 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                                                     $rootScope.$broadcast("load_user_channel");
                                                     $rootScope.$broadcast("feedbackImg_uploaded");
                                                     uploadParse(pic_url);
-                                                    alert("Source Set!");
                                                     //alert (parseFile.url());
                                                     console.log("Ok");
 
