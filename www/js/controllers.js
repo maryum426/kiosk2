@@ -5300,9 +5300,9 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                 //}
                 var data2 = canvas.toDataURL('image/jpeg');
 
-                alert ("Data2.1: " + data2);
+                //alert ("Data2.1: " + data2);
                 data2 = data2.replace(/^data:image\/(png|jpeg);base64,/, "");
-                alert ("Data2.2: " + data2);
+                //alert ("Data2.2: " + data2);
 
                 //alert("Source Set!");
 
@@ -5321,7 +5321,7 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                                                     $rootScope.$broadcast("load_user_channel");
                                                     $rootScope.$broadcast("feedbackImg_uploaded");
                                                     uploadParse(pic_url);
-                                                    
+                                                    alert("Source Set!");
                                                     //alert (parseFile.url());
                                                     console.log("Ok");
 
