@@ -5316,11 +5316,11 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
 
                 parseFile.save().then(function() {
                                                     alert("Got it!");
-                                                    //$rootScope.userAvatar = parseFile.url();
+                                                    $rootScope.userAvatar = parseFile.url();
                                                     pic_url = parseFile.url();
                                                     uploadParse(pic_url);
-                                                    //$rootScope.$broadcast("load_user_channel");
-                                                    //$rootScope.$broadcast("feedbackImg_uploaded");
+                                                    $rootScope.$broadcast("load_user_channel");
+                                                    $rootScope.$broadcast("feedbackImg_uploaded");
                                                     //alert (parseFile.url());
                                                     console.log("Ok");
 
@@ -5352,10 +5352,10 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                                             alert("Saved "+sUserChannel);
                                             $scope.$apply(function() {
                                                 console.log("--About to setUserAvatar--- "+sUserChannel.get("avatarURL"));
-                                                $rootScope.userAvatar = sUserChannel.get("avatarURL");
+                                                //$rootScope.userAvatar = sUserChannel.get("avatarURL");
                                                 userService.setUserChannel(sUserChannel);
-                                                $rootScope.$broadcast("load_user_channel");
-                                                $rootScope.$broadcast("feedbackImg_uploaded");
+                                                //$rootScope.$broadcast("load_user_channel");
+                                                //$rootScope.$broadcast("feedbackImg_uploaded");
 
                                                 // scope.setuseravatar(data.url);
                                             });
