@@ -3781,11 +3781,6 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
 
     };
 
-    $scope.clearDataLogin = function () {
-             console.log("clearDataLogin()");
-             console.log($scope.user.phone);
-             $scope.user.phone=null;
-        };
     // Update the rendering of the page logout state.
      var renderNotLogoIn = function () {
 
@@ -4004,7 +3999,6 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
                 });
             });
             $rootScope.placeJoin = false;
-            $scope.clearDataLogin();
             //$location.path("/" + username);
 
         }
