@@ -384,12 +384,16 @@ input, select, textare {
 	text-align: center;
 	padding: 10px 0;
 }
-.submit-holder li a.send-button {
+/*.submit-holder li a.send-button {
 	background-color: #14b9d6;
 }
 .submit-holder li a:hover {
 	text-decoration: none;
+}*/
+.submit-holder .send-button {
+    background-color: #ed145b;
 }
+
 /*20-Aug-page-2-css-End*/
 /*page-3-css-strat*/
 .banner {
@@ -430,7 +434,7 @@ input, select, textare {
 	display: block;
 	margin-bottom: 10px;
 	padding: 12px;
-	background-color: #14b9d6;
+	background-color: #9966CB;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
 }
@@ -1097,6 +1101,29 @@ ul.rating {
 .register_BUTTON_HOLDER li a {
 	padding: 26px 0;
 }
+.add_user-button {
+    background-color: #ed145b;
+    padding: 24px 111px;
+    font-size: 44px;
+    color: #fff;
+}
+.submit-holder .register-button {
+    background-color: #ed145b;
+    padding: 24px 72px;
+    font-size: 44px;
+    color: #fff;
+}
+
+.disable {
+    background-color: #000;
+}
+input.ng-dirty.ng-invalid {
+    border: 1px solid #FF0000;
+}
+input.error, textarea.error {
+    /*background-color: rgba(198, 15, 19, 0.1);*/
+    border-color: #C60F13;
+}
 .inputfile-holder {
 	max-width: 346px;
 	margin: 0 auto;
@@ -1714,5 +1741,25 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     padding: 30px 10px;
     text-align: center;
     text-shadow: 1px 1px 1px #FAFAFA;
-    width: 100%;
+    width: 97%;
+    height: 50px;
+}
+
+.labelfield {
+    color: #FFFFFF;
+    display: block;
+    font-size: 30px;
+    overflow: hidden;
+    padding: 20px;
+    text-align: center;
+}
+
+.ios-btn {
+    border: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    -webkit-border-radius: 0px;
+    -webkit-box-sizing: border-box; /* Android ? 2.3, iOS ? 4 */
+    -moz-box-sizing: border-box; /* Firefox 1+ */
+    box-sizing: border-box;
 }

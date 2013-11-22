@@ -1,10 +1,10 @@
 <header class="header new-page-style">
-    <div class="heading-title-holder"> <span class="heading-title">Register</span> </div>
+    <div class="heading-title-holder"> <span class="heading-title-register">Register</span> </div>
 </header>
+<form name="kiosk_user">
 <div class="container_ROW">
     <div class="container">
         <div class="profile-connect">
-            <form name="kiosk_user">
                 <fieldset>
                    <div class="inputfile-holder" ng-controller="CameraCtrl">
                       
@@ -14,33 +14,40 @@
                         </span>
                     </div>
                     <div ng-hide="editInfo">
-                        <input type="text" class="textfield-holder" name="#" placeholder="Full name" ng-model="kiosk.fullname" >
+                        <input type="text" class="textfield-holder" name="#" placeholder="Full name" ng-model="kiosk.fullname"
+                               ng-minlength=3  ng-class="{error: kiosk_user.fullname.$invalid}">
                         <!--<input type="text" name="#" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.vocation">-->
-                        <input type="text" name="#" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.email">
+                        <input type="email" name="#" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.email"
+                               ng-class="{error: kiosk_user.email.$invalid}">
                     </div>
                     <div ng-show="editInfo">
                         <div class="editlabal" >{{infoUserChannal.fullNmae}}</div>
                         <div class="editlabal">{{infoUserChannal.email}}</div>
                     </div>
-
-
-
                     <!--<a class="visibility-btn" ng-click="setVisibility()">Set visibility</a>-->
-                    <a class="visibility-btn" ng-click="searchPlaceKiosk()">Set Place</a>
-
+                    <session ng-hide="pageUserFlag">
+<!--                        <a class="visibility-btn" ng-click="searchPlaceKiosk()">Set Place</a>-->
+                    </session>
                 </fieldset>
-            </form>
         </div>
     </div>
 </div>
-
+<div class="kiosk_ADJUST">
+    
+</div>
 <div class="footer_GROUP">
-    <div class="footer_HOLDER">
+    <div class="footer_HO LDER">
         <div class="profile-connect-bottom no_PADDING_TOP">
             <ul class="submit-holder register_BUTTON_HOLDER">
                 <li><a ng-click="kioskRegisterCancel()">Cancel</a></li>
-                <li><a ng-click="kioskRegister()" class="send-button register-button">Register</a></li>
+                <li>
+                    <!--<a ng-click="kioskRegister()" class="send-button register-button">Register</a>-->
+                    <input type="submit" ng-click="kioskRegister()" class="register-button ios-btn" value="Register"
+                           ng-disabled="kiosk_user.fullname.$pristine || kiosk_user.fullname.$dirty && kiosk_user.fullname.$invalid || kiosk_user.email.$pristine || kiosk_user.email.$dirty && kiosk_user.email.$invalid"
+                           ng-class="{enable : !kiosk_user.fullname.$invalid || !kiosk_user.email.$invalid, disable : kiosk_user.fullname.$invalid || kiosk_user.email.$invalid}" />
+                </li>
             </ul>
         </div>
     </div>
 </div>
+</form>

@@ -13,13 +13,27 @@ jQuery(function($) {
                 $(this).removeClass( "openClass" ).addClass( "closeClass" );
 				open = false;
 			}
-		});		
+		});
+
+    $('#btnCancel').click(function () {
+        if(open === false) {
+            $('#footerSlideContent').animate({ height: '253px' });
+            $(this).css('backgroundPosition', 'bottom left');
+            $('#footerSlideButton').removeClass( "closeClass" ).addClass( "openClass" );
+            open = true;
+        } else {
+            $('#footerSlideContent').animate({ height: '0px'});
+            $(this).css('backgroundPosition', 'top left');
+            $('#footerSlideButton').removeClass( "openClass" ).addClass( "closeClass" );
+            open = false;
+        }
+    });
 });
 </script>
 <!-- ------------------------------------------------------------------------------- -->
 <!-- Page 1                                                                 -->
 <!-- --------------------------------------------------------------------------------->
-
+<div class="publicPage">
 <div class="show-place-public" ng-controller="SweetCtrlPlace" ng-show="showPlaceFeed">
 
     <div ng-show="gustPageInfo">
@@ -31,7 +45,9 @@ jQuery(function($) {
             </header>
             <div class="banner">
                 <!--<img src="images_blue/banner-1.png" alt="banner">-->
-                <img src="images/main-cirle-img-banner.png" alt="img" ng-src='{{ imagePlaceBanner || images/main-circle-img-banner.png}}'>
+
+                <img src="images/main-circle-img-banner.png" alt="img" ng-src='{{ imagePlaceBanner }}'>
+
             </div>
             <span class="thankyou-title">{{gplace.get("placeTitle")}}</span>
             <!--<span class="top-heading"> ${{gplace.get("placeName")}} </span>-->
@@ -52,10 +68,10 @@ jQuery(function($) {
     <ul class="social-connection">
         <li ng-repeat="uplace in usersInPlaces">
                 <span class="person-info">
-                    <!--ng-src="{{uplace.get('userPic')}}" -->
-                  <img  ng-src="http://graph.facebook.com/{{uplace.get('userID')}}/picture?width=200&height=200"
+                    <!--ng-src="http://graph.facebook.com/{{uplace.get('userID')}}/picture?width=200&height=200"" -->
+                  <img  ng-src="http://fast-bayou-8907.herokuapp.com/convert?resize=102x102&source={{uplace.get('userPic')}}"
                         title="{{uplace.get('userName')}}" ng-click="sendPlaceGesture(uplace)"
-                        friend="{{uplace}}">
+                        friend="{{uplace}}" width="102" height="102">
                 </span>
                 <span class="heart-icon-2" ng-show="{{uplace.get('userID')}}" id="{{uplace.get('userID')}}">
                     <!--<i class="icon-heart"></i>-->
@@ -63,6 +79,11 @@ jQuery(function($) {
                 </span>
             <a class="person-name">{{uplace.get('userName').split(" ")[0]}}</a>
         </li>
+        <div class="welcome-holder-box">
+            <span class="work-title">
+                {{emptyPlacesMsg}}
+            </span>
+        </div>
     </ul>
 </div>
     <!--<section class="container" tappublic>
@@ -167,8 +188,8 @@ jQuery(function($) {
         <div class="footer-Slider">
         		<input type="text" class="texfield" placeholder="enter your mobile number" ng-model="user.phone">
                 <ul class="submit-holder register_BUTTON_HOLDER">
-                  <li><a ng-click="">Cancel</a></li>
-                  <li><a ng-controller="AuthController" ng-click="newAuthAddUser()" class="send-button" title="{{placeKiosk}}" id="adduser">Login</a></li>
+                  <li><a id="btnCancel">Cancel</a></li>
+                  <li><a ng-controller="AuthController" ng-click="newAuthAddUser()" class="send-button" title="{{placeKiosk}}" id="adduser">Join</a></li>
                   <!--<li><a class="facebook" alt="facebook" ng-click="facebookPlaceLogin()" ng-controller="AuthController">facebook</a></li>-->
                 </ul>
                 <ul class="social-icons">
@@ -221,7 +242,7 @@ jQuery(function($) {
         <div class="container">
             <div class="profile-connect">
       <span class="profile-img-main heart-big-profile">
-            <img src="images/main-circle-img.png" alt="img" ng-src='{{magicButtonImage || images/main-circle-img.png}}'
+            <img src="images/capture-img.png" alt="img" ng-src='{{magicButtonImage || images/capture-img.png}}'
                 ng-click="sendSweetnessPlaceGesture(placeInfo)" class="circle-main-img">
             <span class="heart-icon heart-big"><img src="images/heart-icon.png" ng-click="sendSweetnessPlaceGesture(placeInfo)"></span>
       </span></div>
@@ -294,7 +315,7 @@ jQuery(function($) {
                     You just thanked {{userName}}!
                 </span>
                 <span class="profile-img-main bot-40" style="background-color:transparent;">
-                    <img src="images/main-circle-img.png" alt="img" ng-src='{{magicButtonImage || images/main-circle-img.png}}'
+                    <img src="images/capture-img.png" alt="img" ng-src='{{magicButtonImage || images/capture-img.png}}'
                          ng-click="feedback()" class="circle-main-img">
                     <span class="heart-icon"><img src="images/heart-icon.png" ng-click="feedback()"></span>
                 </span>
@@ -308,15 +329,15 @@ jQuery(function($) {
                             <div class='console'>{{timerStatus}}</div>
                         </footer>-->
                         <div ang:round:progress data-round-progress-model="roundProgressData"
-                             data-round-progress-width="280"
-                             data-round-progress-height="280"
-                             data-round-progress-outer-circle-width="40"
+                             data-round-progress-width="320"
+                             data-round-progress-height="320"
+                             data-round-progress-outer-circle-width="60"
                              data-round-progress-inner-circle-width="10"
                              data-round-progress-outer-circle-radius="120"
                              data-round-progress-inner-circle-radius="70"
                              data-round-progress-label-font="100pt Arial"
                              data-round-progress-outer-circle-background-color="#fff"
-                             data-round-progress-outer-circle-foreground-color="#672971"
+                             data-round-progress-outer-circle-foreground-color="#9966cb"
                              data-round-progress-inner-circle-color="#fff"
                              data-round-progress-label-color="#fff"></div>
                     </div>
@@ -356,7 +377,7 @@ jQuery(function($) {
                             <div class="container">
                                 <div class="profile-connect profile-connect_TWO">
                                     <span class="profile-img-main bot-40">
-                                        <img src="images/main-circle-img.png" alt="img" ng-src='{{magicButtonImage || images/main-circle-img.png}}'
+                                        <img src="images/capture-img.png" alt="img" ng-src='{{magicButtonImage || images/capture-img.png}}'
                                             ng-click="navigateToInteraction()" ondrop="drop(event)" ondragover="allowDrop(event)" class="circle-main-img">
                                         <span class="heart-icon"><i class="icon-heart"></i></span>
                                     </span>
@@ -473,3 +494,9 @@ jQuery(function($) {
 <!-- -------------------------------------------------------------------------------------- -->
 <!-- -------------------------------------------------------------------------------------- -->
 
+<div class="col02-placeUserMsg" ng-show="placeUserMsg" ng-controller="AuthController">
+    <span class="place-msg">User already exist.</span>
+    <div class="send-btn" ><a ng-click="placeUserMsgBack()" class="send-ok-btn">Ok</a></div>
+</div>
+
+</div>

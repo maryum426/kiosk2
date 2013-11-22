@@ -7,9 +7,9 @@
                     <em class="heading-sub-title sub-heading-fixed">{{placeSearchResults.formatted_address}}</em> </div>
                   </div>
                     <a class="edit-holder" ng-click="enableEditor()" ng-show="previewdisable" ></a>
-                </div>
+           </div>
                 <div ng-show="editorEnabled" class="overflow-holder">
-                    <div class="editable-input">
+                    <div class="editable-input-header">
                     	<input ng-model="kiosk.editableTitle" ng-show="editorEnabled">
                     	<input ng-model="kiosk.editableAddress" ng-show="editorEnabled">
                     </div>
@@ -19,8 +19,6 @@
                     	<a ng-click="disableEditor()" class="cancel-kiosk">cancel</a>
                     </div>
                 </div>
-
-
         </div>
     </header>
     <div class="banner">
@@ -50,19 +48,25 @@
 
     <div class="container">
         <div class="claim-holder-box">
-            <span class="work-title">Great! You can edit your info above and then preview to launch your thank you display.</span>
+            <div ng-hide="launch">
+                <span class="work-title">Great! You can edit your info above and then preview to launch your thank you display.</span>
+            </div>
+            <div ng-show="launch">
+                <span class="work-title">Looking good? Now your staff members can join this place so your customers can thank them for being so awesome!</span>
+            </div>
             <ul class="claim-holder clh-padding">
-                <li><a ng-click="placeClaimBack()">back</a></li>
                 <div ng-hide="launch">
+                    <li><a ng-click="placeClaimBack()">back</a></li>
                     <li><a class="active" ng-click="previewKiosk()">Preview</a></li>
                 </div>
                 <div ng-show="launch">
+                    <li><a ng-click="previewBack()">back</a></li>
                     <li><a class="active" ng-click="launchKiosk()">Launch</a></li>
                 </div>
             </ul>
         </div>
     </div>
-    <div class="footer-GROUP" id="footer_GROUP">
+    <!--<div class="footer-GROUP" id="footer_GROUP">
         <div id="footerSlideContainer">
             <div class="detail" id="footerSlideButton" style="background-position: left top;"></div>
             <div id="footerSlideContent" style="height: 0px;">
@@ -75,5 +79,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>

@@ -25,23 +25,41 @@
     <link rel="apple-touch-icon" sizes="114x114" href="images_blue/touch-icon-iphone4.png">
     <link rel="apple-touch-startup-image" href="images_blue/demo.png">
     <link rel="apple-touch-startup-image" href="images_blue/ipad-startup-image.png">
+    <link rel="apple-touch-icon" href="images/touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/touch-icon-iphone4.png">
+    <link rel="apple-touch-startup-image" href="images/demo.png">
+    <link rel="apple-touch-startup-image" href="images/ipad-startup-image.png"
+          media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)"/>
+    <link rel="shortcut icon" href="images/favicon0.ico">
 
     <!--<link rel="stylesheet" href="css/blue/css/style.css" type="text/css" media="all">-->
-    <!--<link rel="stylesheet" href="css/blue/css/purple.css" type="text/css" media="all">-->
-    <!--<link rel="stylesheet" href="{{cssKiosk}}" type="text/css" media="all">-->
-    <!--<link rel="stylesheet" href="{{cssStyle}}" type="text/css" media="all">-->
-    <link rel="stylesheet" href="css/blue/css/font-awesome.css" type="text/css" media="all">
     <!--<link rel="stylesheet" href="css/blue/css/kiosk.css" type="text/css" media="all">-->
-    <link rel="stylesheet" href="css/blue/css/kiosk_purple.css" type="text/css" media="all">
-    <link rel="stylesheet" href="css/blue/css/mediaqueries.css" type="text/css" media="all">
-    <!--<link rel="stylesheet" href="css/blue/calendar/css/calendar.css" type="text/css" media="all">-->
+    <!--  <link href="fonts/style-typo.css" rel="stylesheet" type="text/css">-->
+    <!--<link href="css/responsive.css" rel="stylesheet" type="text/css" >
+    <link href="css/sweet.css" rel="stylesheet" type="text/css">-->
+    <!--<link href="{{cssResponsive}}" rel="stylesheet" type="text/css" >-->
+    <!--<link rel="stylesheet" href="{{cssKiosk}}" type="text/css" media="all">-->
+    <!--<link href="{{cssSweet}}" rel="stylesheet" type="text/css">-->
+    <!--<link rel="stylesheet" href="{{cssStyle}}" type="text/css" media="all">-->
+<!--    <link rel="stylesheet" href="css/blue/css/kiosk_purple.css" type="text/css" media="all">-->
+    
+    <link rel="stylesheet" href="css/blue/css/purple.css" type="text/css" media="all"> 
+    <link rel="stylesheet" href="css/blue/css/font-awesome.css" type="text/css" media="all">
+<!--    <link rel="stylesheet" href="css/blue/css/mediaqueries.css" type="text/css" media="all">-->
     <link rel="stylesheet" href="css/blue/calendar/css/calendar_purple.css" type="text/css" media="all">
 
     <!--[if lt IE 8]>
-    <link rel="stylesheet" type="text/css" href="css/blue/css/ie.css"/><![endif]-->
+    <link rel="stylesheet" type="text/css" href="css/blue/css/ie.css"/>
+    <![endif]-->
 
     <!-- -----------------------Blue End--------------------------------- -->
     <!-- ---------------------------------------------------------------- -->
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
 
 
      <!-- --------------------------PhoneGap-------------------------------- -->
@@ -51,70 +69,8 @@
 
     <script src="facebook-js-sdk.js"></script>-->
 
-    <link href="fonts/style-typo.css" rel="stylesheet" type="text/css">
-    <!--<link href="css/responsive.css" rel="stylesheet" type="text/css" >
-    <link href="css/sweet.css" rel="stylesheet" type="text/css">-->
-    <link href="{{cssResponsive}}" rel="stylesheet" type="text/css" >
-    <link href="{{cssSweet}}" rel="stylesheet" type="text/css">
-    <link rel="apple-touch-icon" href="images/touch-icon-iphone.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/touch-icon-iphone4.png">
-    <link rel="apple-touch-startup-image" href="images/demo.png">
-    <link rel="apple-touch-startup-image" href="images/ipad-startup-image.png"
-          media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)"/>
-    <link rel="shortcut icon" href="images/favicon0.ico">
-
-    <!--&lt;!&ndash; Le HTML5 shim, for IE6-8 support of HTML5 elements &ndash;&gt;-->
-    <!--&lt;!&ndash;[if lt IE 9]>-->
-    <!--<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>-->
-    <!--<![endif]&ndash;&gt;-->
-
-    <!-- Le fav and touch icons --><!--Mobile cache-->
-
-    <!-- start Mixpanel -->
-    <script type="text/javascript">
-        (function (e, b) {
-            if (!b.__SV) {
-                var a, f, i, g;
-                window.mixpanel = b;
-                a = e.createElement("script");
-                a.type = "text/javascript";
-                a.async = !0;
-                a.src = ("https:" === e.location.protocol ? "https:" : "http:") + '//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';
-                f = e.getElementsByTagName("script")[0];
-                f.parentNode.insertBefore(a, f);
-                b._i = [];
-                b.init = function (a, e, d) {
-                    function f(b, h) {
-                        var a = h.split(".");
-                        2 == a.length && (b = b[a[0]], h = a[1]);
-                        b[h] = function () {
-                            b.push([h].concat(Array.prototype.slice.call(arguments, 0)))
-                        }
-                    }
-
-                    var c = b;
-                    "undefined" !==
-                            typeof d ? c = b[d] = [] : d = "mixpanel";
-                    c.people = c.people || [];
-                    c.toString = function (b) {
-                        var a = "mixpanel";
-                        "mixpanel" !== d && (a += "." + d);
-                        b || (a += " (stub)");
-                        return a
-                    };
-                    c.people.toString = function () {
-                        return c.toString(1) + ".people (stub)"
-                    };
-                    i = "disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
-                    for (g = 0; g < i.length; g++)f(c, i[g]);
-                    b._i.push([a, e, d])
-                };
-                b.__SV = 1.2
-            }
-        })(document, window.mixpanel || []);
-        mixpanel.init("e1c3f534a66f371ed1346002ab70136c");
-    </script>
-    <!-- end Mixpanel -->
+    
+    
 <style>
 html, body{
 	margin:0;
@@ -166,11 +122,11 @@ html, body{
 
     <div ng-switch on="renderPath[ 0 ]">
 
-        <div ng-switch-when="friends" ng-controller=AuthController>
+        <!--<div ng-switch-when="friends" ng-controller=AuthController>
             <span ng-include="'views/friends/discover.html'" ng-show="renderPath[1] =='discover'"></span>
-        </div>
+        </div>-->
 
-        <div ng-switch-when="sweet" ng-controller=SweetCtrl>
+        <!--<div ng-switch-when="sweet" ng-controller=SweetCtrl>
             <section ng-include="'views/sweets/home.html'" ng-show="renderPath[1] =='home'"></section>
             <section ng-include="'views/sweets/new.html'" ng-show="renderPath[1] == 'new'"></section>
             <section ng-include="'views/sweets/show.html'" ng-show="renderPath[1] == 'show'"></section>
@@ -192,48 +148,49 @@ html, body{
                      ng-show="renderPath[1] == 'timeline'"></section>
             <section ng-include="'views/sweets/sent.html'" ng-show="renderPath[1] == 'sent'"></section>
             <section ng-include="'views/friends/search.html'" ng-show="renderPath[1] == 'fsearch'"></section>
-        </div>
+        </div>-->
 
         <div ng-switch-when="user">
             <section ng-include="'views/user/preference.html'"
                      ng-show="renderPath[1] == 'preference'"></section>
         </div>
 
-        <div ng-switch-when="contacts" ng-controller=ContactCtrl>
+        <!--<div ng-switch-when="contacts" ng-controller=ContactCtrl>
             <section ng-include="'views/user/contacts/import.html'"
                      ng-show="renderPath[1] =='import'"></section>
             <section ng-include="'views/user/contacts/list.html'" ng-show="renderPath[1] =='list'"></section>
-        </div>
+        </div>-->
 
-        <div ng-switch-when="admin" ng-controller=AdminCtrl>
+        <!--<div ng-switch-when="admin" ng-controller=AdminCtrl>
             <section ng-include="'views/admin/bulk/gestures.html'"
                      ng-show="renderPath[1] == 'bulkgestures'"></section>
-        </div>
+        </div>-->
 
-        <div ng-switch-when="help" ng-controller=HelpCtrl>
+       <!-- <div ng-switch-when="help" ng-controller=HelpCtrl>
             <section ng-include="'views/help/new.html'" ng-show="renderPath[1] == 'new'"></section>
             <section ng-include="'views/help/sent.html'" ng-show="renderPath[1] == 'sent'"></section>
-        </div>
+        </div>-->
 
-        <div ng-switch-when="company">
+        <!--<div ng-switch-when="company">
             <section ng-include="'views/company/privacy.html'" ng-show="renderPath[1] == 'privacy'"></section>
-        </div>
+        </div>-->
 
-        <div ng-switch-when="locations" ng-controller=SweetCtrl>
+        <!--<div ng-switch-when="locations" ng-controller=SweetCtrl>
             <section ng-include="'views/location/place.html'" ng-show="renderPath[1] == 'place'"></section>
             <section ng-include="'views/location/sent.html'" ng-show="renderPath[1] == 'sent'"></section>
-        </div>
+        </div>-->
 
-        <div ng-switch-when="location" ng-controller=SweetCtrlPlace>
+        <!--<div ng-switch-when="location" ng-controller=SweetCtrlPlace>
             <section ng-include="'views/location/sweetplace.html'"
                      ng-show="renderPath[1] == 'sweetplace'"></section>
             <section ng-include="'views/location/sweetsent.html'"
                      ng-show="renderPath[1] == 'sweetsent'"></section>
-            <!--<section ng-include="'views/location/enterMobile.html'" ng-show="renderPath[1] == 'entermobile'"></section>-->
-        </div>
+            &lt;!&ndash;<section ng-include="'views/location/enterMobile.html'" ng-show="renderPath[1] == 'entermobile'"></section>&ndash;&gt;
+        </div>-->
 
         <div ng-switch-when="kiosk" ng-controller=SweetCtrl>
             <section ng-include="'views/kiosk/register.html'" ng-show="renderPath[1] == 'register'"></section>
+            <section ng-include="'views/kiosk/register_adduser.html'" ng-show="renderPath[1] == 'register_adduser'"></section>
             <section ng-include="'views/kiosk/register_visibility.html'" ng-show="renderPath[1] == 'register_visibility'"></section>
             <section ng-include="'views/kiosk/searchPlace.html'" ng-show="renderPath[1] == 'search'"></section>
             <section ng-include="'views/kiosk/createSweetPlace.html'" ng-show="renderPath[1] == 'claim'"></section>
@@ -243,7 +200,7 @@ html, body{
             <section ng-include="'views/kiosk/claimPlaceCreated.html'" ng-show="renderPath[1] == 'claimPlaceCreated'"></section>
         </div>
 
-        <div ng-switch-when="place" ng-controller=SweetCtrl>
+        <!--<div ng-switch-when="place" ng-controller=SweetCtrl>
             <section ng-include="'views/place/placeHeader.html'"
                      ng-show="renderPath[1] == 'placeHeader'"></section>
             <section ng-include="'views/place/sweetPlace.html'"
@@ -274,7 +231,7 @@ html, body{
             <section ng-include="'views/place/interActionP.html'"
                      ng-show="renderPath[1] == 'interactionp'"></section>
         </div>
-
+-->
         <!--<div ng-switch-when="name" ng-controller=SweetCtrlPlace>
           <section ng-include="'views/partials/sweetName.html'" ng-show="renderPath[1] == 'custom'"></section>
             <section ng-include="'views/partials/sent.html'" ng-show="renderPath[1] == 'sent'"></section>

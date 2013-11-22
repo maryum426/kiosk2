@@ -217,7 +217,7 @@ angular.module('DataServices', ['ngResource'])
                 );
             },
 
-            sendEmailAll:function (fromEmail,receiverEmail, bccEmail, ccEmail, subject, m_phone, cb) {
+            sendEmailAll:function (fromEmail,receiverEmail, ccEmail, bccEmail, subject, m_phone, cb) {
 
                 console.log("fromEmail" + fromEmail);
                 console.log("receiverEmail" + receiverEmail);
@@ -337,6 +337,7 @@ angular.module('DataServices', ['ngResource'])
             console.log("authlink --> " + m_guid + ' -- ' + m_phone);
             var msg = constantService.getAuthSMSMsg() + "\n" + m_guid;
             utilService.sendSMS(m_phone, msg, function (success) {
+                console.log('Sms Send to user');
             });
         };
 
@@ -1633,6 +1634,7 @@ angular.module('DataServices', ['ngResource'])
                 //if some place find with same name donot create it again.
                 //if error mean no place find then create new place.
                 query.equalTo("placeName", place.placeName);
+                query.equalTo("address", place.formatted_address);
                 query.find({
                     success:function (results) {
                         console.log("Successfully retrieved " + results.length);
@@ -2045,6 +2047,13 @@ angular.module('DataServices', ['ngResource'])
                 cSweet.set("senderPicture", comment.senderPicture );
                 cSweet.set("rating", comment.rating );
                 cSweet.set("username", comment.username);
+                if(comment.check == true){
+                    console.log("copyManager --> " + comment.check );
+                    cSweet.set("copyManager", 'true');
+                }else{
+                    console.log("copyManager " + comment.check );
+                    cSweet.set("copyManager", 'false');
+                }
 
                 //-------------------------------------------------------------------
                 cSweet.save(null, {
@@ -2332,11 +2341,14 @@ angular.module('DataServices', ['ngResource'])
             sendCommentEmail:function (emailData, cb) {
                 console.log("Checkbox value " + emailData.check);
                 if (emailData.check == true){
-                    var adminEmail = 'frothykatie@gmail.com' ;
-                    //var adminEmail = 'fahdbangash@gmail.com' ;
+                    //var adminEmail = 'frothykatie@gmail.com' ;
+                    var adminEmail = 'fahdbangash@gmail.com' ;
+                    //var adminEmail = 'maryum.babar@virtual-force.com' ;
                 }else{
                     var adminEmail = '' ;
                 }
+
+                console.log("Admin Email : " + adminEmail);
 
                 var newLine = "<br>";
                 var msg = '';
@@ -2369,25 +2381,26 @@ angular.module('DataServices', ['ngResource'])
                             + "- Team Sweetness ";
 
                 console.log('resiver email ' + receiverEmail);
+
                 if(adminEmail != ''){
-                    utilService.sendEmailCc(fromEmail,receiverEmail,ccEmail,subject, m_phone, function (success) {
+                    utilService.sendEmailAll(fromEmail,receiverEmail,ccEmail,emailData.bccEmail,subject, m_phone, function (success) {
                         if (success) {
-                            console.log("Email send successfuly");
+                            console.log("Email send to All successfuly");
                             cb(true);
                         }
                         else {
-                            console.log("Email having some problem");
+                            console.log("Email to All having some problem");
                             cb(false);
                         }
                     });
                 } else{
-                    utilService.sendEmailPP(fromEmail,receiverEmail,subject, m_phone, function (success) {
+                    utilService.sendEmailBcc(fromEmail,receiverEmail,emailData.bccEmail,subject, m_phone, function (success) {
                         if (success) {
-                            console.log("Email send successfuly");
+                            console.log("Email Bcc successfuly");
                             cb(true);
                         }
                         else {
-                            console.log("Email having some problem");
+                            console.log("EmailBcc having some problem");
                             cb(false);
                         }
                     });
@@ -2555,6 +2568,87 @@ angular.module('DataServices', ['ngResource'])
             //blue
             setKioskUser:function (kioskUserInfo, cb) {
 
+                var getphone = [];
+                getphone.push(kioskUserInfo.userPhone);
+                var queryUserChannel = new Parse.Query("UserChannel");
+                queryUserChannel.containedIn("channels", getphone );
+
+                queryUserChannel.first({
+                    success:function (object) {
+                        console.log("Successfully update user channel " +  object.length);
+                        object.set("fullName", kioskUserInfo.fullName);
+                        object.set("avatarURL", kioskUserInfo.userAvatar);
+                        object.set("avatarUrl", kioskUserInfo.userAvatar);
+                        object.set("channel", kioskUserInfo.userPhone);
+                        object.set("email", kioskUserInfo.email);
+                        object.save();
+                        cb(object);
+
+                        //TODO: update User table with fullName
+                        var kioskUsers = Parse.Object.extend("User");
+                        var query = new Parse.Query(kioskUsers);
+
+                        query.equalTo("username", kioskUserInfo.userPhone);
+                        query.first({
+                            success:function (object) {
+                                console.log("Successfully update user info " +  object.length);
+                                object.set("fullName", kioskUserInfo.fullName);
+                                object.set("email", kioskUserInfo.email);
+                                //object.set("phones", kioskUserInfo.userPhone);
+                                object.set("avatarUrl", kioskUserInfo.userAvatar);
+                                object.save();
+                                //cb(object);
+                            },
+                            error:function (error) {
+                                console.log("Error: " + error.code + " " + error.message);
+                            }
+                        });
+                    },
+                    error:function (error) {
+                        //incase of first time we need to add user in table
+                        //console.log("Error: " + error.code + " " + error.message);
+                        var Kiosk = Parse.Object.extend("kioskUser");
+                        var uKiosk = new Parse.Query(Kiosk);
+
+                        uKiosk.set("fullName", kioskUserInfo.fullName);
+                        uKiosk.set("vocation", kioskUserInfo.vocation);
+                        uKiosk.set("userAvatar", kioskUserInfo.userAvatar);
+                        uKiosk.set("userPhone", kioskUserInfo.userPhone);
+
+                        uKiosk.save(null, {
+                            success:function (rKiosk) {
+                                console.log(rKiosk + " Kiosk saved successfully");
+
+                                //TODO: update User table with fullName
+                                var kioskUsers = Parse.Object.extend("User");
+                                var query = new Parse.Query(kioskUsers);
+
+                                //query.equalTo("username", kioskUserInfo.userPhone);
+                                //query.equalTo("username", '7076344193');
+                                query.equalTo("username", kioskUserInfo.userPhone);
+                                query.first({
+                                    success:function (object) {
+                                        console.log("Successfully update user info " +  object.length);
+                                        object.set("fullName", kioskUserInfo.fullName);
+                                        object.save();
+                                        cb(object);
+                                    },
+                                    error:function (error) {
+                                        console.log("Error: " + error.code + " " + error.message);
+                                    }
+                                });
+
+                            },
+                            error:function (rSweet, error) {
+                                console.log("service: saveSweet() -> " + error.code + " " + error.message);
+                            }
+                        });
+                    }
+                });
+            },
+
+            /*setKioskUser:function (kioskUserInfo, cb) {
+
                 var Kiosk = Parse.Object.extend("kioskUser");
                 var uKiosk = new Parse.Query(Kiosk);
 
@@ -2564,7 +2658,7 @@ angular.module('DataServices', ['ngResource'])
                 //uKiosk.equalTo("userPhone", '7076344193');
                 uKiosk.first({
                     success:function (objectUserInfo) {
-                        //console.log("Successfully get user info " +  objectUserInfo.length);
+                        console.log("Successfully get user info " +  objectUserInfo.length);
                         //if user update its information
                         objectUserInfo.set("fullName", kioskUserInfo.fullName);
                         objectUserInfo.set("vocation", kioskUserInfo.vocation);
@@ -2656,7 +2750,7 @@ angular.module('DataServices', ['ngResource'])
                         });
                     }
                 });
-            },
+            },*/
 
             //blue
             addKioskUserToPlace:function (kioskUserInfo,placeInfo, cb) {

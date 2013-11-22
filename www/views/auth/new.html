@@ -2,16 +2,16 @@
     <div class="container_ROW">
         <a href="#" class="logo"><img src="images/logo.png" alt="sweet"></a>
         <section ng-hide="section.loginInProgress" class="kiosk-login-holder">
-            <form method="post" action="#">
+            <form ng-submit="newAuthSms()">
                 <fieldset>
                     <!--<span class="login-title">Login</span>-->
-                    <input name="" placeholder="enter your mobile number" class="texfield" type="tel" ng-model="user.phone">
+                    <input name="#" placeholder="enter your mobile number" class="texfield" type="tel" ng-model="user.phone">
                     <!--<input type="password" name="#" placeholder="Password" class="texfield">
                     <div class="login-holder">
                         <span class="login-span-title">Forgot your password?</span>
                         <span class="login-span-right">click here to <a href="#">Sign up now</a></span>
                     </div>-->
-                    <input name="" class="login-btn bot-margin" value="Login" type="button" ng-click="newAuthSms()">
+                    <input name="login" class="login-btn bot-margin ios-btn" value="Login" type="submit">
                 </fieldset>
             </form>
         </section>
@@ -37,7 +37,8 @@
 
         <br/><br/><br/><br/><br/><br/><br/><br/>
 
-        <div align="center"><img src="images/spinner.gif" class="authanimation"/></div>
+<!--        <div align="center"><img src="images/spinner.gif" class="authanimation"/></div>-->
+            <div id="spinner" align="center"></div>
 
         <br/><br/><br/><br/><br/>
         <!--<p>-->

@@ -1,38 +1,58 @@
 <header class="header new-page-style">
-    <div class="heading-title-holder"> <span class="heading-title">Register</span> </div>
+    <div class="heading-title-holder"> <span class="heading-title-register">Register</span> </div>
 </header>
+<form name="kiosk_user">
 <div class="container_ROW">
     <div class="container">
         <div class="profile-connect">
-            <form name="kiosk_user">
                 <fieldset>
-                    <div class="inputfile-holder">
-                        <!--<input type="file" name="#" class="fileholder-btn" size="0">-->
-                        <sweetfileselect align="center" showprogress="util.showProgress" swfile="user.avatarUrl" attr1="50" class="fileholder-btn">
-                        </sweetfileselect>
+                    <div class="inputfile-holder" ng-controller="CameraCtrl">
+                      
                         <span class="profile-img-main heart-big-profile">
-                            <img  ng-show='userAvatar' ng-src="{{userAvatar}}" class="imgavatar"/>
-                            <img src="images/capture-img.png" alt="Profile Picture" ng-show='!userAvatar'>
+                           <img src="images/capture-img.png" ng-click="capturePhoto()" alt="Profile Picture"  ng-show='!userAvatar'>
+                           <img ng-show='userAvatar' ng-click="capturePhoto()" ng-src="{{userAvatar}}" class="imgavatar"/>                           
                         </span>
                     </div>
-
-                    <input type="text" class="textfield-holder" name="#" placeholder="Full name" ng-model="kiosk.fullname">
-                    <input type="text" name="#" placeholder="Vocation e.g. Barista" class="textfield-holder" ng-model="kiosk.vocation">
-
-                    <a class="visibility-btn" ng-click="setVisibility()">Set visibility</a>
-                    {{userAddedPlace}}
+                    <div ng-hide="editInfo">
+                        <input type="text" class="textfield-holder" name="fullname" placeholder="Full name" ng-model="kiosk.fullname" required
+                               ng-minlength=3  ng-class="{error: kiosk_user.fullname.$invalid}" >
+                        <!--<input type="text" name="#" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.vocation" required>-->
+                        <input type="email" name="email" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.email" required
+                               ng-class="{error: kiosk_user.email.$invalid}" >
+                    </div>
+                    <div ng-show="editInfo" >
+                        <div class="editlabal" >{{infoUserChannal.fullNmae}}</div>
+                        <div class="editlabal">{{infoUserChannal.email}}</div>
+                    </div>
                 </fieldset>
-            </form>
         </div>
     </div>
+</div>
+<div class="kiosk_ADJUST">
+    
 </div>
 <div class="footer_GROUP">
     <div class="footer_HOLDER">
         <div class="profile-connect-bottom no_PADDING_TOP">
             <ul class="submit-holder register_BUTTON_HOLDER">
                 <li><a ng-click="kioskRegisterCancel()">Cancel</a></li>
-                <li><a ng-click="kioskRegister()" class="send-button register-button">Register</a></li>
+                <li>
+                    <!--<a ng-click="kioskRegister()" class="send-button register-button"
+                       ng-disabled="kiosk_user.fullname.$pristine || kiosk_user.fullname.$dirty && kiosk_user.fullname.$invalid || kiosk_user.email.$pristine || kiosk_user.email.$dirty && kiosk_user.email.$invalid"
+                        ng-class="{enable : !kiosk_user.fullname.$invalid || !kiosk_user.email.$invalid, disable : kiosk_user.fullname.$invalid || kiosk_user.email.$invalid}">
+                        Join</a>-->
+                    <div ng-hide="editInfo">
+                        <input type="submit" ng-click="kioskRegister()" class="add_user-button ios-btn" value="Join"
+                           ng-disabled="kiosk_user.fullname.$pristine || kiosk_user.fullname.$dirty && kiosk_user.fullname.$invalid || kiosk_user.email.$pristine || kiosk_user.email.$dirty && kiosk_user.email.$invalid"
+                           ng-class="{enable : !kiosk_user.fullname.$invalid || !kiosk_user.email.$invalid, disable : kiosk_user.fullname.$invalid || kiosk_user.email.$invalid}" />
+                    </div>
+                    <div ng-show="editInfo" >
+                        <input type="submit" ng-click="kioskRegister()" class="add_user-button ios-btn" value="Join" />
+                    </div>
+
+                </li>
             </ul>
         </div>
     </div>
 </div>
+</form>

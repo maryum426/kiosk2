@@ -212,6 +212,12 @@ sweetApp.config(
             }
         )
             .when(
+            "/kiosk/register_adduser",
+            {
+                action:"kiosk.register_adduser"
+            }
+        )
+            .when(
             "/kiosk/register_visibility",
             {
                 action:"kiosk.register_visibility"
@@ -552,6 +558,7 @@ sweetApp.config(
             "AUTH_SENT":"/u/auth/sent",
             "AUTH_SMS":"/u/auth/sms",
             "KIOSK_REGISTER":"/kiosk/register",
+            "KIOSK_REGISTER_ADDUSER":"/kiosk/register_adduser",
             "FRIENDS_DISCOVER":"/friends/discover"
         },
         "DEFAULT_FONT_COLOR":"#000000", // Black
@@ -725,11 +732,12 @@ sweetApp.config(
 //Sweetness Test Eneviorment : sweetTest
 //Parse.initialize("jKROXk4rTh4qm0vO2QxqoHhkcSsjklqN8V7bZPTz", "vARBe1nGSGtDfQPkdlS2Ond0dxcAr6tAJZgkIm9K");
 
-//Sweetness Development Eneviorment :SweetBee
-Parse.initialize("h2w6h5BLXG3rak7sQ2eyEiTKRgu3UPzQcjRzIFCu", "gQ7DmgLGTDNNl4Nl9l3cmJkSluy4y2hEPVaNSH2k");
+//Sweetness Production Eneviorment : SweetBee
+//Parse.initialize("h2w6h5BLXG3rak7sQ2eyEiTKRgu3UPzQcjRzIFCu", "gQ7DmgLGTDNNl4Nl9l3cmJkSluy4y2hEPVaNSH2k");
 
 //Sweetness Production Eneviorment : SweetApp
-//Parse.initialize("WRdpguLGfYdPVMq2LwHiB0s5k9ESVTwdde7kXwDm", "MzJ2jpG740oPfRdsKRY6jbXHCeEDXwTlnVFUYiTi");
+Parse.initialize("WRdpguLGfYdPVMq2LwHiB0s5k9ESVTwdde7kXwDm", "MzJ2jpG740oPfRdsKRY6jbXHCeEDXwTlnVFUYiTi");
+
 
 /*(function (d) {
     var js, id = 'facebook-jssdk';
