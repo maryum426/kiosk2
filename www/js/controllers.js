@@ -1164,7 +1164,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             //console.log("-->>" + document.getElementById("Latitude").value);
             //console.log("-->>" + document.getElementById("Longitude").value);
 
-            $scope.newPlace.placeName = place.name;
+            $scope.newPlace.placeName = ((place.name).replace(/[\s\$\&\!\. ,:-]+/g, "")).toLowerCase();
             $scope.newPlace.placeTitle = place.title;
             $scope.newPlace.placeSweetName = '';
             //$scope.newPlace.placeAddress2 = document.getElementById("target").value;
