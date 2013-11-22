@@ -570,8 +570,8 @@ textarea {
 }
 .profile-status {
 	float: right;
-	height: 76px;
-	width: 76px;
+	height: 79px;
+	width: 79px;
 }
 .profile-status img {
 	width: 100%;
@@ -1775,7 +1775,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 .map-holder {
 	padding: 0;
 	width: 100%;
-	height: 930px;
+	height: 960px;
 }
 .map-holder img {
 	display: block;
@@ -1960,6 +1960,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 .editable-input-header {
     float: left;
     margin-left: 20px;
+    margin-top: 4px;
 }
 .editable-input input {
     border: none;

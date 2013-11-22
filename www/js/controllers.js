@@ -2240,11 +2240,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $location.path("/kiosk/day");
         }
         
-         $scope.clearDataLogin = function () {
-             console.log("clearDataLogin()");
-             console.log($scope.user.phone);
-             $scope.user.phone=null;
-        };
+         
         
         //blue
         $scope.kioskRegisterCancel = function(){
@@ -2297,6 +2293,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 if ($scope.editInfo == true){
                     userService.getUserChannelInfo($rootScope.userPName, function(result){
                         console.log("result -> " + _.pairs(result[0]));
+                        console.log("Current place->" + $rootScope.currentPlace);
                         sweetService.addKioskUserToPlace(result,$rootScope.currentPlace, function () {
                             userService.logout();
                             $scope.safeApply(function () {
@@ -2918,7 +2915,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         
         $scope.launchKiosk = function(){
             $scope.logoutKiosk();
-            $scope.clearDataLogin();
+            //$scope.clearDataLogin();
             
         }
 
@@ -3784,6 +3781,11 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
 
     };
 
+    $scope.clearDataLogin = function () {
+             console.log("clearDataLogin()");
+             console.log($scope.user.phone);
+             $scope.user.phone=null;
+        };
     // Update the rendering of the page logout state.
      var renderNotLogoIn = function () {
 
@@ -4002,6 +4004,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
                 });
             });
             $rootScope.placeJoin = false;
+            $scope.clearDataLogin();
             //$location.path("/" + username);
 
         }
