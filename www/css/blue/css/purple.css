@@ -512,7 +512,7 @@ textarea {
     position: relative;
     float: left;
     display: inline;
-    height: 58px;
+    height: 56px;
     margin-top:11px;
     margin-left:90px;
 }
@@ -537,7 +537,7 @@ textarea {
 	color: #EEEEEE;
 	float: left;
 	font-size: 20px;
-	padding: 15.5px 4px;
+	padding: 16px 4px;
 	text-decoration: none;
         /*height: 56px;
         margin-top:11px;
