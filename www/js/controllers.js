@@ -3219,10 +3219,10 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
             var videoElements = document.getElementById('bellSound');
             videoElements.play();*/
 
-//            $scope.showmobileActions = false;
-//             $scope.showPlaceFeed = true ;
-//             $scope.section.sendingPlace = true;
-//             $scope.section.sending = false ;
+             $scope.showmobileActions = false;
+             $scope.showPlaceFeed = true ;
+             $scope.section.sendingPlace = true;
+             $scope.section.sending = false ;
             //$scope.wrapper = "wrapper-feeds-place";
 
             /***************************************************/

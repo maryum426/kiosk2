@@ -1614,7 +1614,7 @@ angular.module('DataServices', ['ngResource'])
                 var pSweet = new SweetPlace();
 
                 pSweet.set("placeCreatorId", userService.currentUser().id);
-                pSweet.set("placeName", place.placeName);
+                pSweet.set("placeName", ((place.placeName).replace(/[\s\$\&\!\. ,:-]+/g, "")).toLowerCase());
                 pSweet.set("placeTitle", place.placeTitle);
                 pSweet.set("placePhoto", place.placePhoto);
                 pSweet.set("placeSweetName", place.placeSweetName);
@@ -1738,7 +1738,7 @@ angular.module('DataServices', ['ngResource'])
                 query.first({
                     success:function(rKiosk) {
                         rKiosk.set("gname",kiosk.gname);
-                        rKiosk.set("placeName",kiosk.gname);
+                        rKiosk.set("placeName",((kiosk.gname).replace(/[\s\$\&\!\. ,:-]+/g, "")).toLowerCase());
                         rKiosk.set("address",kiosk.formatted_address);
                         rKiosk.save(null,{
                             success:function(result) {
