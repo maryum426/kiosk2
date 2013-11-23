@@ -2,7 +2,7 @@
     <div id="mybody" class="wrapper no-bg-color">
         <div class="container_ROW">
             <header class="header no-padding">
-                <div class="reorder-holder"><a class="reorder-color"><i class="icon-reorder"></i></a>
+                <div class="reorder-holder"><a class="reorder-color"><i id="remove-icon" class="icon-reorder"></i></a>
                     <!--<span class="total-notification">5</span>-->
                 </div>
                 <div class="search-field">
@@ -10,6 +10,7 @@
                     <input name="placeaddress" id="target" type="text" class="text-field" placeholder="SEARCH"
                            ng-model="kiosk.address" required>
                 </div>
+                <div class="remove-holder"><a id="rc" class="remove-color"><i id="remove-icon" class="icon-remove" ng-click="empty()"></i></a></div>
                 <span class="profile-status">
                     <img src="images/profile_image.png" ng-src="http://fast-bayou-8907.herokuapp.com/convert?resize=50x50&source={{userAvatar}}" alt="image" ng-click="backRegister()" >
                 </span>

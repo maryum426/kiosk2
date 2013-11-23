@@ -508,6 +508,20 @@ textarea {
 	position: relative;
 	float: left;
 }
+.remove-holder{
+    position: relative;
+    float: left;
+    display: inline;
+    height: 56px;
+    margin-top:11px;
+    margin-left:90px;
+}
+.remove-holder a:hover{
+    text-decoration: none;
+}
+#target:focus{
+    outline: 0;
+}
 .reorder-color {
 	background-color: #9966CB;
 	color: #EEEEEE;
@@ -517,6 +531,17 @@ textarea {
 	text-decoration: none;
         height: 66px;
         margin-top:10px;
+}
+.remove-color {
+	background-color: #b08cd4;
+	color: #EEEEEE;
+	float: left;
+	font-size: 20px;
+	padding: 15.5px 4px;
+	text-decoration: none;
+        /*height: 56px;
+        margin-top:11px;
+        margin-left:90px;*/
 }
 .reorder-color:hover {
 	text-decoration: none;
@@ -551,7 +576,7 @@ textarea {
 	float: left;
 	font-size: 36px;
 	padding: 2px 0 0 10px;
-	width: 528px;
+	width: 480px;
         height:54px;
 	border-radius:0;
 	-webkit-border-radius:0;
@@ -1743,7 +1768,7 @@ ul.rating {
 	-webkit-border-radius: 50%;
 }
 .register_BUTTON_HOLDER li a {
-	padding: 27px 0 28px 0;
+	padding: 25px 0 28px 0;
 }
 .profile-connect {
 	padding: 66px 78px 0;
@@ -1932,7 +1957,6 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 }
 .margin-stack{
 	margin-top: 20px;
-        margin-left: 670px;
 }
 .save-kiosk{
     background: url(../images/save-btn.png) no-repeat;
@@ -1962,7 +1986,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     float: left;
     margin-left: 20px;
     margin-top: 4px;
-    margin-right:25px;
+    margin-right: 25px;
 }
 .editable-input input {
     border: none;
@@ -2029,9 +2053,6 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 }*/
 .btn-holders{
     float:right;
-}
-.margin-stack{
-	margin: 20px 0 0;
 }
 .alignLEFT {
 	float: left;
