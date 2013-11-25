@@ -1,5 +1,5 @@
 <header class="header new-page-style">
-    <div class="heading-title-holder"> <span class="heading-title-register">Register</span> </div>
+    <div class="heading-title-holder"> <span class="heading-title">Register</span> </div>
 </header>
 <form name="kiosk_user">
 <div class="container_ROW">
@@ -7,7 +7,7 @@
         <div class="profile-connect">
                 <fieldset>
                     <div class="inputfile-holder" ng-controller="CameraCtrl">
-                      
+                       
                         <span class="profile-img-main heart-big-profile">
                            <img src="images/capture-img.png" ng-click="capturePhoto()" alt="Profile Picture"  ng-show='!userAvatar'>
                            <img ng-show='userAvatar' ng-click="capturePhoto()" ng-src="{{userAvatar}}" class="imgavatar"/>                           
@@ -49,7 +49,6 @@
                     <div ng-show="editInfo" >
                         <input type="submit" ng-click="kioskRegister()" class="add_user-button ios-btn" value="Join" />
                     </div>
-
                 </li>
             </ul>
         </div>

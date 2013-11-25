@@ -1124,16 +1124,18 @@ sweetApp.directive('sweetfileselect', function($rootScope, userService) {
 
                 var files = e.target.files || e.dataTransfer.files;
 //                scope.$apply(function(){
-                console.log("File upload attrs --> " + attrs.attr1);
-                console.log("File upload userid --> " + scope.userid);
+                console.log("User Name --> " + $rootScope.userPName);
                 console.log("Uploaded file --> " + files);
-                var file = files[0];
 
+                var file = files[0];
                 var serverUrl = 'https://api.parse.com/1/files/' + file.name;
+
                 console.log("---sweetfileselect user Pic --- " + serverUrl);
+
                 scope.$apply(function(){
                     scope.showprogress = 'true';
                 });
+
                 $.ajax({
                     type: "POST",
                     beforeSend: function(request) {
@@ -1149,34 +1151,49 @@ sweetApp.directive('sweetfileselect', function($rootScope, userService) {
                         scope.$apply(function(){
 
                             scope.swfile = data.url;
-                            console.log("File available at: " + scope.swfile);
-                            //var query = new Parse.Query("UserChannel");
-                            var query = new Parse.Query("PlaceSweetness");
-                            //query.equalTo("userId", scope.userid);
-                            query.equalTo("objectId", $rootScope.sweetofplaceid );
-                            console.log("---sweetfleseelect---- userId"+scope.userid);
+                            console.log("pic url "+data.url);
+
+                            var getphone = [];
+                            getphone.push($rootScope.userPName);
+                            var query = new Parse.Query("UserChannel");
+                            query.containedIn("channels", getphone );
                             query.first({
                                 success:function(rUserChannel) {
-                                    console.log("---sweetfileselect--- "+rUserChannel.id);
+                                    //console.log("---sweetfileselect--- "+rUserChannel.id);
                                     rUserChannel.set("avatarURL",data.url);
+                                    rUserChannel.set("avatarUrl",data.url);
                                     rUserChannel.save(null,{
                                         success:function(sUserChannel) {
                                             console.log("Saved "+sUserChannel);
                                             scope.$apply(function() {
-                                                console.log("--About to setUserAvatar--- "+sUserChannel.get("avatarURL"));
+                                                //console.log("--About to setUserAvatar--- "+sUserChannel.get("avatarURL"));
                                                 $rootScope.userAvatar = sUserChannel.get("avatarURL");
-                                                userService.setUserChannel(sUserChannel);
-                                                $rootScope.$broadcast("load_user_channel");
-                                                //$rootScope.$broadcast("feedbackImg_uploaded");
+                                                //$rootScope.$broadcast("load_user_channel");
+                                                //userService.setUserChannel(sUserChannel);
+                                                $rootScope.$broadcast("feedbackImg_uploaded");
                                                 //scope.setuseravatar(data.url);
                                             });
                                         }
                                     });
                                 }
                             });
-//                                element.visibility = false;
-//                                scope.showFileSelect = false;
-//                                scope.setSweetExpression('picture');
+
+                            var query = new Parse.Query("User");
+                            query.equalTo("username", $rootScope.userPName);
+                            query.first({
+                                success:function(rUserChannel) {
+                                    console.log("---sweetfileselect--- "+rUserChannel.id);
+                                    rUserChannel.set("avatarUrl",data.url);
+                                    rUserChannel.save(null,{
+                                        success:function(sUserChannel) {
+                                            scope.$apply(function() {
+                                                //$rootScope.userAvatar = sUserChannel.get("avatarURL");
+                                                $rootScope.$broadcast("load_user_channel");
+                                            });
+                                        }
+                                    });
+                                }
+                            });
                         });
 
                     },
@@ -1207,12 +1224,12 @@ sweetApp.directive('sweetfileselect', function($rootScope, userService) {
 
         controller:function($scope, $rootScope, userService) {
             $scope.$on("load_user_channel", function(rUserChannel) {
-                console.log("---loadUserAvatar called--- " +userService.getUserChannel().get("avatarURL"));
+                //console.log("---loadUserAvatar called--- " +userService.getUserChannel().get("avatarURL"));
                 //$rootScope.userChannel.set("avatarURL",userService.getUserChannel().get("avatarURL"));
                 //$rootScope.userAvatar = $rootScope.userChannel.get("avatarURL");
                 //$rootScope.loadUserChannel();
 
-                $scope.showprogress = 'false';
+                //$scope.showprogress = 'false';
 
             });
 
@@ -1399,11 +1416,11 @@ sweetApp.directive('angRoundProgress', [function () {
                         ctx.stroke();
 
                         // The inner number
-                        ctx.font = labelFont;
+                        /*ctx.font = labelFont;
                         ctx.textAlign = 'center';
                         ctx.textBaseline = 'middle';
                         ctx.fillStyle = labelColor;
-                        ctx.fillText(newValue.label, x, y);
+                        ctx.fillText(newValue.label, x, y);*/
 
                         // The "foreground" circle
                         var startAngle = - (Math.PI / 2);

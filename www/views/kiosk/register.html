@@ -1,13 +1,13 @@
 <header class="header new-page-style">
-    <div class="heading-title-holder"> <span class="heading-title-register">Register</span> </div>
+    <div class="heading-title-holder"> <span class="heading-title">Register</span> </div>
 </header>
 <form name="kiosk_user">
 <div class="container_ROW">
     <div class="container">
         <div class="profile-connect">
                 <fieldset>
-                   <div class="inputfile-holder" ng-controller="CameraCtrl">
-                      
+                    <div class="inputfile-holder" ng-controller="CameraCtrl">
+                        
                         <span class="profile-img-main heart-big-profile">
                            <img src="images/capture-img.png" ng-click="capturePhoto()" alt="Profile Picture"  ng-show='!userAvatar'>
                            <img ng-show='userAvatar' ng-click="capturePhoto()" ng-src="{{userAvatar}}" class="imgavatar"/>                           
@@ -16,14 +16,17 @@
                     <div ng-hide="editInfo">
                         <input type="text" class="textfield-holder" name="#" placeholder="Full name" ng-model="kiosk.fullname"
                                ng-minlength=3  ng-class="{error: kiosk_user.fullname.$invalid}">
-                        <!--<input type="text" name="#" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.vocation">-->
-                        <input type="email" name="#" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.email"
+                        <input type="email" name="email" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.email"
                                ng-class="{error: kiosk_user.email.$invalid}">
+                        <input type="text" name="vocation" placeholder="I make awesome espresso" class="textfield-holder" ng-model="kiosk.vocation">
                     </div>
                     <div ng-show="editInfo">
                         <div class="editlabal" >{{infoUserChannal.fullNmae}}</div>
                         <div class="editlabal">{{infoUserChannal.email}}</div>
                     </div>
+
+
+
                     <!--<a class="visibility-btn" ng-click="setVisibility()">Set visibility</a>-->
                     <session ng-hide="pageUserFlag">
 <!--                        <a class="visibility-btn" ng-click="searchPlaceKiosk()">Set Place</a>-->
@@ -36,7 +39,7 @@
     
 </div>
 <div class="footer_GROUP">
-    <div class="footer_HO LDER">
+    <div class="footer_HOLDER">
         <div class="profile-connect-bottom no_PADDING_TOP">
             <ul class="submit-holder register_BUTTON_HOLDER">
                 <li><a ng-click="kioskRegisterCancel()">Cancel</a></li>

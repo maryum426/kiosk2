@@ -65,7 +65,7 @@ sweetApp.config(
                 action:"auth.sms"
             }
         )
-            .when(
+            /*.when(
             "/sweet/show",
             {
                 action:"sweet.show"
@@ -204,7 +204,7 @@ sweetApp.config(
             {
                 action:"location.entermobile"
             }
-        )
+        )*/
             .when(
             "/kiosk/register",
             {
@@ -221,6 +221,12 @@ sweetApp.config(
             "/kiosk/register_visibility",
             {
                 action:"kiosk.register_visibility"
+            }
+        )
+            .when(
+            "/kiosk/userprofile",
+            {
+                action:"kiosk.userprofile"
             }
         )
             .when(
@@ -259,7 +265,7 @@ sweetApp.config(
                 action:"kiosk.claimPlaceCreated"
             }
         )
-            .when(
+            /*.when(
             "/place/placeHeader",
             {
                 action:"place.placeHeader"
@@ -380,7 +386,7 @@ sweetApp.config(
             {
                 action:"place.setting"
             }
-        )
+        )*/
             .when(
             "/:name",
             {
@@ -559,14 +565,15 @@ sweetApp.config(
             "AUTH_SMS":"/u/auth/sms",
             "KIOSK_REGISTER":"/kiosk/register",
             "KIOSK_REGISTER_ADDUSER":"/kiosk/register_adduser",
+            "KIOSK_USERPROFILE" : "/kiosk/userprofile",
             "FRIENDS_DISCOVER":"/friends/discover"
         },
         "DEFAULT_FONT_COLOR":"#000000", // Black
         "FONT_COLORS":[
             "#000000", "#ffffff", "#672971", "#e21d41", "#3ac6f3", "#b3ee0e"
         ],
-        "DEFAULT_GREETING_BACKGROUND":"img/greetings/White-Default.png",
-        "GREETING_BACKGROUNDS":[
+        /*"DEFAULT_GREETING_BACKGROUND":"img/greetings/White-Default.png",*/
+        /*"GREETING_BACKGROUNDS":[
             "img/greetings/White-Default.png",
             "img/greetings/Neon-Green.png",
             "img/greetings/Black.png",
@@ -579,9 +586,9 @@ sweetApp.config(
             "img/greetings/christmas-pattern2-pink.png",
             "img/greetings/christmas-pattern2-purple.png",
             "img/greetings/christmas-pattern2-ice blue.png"
-        ],
-        "DEFAULT_GESTURE_TYPE":"defaultGestureType",
-        "DEFAULT_GESTURE_TEXT":"Thinking of you and sending you much Sweetness!",
+        ],*/
+        /*"DEFAULT_GESTURE_TYPE":"defaultGestureType",
+        "DEFAULT_GESTURE_TEXT":"Thinking of you and sending you much Sweetness!",*/
         "GESTURE":{
             "THANK_YOU":{
                 "TEMPLATE":"said thanks to",
@@ -673,8 +680,8 @@ sweetApp.config(
                 ]
             }
         ],
-        "SQUEEZE":{type:"squeeze", name:"Give a Squeeze",
-            value:"", my_template:"You gave <%=person2%> a squeeze", template:"<%=person1%> gave you a squeeze", facebook_template:"Just sending you a squeeze..."},
+        /*"SQUEEZE":{type:"squeeze", name:"Give a Squeeze",
+            value:"", my_template:"You gave <%=person2%> a squeeze", template:"<%=person1%> gave you a squeeze", facebook_template:"Just sending you a squeeze..."},*/
         "EMAIL_DEFAULT_VALUES":{
             "FROM_ADDRESS":"sweet@sweetness.io",
             "FROM_NAME":"Sweetness Labs",
@@ -682,9 +689,9 @@ sweetApp.config(
 //        "TO_ADDRESS": "bilalahmed70@gmail.com",
             "TO_NAME":"Sweetness Labs"
         },
-        "HELP":{
+        /*"HELP":{
             "DEFAULT_SUBJECT":"Sweet User Feedback"
-        },
+        },*/
         "BULK_EMAIL":{
             "SENT_MSG":"Gestures created and sent successfully"
         },
@@ -696,14 +703,12 @@ sweetApp.config(
             "PLUS":"icon-plus",
             "MINUS":"icon-minus"
         },
-        "ERROR":{
-            "DEFAULT":"Oops! Something went wrong and we're looking into it."
-        },
-        "INTERACTION":{
+
+        /*"INTERACTION":{
             "EVENTS":["Food", "Coffee", "Drink", "Love", "Sport"],
             "FREQUENCIES":["VIP", "Weekly", "Monthly", "Yearly"]
-        },
-        "SOCIAL":{
+        },*/
+        /*"SOCIAL":{
             "FACEBOOK":{
                 "APP_ID":"465464716837107", //Sweet Bee
 //            "APP_ID": "165573450251838", //Sweetness
@@ -726,6 +731,9 @@ sweetApp.config(
 //                + "<%=sweetLink%>"
 //                + "www.sweetness.io"
             }
+        },*/
+        "ERROR":{
+            "DEFAULT":"Oops! Something went wrong and we're looking into it."
         }
     });
 
@@ -735,9 +743,8 @@ sweetApp.config(
 //Sweetness Production Eneviorment : SweetBee
 //Parse.initialize("h2w6h5BLXG3rak7sQ2eyEiTKRgu3UPzQcjRzIFCu", "gQ7DmgLGTDNNl4Nl9l3cmJkSluy4y2hEPVaNSH2k");
 
-//Sweetness Production Eneviorment : SweetApp
+//Sweetness Development Eneviorment :SweetApp
 Parse.initialize("WRdpguLGfYdPVMq2LwHiB0s5k9ESVTwdde7kXwDm", "MzJ2jpG740oPfRdsKRY6jbXHCeEDXwTlnVFUYiTi");
-
 
 /*(function (d) {
     var js, id = 'facebook-jssdk';
@@ -751,8 +758,8 @@ Parse.initialize("WRdpguLGfYdPVMq2LwHiB0s5k9ESVTwdde7kXwDm", "MzJ2jpG740oPfRdsKR
     d.getElementsByTagName('head')[0].appendChild(js);
 }(document));*/
 
-setTimeout(function () {
-    /*Parse.FacebookUtils.init({
+/*setTimeout(function () {
+    Parse.FacebookUtils.init({
         //              TODO: What if user revoke Sweet app permissions
         //appId      : "548541351864725", // thankyou.sweetness.io
         //appId      : "451283941617165",
@@ -767,6 +774,6 @@ setTimeout(function () {
         xfbml:true, // parse XFBML,
         oauth:true,
         bundleId: "com.sweetness.thankyou"
-    });*/
-}, 1000);
+    });
+}, 1000);*/
 

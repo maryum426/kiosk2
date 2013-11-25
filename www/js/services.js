@@ -397,6 +397,27 @@ angular.module('DataServices', ['ngResource'])
             });
         };
 
+        var checkPhoneInPlaceDB = function (phone, place, cb) {
+            var query = new Parse.Query("SweetPlaceUsers");
+            query.equalTo("userPhone", phone);
+            query.equalTo("placeName", place);
+            query.find({
+                success:function (r_auth) {
+                    if (r_auth.length > 0) {
+                        cb(r_auth[0])
+                    }
+                    else {
+                        cb(null);
+                    }
+                },
+                error:function (error) {
+                    console.log("service: checkPhoneInPlaceDB() -> " + error.code + " " + error.message);
+
+                }
+
+            });
+        };
+
         return {
             createAuth:function (ph, name) {
                 m_guid = utilService.generateGuid();
@@ -513,6 +534,21 @@ angular.module('DataServices', ['ngResource'])
                         } else {
                             cb(false);
                         }
+
+                    }
+                });
+            },
+
+            chkPlaceUser:function (phone, place, cb) {
+
+                checkPhoneInPlaceDB(phone, place, function (foundAuth) {
+
+                    if(foundAuth == null){
+                        console.log("new place user: "+ foundAuth);
+                        cb(false);
+                    }else {
+                        console.log("already a user: "+ foundAuth);
+                        cb(true);
 
                     }
                 });
@@ -1614,7 +1650,7 @@ angular.module('DataServices', ['ngResource'])
                 var pSweet = new SweetPlace();
 
                 pSweet.set("placeCreatorId", userService.currentUser().id);
-                pSweet.set("placeName", ((place.placeName).replace(/[\s\$\&\!\. ,:-]+/g, "")).toLowerCase());
+                pSweet.set("placeName", place.placeName);
                 pSweet.set("placeTitle", place.placeTitle);
                 pSweet.set("placePhoto", place.placePhoto);
                 pSweet.set("placeSweetName", place.placeSweetName);
@@ -1629,16 +1665,19 @@ angular.module('DataServices', ['ngResource'])
                 pSweet.set("address", place.formatted_address);
                 pSweet.set("address2", place.placeAddress2);
 
+                //var num = Math.floor(Math.random() * 900000) + 100000;
+
                 var query = new Parse.Query("SweetPlace");
 
                 //if some place find with same name donot create it again.
                 //if error mean no place find then create new place.
-                query.equalTo("placeName", place.placeName);
+                query.equalTo("gname", place.gname);
                 query.equalTo("address", place.formatted_address);
                 query.find({
                     success:function (results) {
                         console.log("Successfully retrieved " + results.length);
                         if (results.length == 0) {
+                            //pSweet.set("placeName", place.placeName + '.'+ num);
                             pSweet.save(null, {
                                 success:function (pSweet) {
                                     cb(pSweet);
@@ -1657,6 +1696,7 @@ angular.module('DataServices', ['ngResource'])
                     },
                     error:function (error) {
                         //console.log("Error: " + error.code + " " + error.message);
+                        //pSweet.set("placeName", place.placeName + '.'+ num);
                         pSweet.save(null, {
                             success:function (pSweet) {
                                 cb(pSweet);
@@ -1724,7 +1764,7 @@ angular.module('DataServices', ['ngResource'])
                 });
             },
 
-            saveKioskPlaceEdit:function (kiosk,placeId, cb) {
+            saveKioskPlaceEdit:function (kiosk,placenum,placeId, cb) {
 
                 console.log("saveKiosk: " + kiosk.gname);
                 console.log("saveKiosk: " + kiosk.formatted_address);
@@ -1738,7 +1778,7 @@ angular.module('DataServices', ['ngResource'])
                 query.first({
                     success:function(rKiosk) {
                         rKiosk.set("gname",kiosk.gname);
-                        rKiosk.set("placeName",((kiosk.gname).replace(/[\s\$\&\!\. ,:-]+/g, "")).toLowerCase());
+                        rKiosk.set("placeName",((kiosk.gname).replace(/[\s\$\&\!\. ,:-]+/g, "")).toLowerCase()+placenum);
                         rKiosk.set("address",kiosk.formatted_address);
                         rKiosk.save(null,{
                             success:function(result) {
@@ -2581,6 +2621,7 @@ angular.module('DataServices', ['ngResource'])
                         object.set("avatarUrl", kioskUserInfo.userAvatar);
                         object.set("channel", kioskUserInfo.userPhone);
                         object.set("email", kioskUserInfo.email);
+                        object.set("vocation", kioskUserInfo.vocation);
                         object.save();
                         cb(object);
 
@@ -2596,6 +2637,7 @@ angular.module('DataServices', ['ngResource'])
                                 object.set("email", kioskUserInfo.email);
                                 //object.set("phones", kioskUserInfo.userPhone);
                                 object.set("avatarUrl", kioskUserInfo.userAvatar);
+                                object.set("vocation", kioskUserInfo.vocation);
                                 object.save();
                                 //cb(object);
                             },
@@ -2614,6 +2656,7 @@ angular.module('DataServices', ['ngResource'])
                         uKiosk.set("vocation", kioskUserInfo.vocation);
                         uKiosk.set("userAvatar", kioskUserInfo.userAvatar);
                         uKiosk.set("userPhone", kioskUserInfo.userPhone);
+                        uKiosk.set("vocation", kioskUserInfo.vocation);
 
                         uKiosk.save(null, {
                             success:function (rKiosk) {
@@ -2760,11 +2803,13 @@ angular.module('DataServices', ['ngResource'])
                 var Kiosk = Parse.Object.extend("SweetPlaceUsers");
                 //var uKiosk = new Parse.Query(Kiosk);
                 var uKiosk = new Kiosk();
-
+                var channal = kioskUserInfo[0].get('channels') ;
                 console.log(">> " + kioskUserInfo[0].get('userId'));
+                //console.log(">> " + kioskUserInfo[0].get('channels'));
+                console.log(">> " + channal[0]);
                 console.log(">> " + placeInfo[0].get('placeName'));
-                //console.log(">>- " + placeInfo['placeName']);
-                //console.log(">>-- " + placeInfo.placeCreatorId);
+                console.log(">>- " + kioskUserInfo[0].get('fullName'));
+                console.log(">>-- " + kioskUserInfo[0].get('email'));
 
                 uKiosk.set("placeCreatorId", placeInfo[0].get('placeCreatorId'));
                 uKiosk.set("placeName", placeInfo[0].get('placeName'));
@@ -2774,6 +2819,7 @@ angular.module('DataServices', ['ngResource'])
                 uKiosk.set("placeLatitude", placeInfo[0].get('placeLatitude'));
                 uKiosk.set("placeLongitude", placeInfo[0].get('placeLongitude'));
                 uKiosk.set("userID", kioskUserInfo[0].get('userId'));
+                uKiosk.set("userPhone", channal[0] );
                 uKiosk.set("userName", kioskUserInfo[0].get('fullName'));
                 uKiosk.set("email", kioskUserInfo[0].get('email'));
                 uKiosk.set("userNetwork", 'phone');

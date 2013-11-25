@@ -2620,8 +2620,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             window.setTimeout(function () {
                 google.maps.event.trigger(map, 'resize');
             }, 1000);
-            //$rootScope.placeSearchResults.kioskthankyoutitle = "Love your barista?say thank you!" ;
-        };
+        }
 
         $scope.handleNoGeolocation = function (errorFlag) {
 

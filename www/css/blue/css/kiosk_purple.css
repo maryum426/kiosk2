@@ -391,7 +391,7 @@ input, select, textare {
 	text-decoration: none;
 }*/
 .submit-holder .send-button {
-    background-color: #ed145b;
+    background-color: #14b9d6;
 }
 
 /*20-Aug-page-2-css-End*/
@@ -434,7 +434,7 @@ input, select, textare {
 	display: block;
 	margin-bottom: 10px;
 	padding: 12px;
-	background-color: #9966CB;
+	background-color: #14b9d6;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
 }
@@ -1106,6 +1106,13 @@ ul.rating {
     padding: 24px 111px;
     font-size: 44px;
     color: #fff;
+    border: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    -webkit-border-radius: 0px;
+    -webkit-box-sizing: border-box; /* Android ≤ 2.3, iOS ≤ 4 */
+    -moz-box-sizing: border-box; /* Firefox 1+ */
+    box-sizing: border-box;
 }
 .submit-holder .register-button {
     background-color: #ed145b;
@@ -1759,7 +1766,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     -webkit-appearance: none;
     border-radius: 0;
     -webkit-border-radius: 0px;
-    -webkit-box-sizing: border-box; /* Android ? 2.3, iOS ? 4 */
+    -webkit-box-sizing: border-box; /* Android ≤ 2.3, iOS ≤ 4 */
     -moz-box-sizing: border-box; /* Firefox 1+ */
     box-sizing: border-box;
 }

@@ -447,7 +447,7 @@ textarea {
 	-webkit-appearance: none;
 	border-radius: 0;
 	-webkit-border-radius: 0px;
-	-webkit-box-sizing: border-box; /* Android ≤ 2.3, iOS ≤ 4 */
+	-webkit-box-sizing: border-box; /* Android â‰¤ 2.3, iOS â‰¤ 4 */
 	-moz-box-sizing: border-box; /* Firefox 1+ */
 	box-sizing: border-box;
 }
@@ -786,7 +786,6 @@ textarea {
 }
 /*26-Aug-css*/
 .setting_buttons {
-	background-color: #14B9D6;
 	clear: both;
 	padding: 20px 0;
 }
@@ -2124,7 +2123,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     -webkit-appearance: none;
     border-radius: 0;
     -webkit-border-radius: 0px;
-    -webkit-box-sizing: border-box; /* Android ≤ 2.3, iOS ≤ 4 */
+    -webkit-box-sizing: border-box; /* Android â‰¤ 2.3, iOS â‰¤ 4 */
     -moz-box-sizing: border-box; /* Firefox 1+ */
     box-sizing: border-box;
 }
@@ -2192,4 +2191,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 	to {
 		transform:rotate(360deg);
 	}
+}
+.hidden-num{
+    display: none;
 }

@@ -7,7 +7,7 @@
                     <em class="heading-sub-title sub-heading-fixed">{{placeSearchResults.formatted_address}}</em> </div>
                   </div>
                     <a class="edit-holder" ng-click="enableEditor()" ng-show="previewdisable" ></a>
-           </div>
+                </div>
                 <div ng-show="editorEnabled" class="overflow-holder">
                     <div class="editable-input-header">
                     	<input ng-model="kiosk.editableTitle" ng-show="editorEnabled">
@@ -19,6 +19,8 @@
                     	<a ng-click="disableEditor()" class="cancel-kiosk">cancel</a>
                     </div>
                 </div>
+
+
         </div>
     </header>
     <div class="banner">
@@ -52,7 +54,7 @@
                 <span class="work-title">Great! You can edit your info above and then preview to launch your thank you display.</span>
             </div>
             <div ng-show="launch">
-                <span class="work-title">Looking good? Now your staff members can join this place so your customers can thank them for being so awesome!</span>
+                <span class="work-title">Looking good? Now your staff members can join this place so your customers can thank them for being so awesome</span>
             </div>
             <ul class="claim-holder clh-padding">
                 <div ng-hide="launch">

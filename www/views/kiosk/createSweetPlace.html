@@ -6,7 +6,6 @@
                     <!--<span class="total-notification">5</span>-->
                 </div>
                 <div class="search-field">
-                    <!--<input type="text" name="#" placeholder="SEARCH">-->
                     <input name="placeaddress" id="target" type="text" class="text-field" placeholder="SEARCH"
                            ng-model="kiosk.address" required>
                 </div>
@@ -16,67 +15,13 @@
                 </span>
             </header>
 
-            <!--<ul class="">
-                <li ng-repeat="placeinfo in placeListing">
-                    <span>{{placeinfo.get('name')}}</span>
-                </li>
-            </ul>-->
             <session ng-show="!showClaim">
                 <div id="map_canvas" class="map-holder"></div>
             </session>
-            <!--<div class="col07">
-                <input name="placename" class="text-field" placeholder="Name your place" type="text"
-                       ng-model="kiosk.name"
-                       ng-trim='false' ng-pattern="/^[\S]*$/" required/>
-                <span class="input-help" ng-show="placeForm.placename.required">
-                    <h4>Required!</h4>
-                </span>
-                <span class="input-help" ng-show="placeForm.placename.$error.pattern">
-                    <h4>No space allowed.</h4>
-                </span>
-            </div>-->
-
-           <!-- <div class="col07">
-                <input name="placetitle" class="text-field" placeholder="Place title" type="text" ng-model="kiosk.title"
-                       ng-trim='false' required/>
-                <span class="input-help" ng-show="placeForm.placetitle.required">
-                    <h4>Required!</h4>
-                </span>
-            </div>-->
-
-            <!--<div class="col07">
-                <input name="placeaddress" id="target" type="text" class="text-field" placeholder="Enter a place or address"
-                       ng-model="kiosk.address" required>
-            </div>-->
-
-            <!--<div class="col07">
-                <input name="placeaddress2" id="address2" type="text" class="text-field"
-                       placeholder="Enter a place or address2"
-                       ng-model="kiosk.address2" required>
-            </div>-->
-
-            <!--<div class="col07">
-                <sweetplacefileselect align="center" showprogress="util.showProgress" swfile="user.avatarUrl"
-                                      attr1="50">
-                </sweetplacefileselect>
-            </div>-->
-
-            <!--<div class="col07">
-                <input type="submit"
-                       ng-disabled="placeForm.placeaddress.$pristine || placeForm.placeaddress.$dirty && placeForm.placeaddress.$invalid || placeForm.placename.$pristine || placeForm.placename.$dirty && placeForm.placename.$invalid"
-                       class="create-place-btn-gmail create-place-btn" value="Create This Place"
-                       ng-class="{enable : !placeForm.placename.$invalid || !placeForm.placeaddress.$invalid, disable : placeForm.placename.$invalid || placeForm.placeaddress.$invalid}"
-                       ng-click="creatPlaceKiosk(kiosk)"/>
-            </div>
--->
-
-            <!--<div class="map-holder">
-            <img src="images/map-img.jpg" alt="map">
-        </div>-->
 
             <div class="col02-placeMsg" ng-show="placeMsg">
                 <span class="place-msg">Place already exist.</span>
-				<div class="send-btn" ng-click="placeClaimBack()"><a href="#" class="send-ok-btn">Ok</a></div>
+				<div class="send-btn" ng-click="placeClaimBack()"><a class="send-ok-btn">Ok</a></div>
             </div>
 
             <!-- ************************************************************************************** -->
@@ -89,11 +34,7 @@
                         <span class="social-title">{{placeSearchResults.gname}}</span>
                         <em class="social-view">{{placeSearchResults.formatted_address}}</em>
                     </div>
-<!--                    <ul class="link-info-holder small-heart">
-                        <li><a href="#" class="icon-heart"></a></li>
-                        <li><a href="#" class="icon-heart"></a></li>
-                        <li><a href="#" class="icon-heart"></a></li>
-                    </ul>-->
+
                 </div>
                 <div class="container">
                     <div class="claim-holder-box">
@@ -107,26 +48,6 @@
             </section>
             <!-- ----------------------------- End Place claim ---------------------------------------- -->
             <!-- -------------------------------------------------------------------------------------- -->
-
-
         </div>
-        <!--<div class="footer-GROUP" id="footer_GROUP">
-            <div id="footerSlideContainer">
-                <div class="detail" id="footerSlideButton" style="background-position: left top;"></div>
-                <div id="footerSlideContent" style="height: 0px;">
-                    <div class="footer-Slider">
-                        <ul class="social-icons">
-                            <li>
-                                <span class="fbring">
-                                    <a ng-controller="AuthController" ng-click="facebookPlaceLogin()"
-                                         alt="facebook" class="facebook ng-scope"
-                                         href="">facebook</a>
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>-->
     </div>
 </form>
