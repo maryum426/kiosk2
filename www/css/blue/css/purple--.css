@@ -69,7 +69,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 /*Corrects inline-block display not defined in IE6/7/8/9 & FF3*/
 audio, canvas, video {
 	display: inline-block;
-        margin-top:50px;
 *display: inline;
  *zoom: 1;
 }
@@ -259,26 +258,24 @@ textarea {
 }
 /*20-Aug-page-2-css-Start*/
 .header {
-	/*padding: 11px 25px 11px;*/
+	padding: 14px 25px 10px;
 	background-color: #672971;
-        height: 79px;
 	color: #fff;
 }
-/*.header:after {
+.header:after {
 	clear: both;
 	display: block;
 	content: "";
-}*/
+}
 .heading-title-holder {
 	float: none;
 }
 .heading-sub-title {
-	font-size: 16px;
+	font-size: 20px;
 	display: block;
 	font-style: normal;
 	text-transform: uppercase;
 	text-align: left;
-        padding:0 28px;
 }
 .social-features {
 	float: right;
@@ -299,7 +296,7 @@ textarea {
 	height: 54px;
 }
 .img-2 li a.profile-icon:hover {
-	background: url(../images/map-img-hover2) no-repeat !important;
+	background: url(../images/map-img-hover2.png) no-repeat !important;
 }
 .img-2 li a.profile-icon.active {
 	background: url(../images/map-img-hover2.png) no-repeat !important;
@@ -340,13 +337,13 @@ textarea {
 .profile-connect-other {
 	overflow: hidden;
 	/*padding: 102px 25px 77px;*/
-	padding: 2px 25px 0 0;
+	padding: 164px 25px 187px;
 }
 .heart-icon {
-	left: 332px;
+	left: 96px;
 	opacity: 0.5;
 	position: absolute;
-	top: 205px;
+	top: 113px;
 	width: 80px;
 }
 .profile-attach {
@@ -430,27 +427,10 @@ textarea {
 	text-decoration: none;
 	background-color: #b7b7b7;
 	text-align: center;
-	padding: 28px 0 28px 0;
-        margin-top:94px;
-}
-.submit-holder li a.back-button {
-	display: block;
-	font-size: 40px;
-	color: #fff;
-	text-decoration: none;
-	background-color: #b7b7b7;
-	text-align: center;
-	padding: 28px 0 28px 0;
-        margin-top: 0 !important;
+	padding: 26px 0;
 }
 .submit-holder li a.send-button {
-	background-color: #9966cb;
-        margin-top: 60px;
-        
-}
-.submit-holder li a.done-button {
 	background-color: #ed145b;
-        margin: 0 !important;
 }
 .submit-holder li a:hover {
 	text-decoration: none;
@@ -464,7 +444,7 @@ textarea {
 	-webkit-appearance: none;
 	border-radius: 0;
 	-webkit-border-radius: 0px;
-	-webkit-box-sizing: border-box; /* Android â‰¤ 2.3, iOS â‰¤ 4 */
+	-webkit-box-sizing: border-box; /* Android ≤ 2.3, iOS ≤ 4 */
 	-moz-box-sizing: border-box; /* Firefox 1+ */
 	box-sizing: border-box;
 }
@@ -525,46 +505,19 @@ textarea {
 	position: relative;
 	float: left;
 }
-.remove-holder{
-    position: relative;
-    float: left;
-    display: inline;
-    height: 56px;
-    margin-top:11px;
-    margin-left:90px;
-}
-.remove-holder a:hover{
-    text-decoration: none;
-}
-#target:focus{
-    outline: 0;
-}
 .reorder-color {
-	background-color: #9966CB;
-	color: #EEEEEE;
+	background-color: #EEEEEE;
+	color: #14B9D6;
 	float: left;
 	font-size: 45px;
-	padding: 0 25px;
+	padding: 18px 25px;
 	text-decoration: none;
-        height: 66px;
-        margin-top:10px;
-}
-.remove-color {
-	background-color: #b08cd4;
-	color: #EEEEEE;
-	float: left;
-	font-size: 20px;
-	padding: 16px 4px;
-	text-decoration: none;
-        /*height: 56px;
-        margin-top:11px;
-        margin-left:90px;*/
 }
 .reorder-color:hover {
 	text-decoration: none;
 }
 .no-padding {
-	padding: 0;
+	padding: 0 !important;
 }
 .total-notification {
 	border-radius: 50%;
@@ -583,7 +536,7 @@ textarea {
 }
 .search-field {
 	float: left;
-	margin: 11px 0 11px 25px;
+	margin: 25px 0 20px 25px;
 	width: 400px;
 }
 .search-field input {
@@ -592,32 +545,19 @@ textarea {
 	color: #FFFFFF;
 	float: left;
 	font-size: 36px;
-	padding: 2px 0 0 10px;
-	width: 480px;
-        height:54px;
+	padding: 0 2px;
+	width: 528px;
 	border-radius:0;
 	-webkit-border-radius:0;
 }
-.search-field .text-field::-webkit-input-placeholder { /* WebKit browsers */
-    color:    #fff;
-}
-.search-field .text-field:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #fff;
-}
-.search-field .text-field:-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    #fff;
-}
-.search-field .text-field::-ms-input-placeholder { /* Internet Explorer 10+ */
-    color:    #fff;
-}
 .profile-status {
-	float: right;
-	height: 79px;
-	width: 79px;
+    float: right;
+    height: 91px;
+    width: 88px;
 }
 .profile-status img {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
 .container-heading {
 	background-color: transparent;
@@ -792,7 +732,6 @@ textarea {
 	text-align: center;
 	text-transform: uppercase;
 	margin-bottom: 5px;
-        margin-top: 20px;
 }
 .small_FONT {
 	font-size: 24px;
@@ -1010,9 +949,9 @@ textarea {
 }
 .heart-big {
     height: 100px;
-    left: 37%;
+    left: 32%;
     opacity: 0.5;
-    top: 37%;
+    top: 36%;
     width: 100px;
 }
 .heart-big > img {
@@ -1095,14 +1034,14 @@ ul.rating {
 	float: left;
 }
 .work-title a:hover {
-	text-decoration: none;
+    text-decoration: none;
 }
 .work-title {
-	color: #535353;
-	display: block;
-	font-size: 33px;
-	margin-bottom: 15px;
-	text-align: center;
+    color: #535353;
+    display: block;
+    font-size: 33px;
+    margin-bottom: 15px;
+    text-align: center;
 }
 .work-link {
 	background-color: #2ab9d4;
@@ -1322,19 +1261,27 @@ ul.rating {
 	margin-top: 0;
 }
 .thanks_heading {
-	background-color:#ED145B;
-        color: #FFFFFF;
+	color: #F24E22;
 	display: block;
-	font-size: 25px;
-	text-align: left;
-        padding: 15px 30px 0;
-        height: 47px;
-        width: 120%;
+	font-family: cursive;
+	font-size: 34px;
+	font-style: italic;
+	text-align: center;
+	margin-bottom: 44px;
+	color: #F24E22;
+	display: block;
+	font-family: cursive;
+	font-size: 34px;
+	font-style: italic;
+	text-align: center;
+	margin-bottom: 44px;
 }
 .thanks_footer {
-	color: #ED145B;
+	color: #F24E22;
 	display: block;
+	font-family: cursive;
 	font-size: 34px;
+	font-style: italic;
 	text-align: center;
 	margin-top: 44px;
 }
@@ -1391,7 +1338,7 @@ ul.rating {
 	text-decoration: none;
 }
 .submit-holder li a.register-button {
-	background-color: #ed145b;
+    background-color: #ed145b;
 }
 .inputfile-holder {
 	max-width: 346px;
@@ -1541,12 +1488,12 @@ ul.rating {
 	width: auto;
 }
 .submit-holder .feedback-btn a {
-	font-size: 25px;
+	font-size: 34px;
 	padding: 18px 0;
 }
 .feedbackFACEBOOK {
 	background-color: #9966cc;
-	margin: 150px auto 0;
+	margin: 70px auto 0;
 	max-width: 614px;
 	padding: 20px;
 }
@@ -1555,7 +1502,7 @@ ul.rating {
 }
 .feedbackFACEBOOK-HOLDER {
 	background: url(../images/bg-white.png);
-	height: 110%;
+	height: 100%;
 	left: 0;
 	position: absolute;
 	top: 0;
@@ -1567,9 +1514,9 @@ ul.rating {
 }
 .progress_animation {
 	height: 100%;
-	left: -55px;
+	left: -3px;
 	position: absolute;
-	top: 75px;
+	top: -2px;
 	width: 188px;
 }
 /*page3-CSS-End*/
@@ -1577,13 +1524,12 @@ ul.rating {
 	background: #ed145b;
 	display: block;
 	margin: 30px auto 0;
-	width: 213px;
+	width: auto;
 	padding: 6px 20px 10px;
 	color: #fff;
 	cursor: pointer;
 	border: none;
-	font-size: 44px;
-        height: 91px;
+	font-size: 40px;
 	font-family: 'Helvetica-Light';
 }
 .bot-margin {
@@ -1613,17 +1559,19 @@ ul.rating {
 	background-image: url(../images/arrow-up.png);
 	background-position: 50% 50% !important;
 	background-repeat: no-repeat;
-	background-color: #ed145b;
+	background-color: #672971;
 	float: right;
 	/*height: 72px;
 	width: 80px;*/
 	padding: 36px 40px;
 }
+
 .footer-Slider .texfield {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	height: 76px;
+	line-height: 84px;
 	margin-bottom: 14px;
 	padding: 0 20px !important;
 	text-align: center;
@@ -1637,11 +1585,9 @@ ul.rating {
 .footer-Slider .submit-holder li a {
 	font-size: 32px;
 	padding: 17px 0;
-        margin: 0;
 }
 .footer-Slider .submit-holder li a.send-button {
-	background-color: #9966cb;
-        margin: 0;
+	background-color: #672971;
 }
 .closeClass{
     background: transparent !important;
@@ -1700,26 +1646,24 @@ ul.rating {
 }
 /*19-Nov-CSS-Start*/
 .heart-big-profile {
-	height: 392px;
-	width: 392px;
-        margin-left: 110px;
-}
-.customer-img-profile {
-	height: 208px;
-	width: 208px;
-        margin-left: 268px;
-        
+	height: 300px;
+	padding: 23px;
+	width: 300px;
 }
 .heart-big-profile > img {
-	
+	width: 300px;
+	height: 300px;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
 }
 .header {
 	background-color: #9966cb;
 }
+.publicPage {
+    position: relative;
+}
 .publicPage .social-connection li{
-    float: left;
+	float: left;
     margin-bottom: 10px;
     margin-left: 30px;
     position: relative;
@@ -1727,27 +1671,18 @@ ul.rating {
 }
 .heading-title {
 	display: block;
-	font-size: 30px;
+	font-size: 38px;
+    padding: 5px 0;
 	letter-spacing: -1px;
 	text-transform: uppercase;
 	text-align:left;
-        padding: 8px 28px 0;
-}
-.heading-title-register {
-	display: block;
-	font-size: 30px;
-	letter-spacing: -1px;
-	text-transform: uppercase;
-	text-align:left;
-        padding: 20px 28px 0;
 }
 .submit-holder .register-button {
     background-color: #ed145b;
-    padding: 0px 72px;
-    height: 105px;
+    padding: 24px 72px;
     font-size: 44px;
     color: #fff;
-    border:none;
+	border:none;
 }
 /*.textfield-holder {
 	text-align: center;
@@ -1778,8 +1713,10 @@ ul.rating {
 	text-shadow: 1px 1px 1px #fafafa;
 }
 .profile-img-main {
-	
-	
+	height: 247px;
+	padding: 12px;
+	width: 247px;
+	margin: 0 auto 30px;
 	background-color: #9966CB;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
@@ -1787,55 +1724,14 @@ ul.rating {
 	display:block;
 	z-index: 9999;
 }
-.profile-img-register {
-	display: block;
-	height: 160px;
-	padding: 13px;
-	width: 160px;
-	margin: 20px auto 30px;
-	background-color: #9966cb;
+.profile-img-main > img {
+	width: 247px;
+	height: 247px;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
-	position: relative;
-}
-.register-big-profile {
-	height: 290px;
-	padding: 28px;
-	width: 290px;
-}
-/*.profile-img-main > img {
-	width: 228px;
-	height: 228px;
-	border-radius: 50%;
-	-webkit-border-radius: 50%;
-        margin-top: 88px;
-}*/
-.circle-main-img{
-        width: 328px;
-	height: 328px;
-	border-radius: 50%;
-	-webkit-border-radius: 50%;
-        margin-top: 32px;
-        margin-left: 32px;
-}
-.circle-main-img2{
-        width: 228px;
-	height: 228px;
-	border-radius: 50%;
-	-webkit-border-radius: 50%;
-        margin-top: 136px;
-        margin-left: 258px;
-}
-.circle-main-img-cust{
-        width: 175px;
-	height: 175px;
-	border-radius: 50%;
-	-webkit-border-radius: 50%;
-        margin-top: 17px;
-        margin-left: 17px;
 }
 .register_BUTTON_HOLDER li a {
-	padding: 25px 0 28px 0;
+	padding: 27px 0 28px 0;
 }
 .profile-connect {
 	padding: 66px 78px 0;
@@ -1867,7 +1763,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 .map-holder {
 	padding: 0;
 	width: 100%;
-	height: 945px;
+	height: 930px;
 }
 .map-holder img {
 	display: block;
@@ -1890,46 +1786,30 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 	-webkit-border-radius:0;
     color: #FFFFFF;
     font-family:"Helvetica Light", Arial, sans-serif;
-    width:510px !important;
-    border-left: 22px solid #9966cb;
-    margin-top: 5px;
+	width:510px !important;
+ 	border-left: 22px solid #ed145b;
 }
 .pac-item-query{
-	color:inherit !important;
+	color:inherit;
 }
 .pac-item:hover {
-    background-color: #e1c3ff;
+    background-color: #FFFFFF;
 }
 .pac-item {
     border-top: 1px solid #E6E6E6;
-    color: #9966cb;
+    color: #9966cc;
     font-size: 16px;
-    height: 65px;
+    line-height: 60px;
     overflow: hidden;
     text-align: left;
     text-overflow: ellipsis;
     white-space: nowrap;
-    padding: 10px 0 0 10px;
 }
 .pac-item-query {
     font-size: 32px;
     margin-right: 3px;
     width: 525px;
 }
-.pac-item-query:after{ 
-    content:"\A"; 
-    white-space:pre; 
-}
-.pac-icon{
-    display:none;
-}
-.pac-item span{
-    color: #FFFFFF;
-}
-.pac-matched{
-    color: #9966cb !important;
-}
-
 /*--------------------------------------------------------------------------
 ****************************Google Map Css End************************************************/
 .claim-holder {
@@ -1979,12 +1859,24 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     top: 156px;
     z-index: 999;
 }
+.col02-placeUserMsg {
+    background: #9966CB;
+    color: #fff;
+    font-size: 24px;
+    left: 220px;
+    padding: 35px 80px;
+    position: absolute;
+    right: auto;
+    text-align: center;
+    top: 556px;
+    z-index: 999;
+}
 .place-msg{
 	display:block;
 	margin:0 0 10px;
 }
 .send-ok-btn {
-    background: #ed145b;
+    background: #F24E22;
     color: #FFFFFF;
     display: block;
     font-size: 38px;
@@ -2022,9 +1914,6 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 .btn-holders{
     float:right;
 }
-.margin-stack{
-	margin-top: 20px;
-}
 .save-kiosk{
     background: url(../images/save-btn.png) no-repeat;
     float: left;
@@ -2049,27 +1938,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 .editable-input {
     float: left;
 }
-.editable-input-header {
-    float: left;
-    margin-left: 20px;
-    margin-top: 4px;
-    margin-right: 25px;
-}
 .editable-input input {
-    border: none;
-    display: block;
-    height: 24px;
-    line-height: 24px;
-    margin: 5px 0;
-    padding: 2px;
-    width: 340px;
-    border-radius:0;
-    -webkit-border-radius:0;
-    font-size:20px;
-    color:#535353;
-    width: 620px;
-}
-.editable-input-header input {
     border: none;
     display: block;
     height: 24px;
@@ -2091,7 +1960,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     background: url(../images/edit-icon.png) no-repeat;
     width: 40px;
     height: 36px;
-    margin: 22px 20px 0 0;
+    margin: 14px 0 0;
 }
 .camera-icon {
     background: url(../images/camera-icon-purple.png) no-repeat;
@@ -2100,8 +1969,6 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     position: absolute;
     right: 25px;
     top: 25px;
-    border-radius: 11px;
-    -webkit-border-radius: 11px;
 }
 .upload-title {
     display: block;
@@ -2116,9 +1983,9 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 .overflow-holder{
     overflow:hidden;
 }
-/*.alignLEFT .heading-title{
+.alignLEFT .heading-title{
     padding:0;
-}*/
+}
 .btn-holders{
     float:right;
 }
@@ -2126,14 +1993,14 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 	float: left;
 }
 .heading-fixed {
-    height: 38px;
+    height: 44px;
     overflow: hidden;
-    max-width: 676px;
+	max-width: 676px;
 }
 .sub-heading-fixed {
-    height: 16px;
+    height: 25px;
     overflow: hidden;
-    max-width: 676px;
+	max-width: 676px;
 }
 .upload-title {
     display: block;
@@ -2192,101 +2059,20 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     -webkit-appearance: none;
     border-radius: 0;
     -webkit-border-radius: 0px;
-    -webkit-box-sizing: border-box; /* Android â‰¤ 2.3, iOS â‰¤ 4 */
+    -webkit-box-sizing: border-box; /* Android ≤ 2.3, iOS ≤ 4 */
     -moz-box-sizing: border-box; /* Firefox 1+ */
     box-sizing: border-box;
 }
+
 .add_user-button {
     background-color: #ed145b;
-    padding: 0px 111px;
-    height:105px;
+    padding: 24px 111px;
     font-size: 44px;
     color: #fff;
 }
-
 .downClass{
     background-image: url(../images/arrow-down-icon.png) !important;
 }
 .upClass{
     background-image: url(../images/arrow-up.png) !important;
-}
-
-.kiosk_ADJUST{
-    width: 100%;
-    height: 77px;
-}
-
-.welcome-holder-box {
-	overflow: hidden;
-	padding: 50px 80px;
-	margin: 0;
-}
-.kiosk-login-holder{
-	padding:70px 76px 0;
-}
-#spinner {
-	position: absolute;
-	top: 75%;
-	left: 50%;
-	margin: -50px 0 0 -50px;
-	height: 100px;
-	width: 100px;
-	white-space: nowrap;
-	overflow: hidden;
-        -webkit-mask-image: url(../images/spinner.png);
-        mask-image: url(../images/spinner.png);
-	background-color: #fff;
-        animation-name: spinnerRotate;
-        animation-duration: 2s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-        /*  Safari and Chrome */
-        -webkit-animation-name: spinnerRotate;
-	-webkit-animation-duration: 2s;
-	-webkit-animation-iteration-count: infinite;
-	-webkit-animation-timing-function: linear;
-}
-@-webkit-keyframes spinnerRotate {
-	from {
-		-webkit-transform:rotate(0deg);
-	}
-	to {
-		-webkit-transform:rotate(360deg);
-	}
-}
-@keyframes spinnerRotate {
-	from {
-		transform:rotate(0deg);
-	}
-	to {
-		transform:rotate(360deg);
-	}
-}
-.hidden-num{
-    display: none;
-}
-.connector{
-    height: 2px;
-    width: 28px;
-    -webkit-transform: rotate(90deg);
-    background-color: #b7b7b7;
-    margin: 12px 0 14px 356px;
-}
-.imgavatar{
-    border-radius: 50%;
-    height: 290px;
-    width: 290px;
-    -webkit-border-radius: 50%;
-}
-.col02-placeUserMsg {
-    background: #9966CB;
-    color: #fff;
-    font-size: 24px;
-    left: 220px;
-    padding: 35px 80px;
-    position: absolute;
-    right: auto;
-    text-align: center;
-    top: 556px;
-    z-index: 999;
 }

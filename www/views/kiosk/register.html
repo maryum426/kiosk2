@@ -1,5 +1,5 @@
 <header class="header new-page-style">
-    <div class="heading-title-holder"> <span class="heading-title">Register</span> </div>
+    <div class="heading-title-holder"> <span class="heading-title-register">Register</span> </div>
 </header>
 <form name="kiosk_user">
 <div class="container_ROW">
@@ -8,7 +8,7 @@
                 <fieldset>
                     <div class="inputfile-holder" ng-controller="CameraCtrl">
                         
-                        <span class="profile-img-main heart-big-profile">
+                        <span class="profile-img-register register-big-profile">
                            <img src="images/capture-img.png" ng-click="capturePhoto()" alt="Profile Picture"  ng-show='!userAvatar'>
                            <img ng-show='userAvatar' ng-click="capturePhoto()" ng-src="{{userAvatar}}" class="imgavatar"/>                           
                         </span>
@@ -18,13 +18,13 @@
                                ng-minlength=3  ng-class="{error: kiosk_user.fullname.$invalid}">
                         <input type="email" name="email" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.email"
                                ng-class="{error: kiosk_user.email.$invalid}">
-                        <input type="text" name="vocation" placeholder="I make awesome espresso" class="textfield-holder" ng-model="kiosk.vocation">
+<!--                        <input type="text" name="vocation" placeholder="I make awesome espresso" class="textfield-holder" ng-model="kiosk.vocation">-->
                     </div>
                     <div ng-show="editInfo">
                         <div class="editlabal" >{{infoUserChannal.fullNmae}}</div>
                         <div class="editlabal">{{infoUserChannal.email}}</div>
                     </div>
-
+                    
 
 
                     <!--<a class="visibility-btn" ng-click="setVisibility()">Set visibility</a>-->
@@ -42,7 +42,7 @@
     <div class="footer_HOLDER">
         <div class="profile-connect-bottom no_PADDING_TOP">
             <ul class="submit-holder register_BUTTON_HOLDER">
-                <li><a ng-click="kioskRegisterCancel()">Cancel</a></li>
+                <li><a class ="back-button" ng-click="kioskRegisterCancel()">Cancel</a></li>
                 <li>
                     <!--<a ng-click="kioskRegister()" class="send-button register-button">Register</a>-->
                     <input type="submit" ng-click="kioskRegister()" class="register-button ios-btn" value="Register"

@@ -34,27 +34,28 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         $scope.clickedLatitudeProperty = null;
         $scope.clickedLongitudeProperty = null;
 
-        $rootScope.userAvatar = null ;
+        //$rootScope.userAvatar = null ;
         $rootScope.placeAvatar = null ;
+        $rootScope.visitorAvatar = [] ;
 
         $scope.editorEnabled = false;
 
         /** the initial center of the map */
-        $scope.centerProperty = {
+        /*$scope.centerProperty = {
             latitude:45,
             longitude:-73
-        };
+        };*/
 
         /** the initial zoom level of the map */
-        $scope.zoomProperty = 8;
+        /*$scope.zoomProperty = 8;*/
 
         /** list of markers to put in the map */
-        $scope.markersProperty = [
+        /*$scope.markersProperty = [
             {
                 latitude:45,
                 longitude:-74
             }
-        ];
+        ];*/
 
         $scope.placeAlert = {};
 
@@ -311,7 +312,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.newSweet.receiverPhone = $scope.currentInteraction.get("receiverPhone");
             $scope.newSweet.receiverAvatar = $scope.currentInteraction.get("receiverAvatar");
             $location.path('/sweet/new');
-        };*/
+        };
 
         $scope.setReceiver = function (interaction) {
 //            $scope.toggleAvatar();
@@ -321,7 +322,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.newSweet.receiverName = interaction.get("receiverName");
             $scope.newSweet.receiverPhone = interaction.get("receiverPhone");
             $scope.newSweet.receiverAvatar = interaction.get("receiverAvatar");
-        };
+        };*/
 
         $rootScope.$on('user_interaction', function () {
             //console.log("---Recevied user_interaction---"+interactionService.getInteraction());
@@ -331,18 +332,18 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
         });
 
-        $rootScope.$on('user_registration', function () {
+        /*$rootScope.$on('user_registration', function () {
             $scope.kiosk.fullname = $rootScope.information['fullName'];
             $scope.kiosk.vocation = $rootScope.information['avatarUrl'];
-        });
+        });*/
         /*$scope.showSweet = function (sweet) {
             $scope.sweet = sweet;
             $location.path('/sweet/show');
-        };*/
+        };
 
         $scope.addExpressions = function () {
             $location.path('/sweet/expressions');
-        };
+        };*/
 
         /*$scope.setSweetExpression = function (expression) {
             //console.log("--- setSweetExpression --- "+expression);
@@ -386,9 +387,9 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                     $scope.newSweet.text = CONSTANTS.GESTURE.GREETING.TEXT[index];
                     break;
             }
-        };
+        };*/
 
-        $scope.getUserSweets = function () {
+        /*$scope.getUserSweets = function () {
             sweetService.userSweets(function (rUserSweets) {
                 $scope.safeApply(function () {
                     $scope.userSweets = rUserSweets;
@@ -744,7 +745,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         };*/
 
 
-        $scope.$watch("friend", function (oldValue, newValue) {
+        /*$scope.$watch("friend", function (oldValue, newValue) {
             console.log("$scope.friend changed. " + _.pairs(oldValue) + "---" + _.pairs(newValue));
 
             //$scope.magicButtonImage = userService.currentUser().get("authData")['picture']['data']['url'];
@@ -771,7 +772,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 });
             });
 
-        }, true);
+        }, true);*/
 
         /*$scope.twoWayInteraction = function () {
 
@@ -924,8 +925,8 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.setMe();
             $scope.$parent.setSubActionsState(false);
             $location.path('/sweet/people');
-        };*/
-        /*$scope.showFriendInteraction = function () {
+        };
+        $scope.showFriendInteraction = function () {
             $location.path('/sweet/friend');
             $scope.setMe();
         };*/
@@ -970,13 +971,13 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.$parent.setLastVisitedPage();
             $location.path('/place/feed');
             $scope.loadFeeds();
-        };*/
+        };
 
-        /*$scope.showTimelinePlace = function () {
+        $scope.showTimelinePlace = function () {
             $scope.$parent.setLastVisitedPage();
             $location.path('/place/timeline');
             $scope.loadTimeline();
-        };*/
+        };
 
         /*$scope.gestures = CONSTANTS.GESTURES;
         console.log($scope.gestures);
@@ -990,9 +991,9 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             }
             if (!$scope.squeezed)
                 $scope.enableGestureSendActions();
-        };*/
+        };
 
-        /*$scope.enableGestureSendActions = function () {
+        $scope.enableGestureSendActions = function () {
             if ($scope.friend && $scope.newSweet.gesture && !$scope.newSweet.gesture.sub_actions) {
                 $scope.showGestureSendActions = true;
             }
@@ -1004,9 +1005,9 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.showGestureSendActions = false;
 //            $scope.showInteraction();
             $scope.showPeople();
-        });*/
+        });
 
-        /*$scope.friendSearch = function (mFriendSearchText) {
+        $scope.friendSearch = function (mFriendSearchText) {
             if (mFriendSearchText.length > 2) {
                 for (var i = 0; i < $scope.friends.length; i++) {
                     if ($scope.friends[i]['name'].toLowerCase().indexOf(mFriendSearchText.toLowerCase()) == 0) {
@@ -1402,7 +1403,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.navigateToSweetPlace();
         }*/
 
-        $scope.myPlace = function () {
+        /*$scope.myPlace = function () {
 
             console.log("-->>friend.id" + $scope.friend.id);
 
@@ -1421,7 +1422,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             });
 
             $location.path('/place/sweetPlace');
-        };
+        };*/
 
         /*$scope.myPlaceDetail = function (place) {
 
@@ -2068,14 +2069,14 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             }*/
 
             //Deletes all markers in the array by removing references to them
-            function deleteOverlays() {
+            /*function deleteOverlays() {
                 if (markersArray) {
                     for (var i = 0; markersArray.length; i++) {
                         markersArray[i].setMap(null);
                     }
                     markersArray.length = 0;
                 }
-            }
+            }*/
 
             function getAddress(latLng) {
 
@@ -2101,7 +2102,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             google.maps.event.addListener(map, 'bounds_changed', function () {
                 var bounds = map.getBounds();
                 searchBox.setBounds(bounds);
-                autocomplete.setBounds(bounds);
+                //autocomplete.setBounds(bounds);
 
                 var zoom = map.getZoom();
                 map.setZoom(zoom < 14 ? 14 : zoom);
@@ -2231,7 +2232,14 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             userService.logout();
             $scope.clearDataLogin();
             $scope.safeApply(function () {
-                $location.path(CONSTANTS.ROUTES.AUTH);
+                 if($rootScope.pageUserFlag == true){
+ 
+ 		$location.path("#/"+ $rootScope.userAddedPlace);
+ 		} else {
+ 		//$location.path(CONSTANTS.ROUTES.AUTH);
+ 		window.location = CONSTANTS.ROUTES.AUTH;
+ 		window.location.reload();
+ 		}
             });
         }
 
@@ -2505,84 +2513,115 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
           
             
-            var defaultBounds = new google.maps.LatLngBounds(
+            /*var defaultBounds = new google.maps.LatLngBounds(
                 new google.maps.LatLng(-33.8902, 151.1759),
                 new google.maps.LatLng(-33.8474, 151.2631)
             );
 
-            map.fitBounds(defaultBounds);
+            map.fitBounds(defaultBounds);*/
 
             //--------------------------------------------------------------------------------------
             //------------------------------ Search Box --------------------------------------------
             //--------------------------------------------------------------------------------------
-            /*var input = (document.getElementById('target'));
-             var searchBox = new google.maps.places.SearchBox(input);
-             searchBox.bindTo('bounds', map);
+            /*var markers = [];
+            var infowindow =  new google.maps.InfoWindow({
+                content: "",
+                maxWidth: 160,
+                maxHeight: 200
+            });
 
-             var markers = [];
+            // Create the search box and link it to the UI element.
+            var input = (document.getElementById('target'));
+            //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-             google.maps.event.addListener(searchBox, 'places_changed', function() {
-             var places = searchBox.getPlaces();
-             var photos = places.photos;
+            var searchBox = new google.maps.places.SearchBox((input));
 
-             console.log("places length --> " + places.length);
+            // Listen for the event fired when the user selects an item from the
+            // pick list. Retrieve the matching places for that item.
+            google.maps.event.addListener(searchBox, 'places_changed', function() {
+                var places = searchBox.getPlaces();
 
-             for (var i = 0, marker; marker = markers[i]; i++) {
-             marker.setMap(null);
-             }
+                for (var i = 0, marker; marker = markers[i]; i++) {
+                    marker.setMap(null);
+                }
 
-             markers = [];
-             var bounds = new google.maps.LatLngBounds();
+                // For each place, get the icon, place name, and location.
 
-             for (var i = 0, place; place = places[i]; i++) {
-             var image = {
-             url: place.icon,
-             size: new google.maps.Size(71, 71),
-             origin: new google.maps.Point(0, 0),
-             anchor: new google.maps.Point(17, 34),
-             scaledSize: new google.maps.Size(25, 25)
-             };
+                markers = [];
+                var bounds = new google.maps.LatLngBounds();
+                for (var i = 0, place; place = places[i]; i++) {
 
-             var marker = new google.maps.Marker({
-             map: map,
-             icon: image,
-             title: place.name,
-             position: place.geometry.location
-             });
-             console.log("Place loaction -->>" + i + '->' + place.geometry.location);
-             //console.log("place photos -->>" + i + '->'+ place.photos);
-             console.log("place name -->>" + i + '->'+ place.name);
-             //console.log("place details -->>" + i + '->'+ place.details);
-             console.log("place icon -->>" + i + '->'+ place.icon);
-             console.log("place formatted address -->>" + i + '->'+ place.formatted_address);
-             console.log("place html attributions-->>" + i + '->'+ place.html_attributions);
+                    console.log("LatLong" + places[i].geometry.location);
+                    console.log("reference -->" + places[i].reference);
+                    console.log("rating -->" + places[i].rating);
+                    console.log("name -->" + places[i].name);
+                    console.log("icon -->" + places[i].icon);
+                    console.log("formatted_address -->" + places[i].formatted_address);
+                    console.log("address -->" + places[i].address);
+                    console.log("id -->" + places[i].id);
+                    console.log("vicinity -->" + places[i].vicinity );
+                    console.log("long_name -->" + places[i].long_name );
 
-             $scope.placeListing.set("loaction" , place.geometry.location);
-             $scope.placeListing.set("photos" , place.photos) ;
-             $scope.placeListing.set("name" , place.name) ;
-             //$scope.placeListing.set("details" , place.details) ;
-             $scope.placeListing.set("icon" , place.icon) ;
-             $scope.placeListing.set("formatted_address" , place.formatted_address) ;
+                    console.log(" -->");
 
-             if (i == 0 ) {
-             $rootScope.placeSearchResults = [];
-             $rootScope.placeSearchResults.LatLong = place.geometry.location;
-             $rootScope.placeSearchResults.photo = place.photos ;
-             $rootScope.placeSearchResults.gname = place.name ;
-             $rootScope.placeSearchResults.icon = place.icon ;
-             $rootScope.placeSearchResults.formatted_address = place.formatted_address ;
-             }
+                    var image = {
+                        url: place.icon,
+                        size: new google.maps.Size(71, 71),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 25)
+                    };
 
-             markers.push(marker);
-             bounds.extend(place.geometry.location);
+                    // Create a marker for each place.
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        icon: image,
+                        title: place.name,
+                        position: place.geometry.location,
+                        address: place.formatted_address
+                    });
 
-             }
+                    markers.push(marker);
+                    //var data = "Place Name: " + place.name + " \n " + place.formatted_address + "\n " + place.id;
+                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                        console.log("marker position " + marker.getPosition());
+                        return function() {
+                            infowindow.setContent(marker.title + "\n" + marker.address + "\n" + marker.getPosition());
+                            infowindow.open(map, marker);
+                        }
+                    })(marker, i));
 
-             map.fitBounds(bounds);
-             map.setZoom(14);
+                    google.maps.event.addListener(marker, 'dblclick', (function(marker, i) {
 
-             console.log("place length -> " +$scope.placeListing.length)
-             });*/
+                        return function() {
+                            console.log("marker position " + marker.getPosition());
+                            console.log("marker address " + marker.address);
+                            console.log("marker title/name " + marker.title);
+                            console.log("marker icon " + marker.icon);
+
+                            $rootScope.placeSearchResults.LatLong = marker.getPosition();
+                            //$rootScope.placeSearchResults.photo = place.photos;
+                            $rootScope.placeSearchResults.gname = marker.title;
+                            $rootScope.placeSearchResults.icon = marker.icon;
+                            $rootScope.placeSearchResults.formatted_address = marker.address;
+                            $rootScope.placeSearchResults.kioskthankyoutitle = "Love your barista?say thank you!" ;
+                            console.log("placeSearchResults -->" + $rootScope.placeSearchResults.gname);
+
+                            $scope.placeClaim($rootScope.placeSearchResults);
+                        }
+                    })(marker, i));
+
+                    if(place.formatted_address == document.getElementById('target').value){
+                        console.log("In bound");
+                        console.log(document.getElementById('target').value);
+
+                        infowindow.open(map,marker);
+                    }
+                    bounds.extend(place.geometry.location);
+                }
+
+                map.fitBounds(bounds);
+            });*/
             //--------------------------------------------------------------------------------------
             //--------------------------------------------------------------------------------------
 
@@ -3846,7 +3885,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
                 //$scope.wrapper = "wrapper";
                 //$scope.activeFeed = "";
                 //$scope.activePlace = "";
-                 $scope.no_bg = "no-bg-color";
+                $scope.no_bg = "no-bg-color";
                 break;
         }
 
@@ -3970,9 +4009,8 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
                     $rootScope.usersInPlaces = placeDetailSweets;
                     if(placeDetailSweets.length == 0){
                         $rootScope.emptyPlacesMsg = 'Welcome! Register below to join this place so your customers can thank you for being so awesome!';
-                    }
-                    else{
-                        $rootScope.emptyPlacesMsg="";
+                    } else {
+                        $rootScope.emptyPlacesMsg = '';
                     }
                 });
             });
@@ -3993,7 +4031,6 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
             $rootScope.latestSweet = {};
         });
 
-        //TODO : use this untill new css apply
         var renderGuestAction = $route.current.action; //$location.path();
         var renderGuestPath = renderGuestAction.split( "." );
 
@@ -4068,7 +4105,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         //Existing user + logged in + this devise >
         if ($location.path() == '/' && $scope.isUserLoggedIn) {
             console.log("/ and logged in");
-            $location.path(CONSTANTS.ROUTES.SWEET_HOME);
+            $location.path(CONSTANTS.ROUTES.KIOSK_USERPROFILE);
         }
 
         // Pull the "action" value out of the currently selected route.
@@ -4158,12 +4195,12 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
 
         if (isAuth && renderPath[1] == 'new' && $scope.isUserLoggedIn) {
             console.log("isAuth and new and loggedin");
-            $location.path(CONSTANTS.ROUTES.SWEET_HOME);
+            $location.path(CONSTANTS.ROUTES.KIOSK_USERPROFILE);
         }
 
         if (isAuthLink && authToken && $scope.isUserLoggedIn) {
             console.log("isAuthLink and authToken and $scope.isUserLoggedIn");
-            $location.path(CONSTANTS.ROUTES.SWEET_HOME);
+            $location.path(CONSTANTS.ROUTES.KIOSK_USERPROFILE);
         }
 
         if (isAuth && renderPath[1] == 'sms') {
@@ -4181,7 +4218,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
                     console.log("authenticated...");
                     console.log("isAuthLink Step2--->");
                     if (rUser.get("authData")) {
-                        redirectPage = CONSTANTS.ROUTES.SWEET_HOME;
+                        redirectPage = CONSTANTS.ROUTES.KIOSK_USERPROFILE;
                         console.log("isAuthLink Step3--->");
                     } else {
                         redirectPage = CONSTANTS.ROUTES.FRIENDS_DISCOVER;
@@ -4461,12 +4498,14 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
         console.log("User phone: " + $scope.user.phone);
         //console.log("User fullname: " +$scope.user.fullName);
 
-        //$log.info("--SMS Login---");
-        /*$scope.safeApply(function() {
-            $scope.section.loginInProgress = true;
-            $scope.section.loginInProgressMsg = CONSTANTS.LOGIN_IN_PROGRESS;
-        });*/
-         authService.loginPhoneNumber($scope.user.phone, function (flag) {
+        var redirectPage;
+        authService.createAuthSms($rootScope.userPName);
+        redirectPage = CONSTANTS.ROUTES.AUTH_SMS;
+        $scope.safeApply(function () {
+            $scope.section.loginInProgress = false;
+            $location.path(redirectPage);
+        });
+         /*authService.loginPhoneNumber($scope.user.phone, function (flag) {
 
              var redirectPage;
              //$rootScope.logedInUserInfo = [];
@@ -4520,7 +4559,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                  $scope.section.loginInProgress = false;
                  $location.path(redirectPage);
              });
-         });
+         });*/
 
         $scope.clearData();
 
@@ -4548,9 +4587,20 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                 });
 
             }else{
+                 var redirectPage;
+ 		$rootScope.pageUserFlag = true;
                 console.log("Not a user of place--> ");
                 console.log("User phone-> " + $rootScope.userPName);
-                authService.loginPhoneNumber($rootScope.userPName, function (flag)     {
+                console.log("Is user New --> " );
+                authService.createAuthSms($rootScope.userPName);
+                $rootScope.editInfo = false ;
+                redirectPage = CONSTANTS.ROUTES.AUTH_SMS;
+                $scope.safeApply(function () {
+                    $scope.section.loginInProgress = false;
+                    $location.path(redirectPage);
+
+                });
+                /*authService.loginPhoneNumber($rootScope.userPName, function (flag)     {
 
                     var redirectPage;
                     $rootScope.pageUserFlag = true;
@@ -4602,50 +4652,125 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
 
                     });
                 });
+                */
             }
         });
 
         $scope.clearData();
     };
+    
+    $scope.placeUserMsgBack = function(){
+        $rootScope.placeUserMsg = false ;
+    }
 
     //Authenticate user according to there code
     $scope.smsLogin = function() {
         //TODO: should old auth entries deleted when requested for the new one for the same phone?
         //User clicked on SMS auth
 
+        $rootScope.userAvatar = '' ;
+
         console.log("smsLogin Step1--->");
-        console.log("User authenticate code: " + $scope.user.sms);
+        console.log("User authenticate code : " + $scope.user.sms);
+        authService.newUserChk($rootScope.userPName, function(user) {
+            console.log("New user channel info ::: " + user.length);
+            if (user.length > 0) {
+                //not a new user
+                $scope.newUser = false;
+            }else{
+                $scope.newUser = true;
+            }
+            console.log("New :-> " + $scope.newUser);
+        })
+
         authService.authenticateSms($scope.user.sms, function (rUser) {
             var redirectPage;
             if (rUser) {
                 console.log("authenticated...");
                 console.log("smsLogin Step2--->");
+
                 if (rUser.get("authData")) {
-                    redirectPage = CONSTANTS.ROUTES.SWEET_HOME;
                     console.log("smsLogin Step3--->");
+                    redirectPage = CONSTANTS.ROUTES.KIOSK_USERPROFILE;
                 } else {
-                    //redirectPage = CONSTANTS.ROUTES.KIOSK_REGISTER;
                     console.log("smsLogin Step4--->");
-                    if($rootScope.pageUserFlag === true){
-                        redirectPage = CONSTANTS.ROUTES.KIOSK_REGISTER_ADDUSER;
+
+                    if($scope.newUser == true){
+                        if($rootScope.pageUserFlag == true){
+                            redirectPage = CONSTANTS.ROUTES.KIOSK_REGISTER_ADDUSER;
+                            $scope.loginRedirect(redirectPage);
+                        }else{
+                            redirectPage = CONSTANTS.ROUTES.KIOSK_REGISTER;
+                            $scope.loginRedirect(redirectPage);
+                        }
                     }else{
-                        redirectPage = CONSTANTS.ROUTES.KIOSK_REGISTER;
+                        userService.getUserChannelInfo($rootScope.userPName, function(result){
+                            console.log("user chanel info --> " + result.length);
+
+                            if (result.length > 0){
+                                console.log("--- user chanel " + result[0].get('channel'));
+                                console.log("--- user chanel " + result[0].get('fullName'));
+                                console.log("--- user chanel " + result[0].get('userId'));
+                                console.log("--- user chanel " + result[0].get('avatarURL'));
+                                console.log("--- user chanel " + result[0].get('email'));
+
+                                $rootScope.infoUserChannal.channel = result[0].get('channel') ;
+                                $rootScope.infoUserChannal.fullNmae = result[0].get('fullName') ;
+                                $rootScope.infoUserChannal.userId = result[0].get('userId') ;
+                                $rootScope.infoUserChannal.avatarURL = result[0].get('avatarURL') ;
+                                $rootScope.infoUserChannal.email = result[0].get('email') ;
+                                $rootScope.infoUserChannal.vocation = result[0].get('vocation') ;
+
+                                $rootScope.editInfo = true ;
+                                $rootScope.userAvatar = result[0].get('avatarURL');
+                                //$rootScope.$broadcast('user_registration');
+
+                                console.log("+--> userAvatar " + $rootScope.userAvatar);
+                                console.log("+--> pageUserFlag " + $rootScope.pageUserFlag);
+                                if($rootScope.pageUserFlag == true){
+                                    redirectPage = CONSTANTS.ROUTES.KIOSK_REGISTER_ADDUSER;
+                                    $scope.loginRedirect(redirectPage);
+                                }else{
+                                    redirectPage = CONSTANTS.ROUTES.KIOSK_USERPROFILE;
+                                    $scope.loginRedirect(redirectPage);
+                                }
+
+
+                            }else{
+                                if($rootScope.pageUserFlag == true){
+                                    redirectPage = CONSTANTS.ROUTES.KIOSK_REGISTER_ADDUSER;
+                                    $scope.loginRedirect(redirectPage);
+                                }else{
+                                    redirectPage = CONSTANTS.ROUTES.KIOSK_REGISTER;
+                                    $scope.loginRedirect(redirectPage);
+                                }
+                            }
+                        });
                     }
+
+
                 }
             }
             else {
-                redirectPage = CONSTANTS.ROUTES.AUTH;
                 console.log("smsLogin Step5--->");
+                redirectPage = CONSTANTS.ROUTES.AUTH;
+                $scope.loginRedirect(redirectPage);
             }
-            //TODO: Display info message
-            $scope.safeApply(function () {
-                //console.log("Redirecting to "+redirectPage + " after authlink.");
-                $location.path(redirectPage);
-            });
+
+            /*$scope.safeApply(function () {
+                console.log("Redirect --->");
+                $location.path(redirectPage)
+            });*/
         });
+        $scope.user.sms = null;
     }
 
-
+    $scope.loginRedirect = function(redirectPage) {
+        $scope.safeApply(function () {
+            console.log("Redirect --->");
+            $location.path(redirectPage)
+        });
+    }
     //phonegap login
     //var authData,id,access_token,expiration_date;
 
@@ -5329,9 +5454,8 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
     //open camera 
 
     var imageData,pic_url;
+    //Profile Picture
     $scope.capturePhoto = function() {
-        
-        
         
         var options =   {
             quality: 50,
@@ -5476,5 +5600,154 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                             });
         
     }
+    
+    $scope.capturePhotoCust = function() {
+        $rootScope.$broadcast("feedbackImg_uploaded");
+        var options =   {
+            quality: 50,
+            cameraDirection:1,
+            sourceType: 1,      // 0:Photo Library, 1=Camera, 2=Saved Photo Album
+            correctOrientation: true,
+            destinationType: navigator.camera.DestinationType.DATA_URL
+            //saveToPhotoAlbum: true
+        };
+        // Take picture using device camera and retrieve image as base64-encoded string
+        navigator.camera.getPicture(onSuccessCust,onFailCust,options);
+    };
+    
+    var onSuccessCust = function(data3) {
+        
+            var thumbnail = 400;
+            var ppWidth, ppHeight;
+            var data;
+            data = "data:image/jpeg;base64," + data3;
+            
+            //alert("Image: " + data);
+            var image = new Image();
+            image.src = data;
+            
+            var canvas = document.createElement('canvas');
+            
+            canvas.width = thumbnail;
+            canvas.height = thumbnail;
+            
+            
+            image.onload = function(){
+                ppWidth = image.width;
+                ppHeight = image.height;
+
+                //alert('Width: ' + ppWidth);
+                //alert('Height: ' + ppHeight);
+
+                var context = canvas.getContext('2d');
+                context.clearRect(0, 0, thumbnail, thumbnail);
+                var imageWidth;
+                var imageHeight;
+                var offsetX = 0;
+                var offsetY = 0;
+
+
+
+                if (image.width > image.height) {
+                    imageWidth = Math.round(thumbnail * image.width / image.height);
+                    imageHeight = thumbnail;
+                    offsetX = - Math.round((imageWidth - thumbnail) / 2);
+                    //alert("IF");
+                } else {
+                    imageHeight = Math.round(thumbnail * image.height / image.width);
+                    imageWidth = thumbnail;    
+                    offsetY = - Math.round((imageHeight - thumbnail) / 2);            
+                    //alert("ELSE");
+                }
+
+                context.drawImage(image, offsetX, offsetY, imageWidth, imageHeight);
+                //alert("Image Drawn");
+                //}
+                var data2 = canvas.toDataURL('image/jpeg');
+
+                //alert ("Data2.1: " + data2);
+                data2 = data2.replace(/^data:image\/(png|jpeg);base64,/, "");
+                //alert ("Data2.2: " + data2);
+
+                //alert("Source Set!");
+
+                var parseAPPID = "WRdpguLGfYdPVMq2LwHiB0s5k9ESVTwdde7kXwDm";
+                var parseJSID = "MzJ2jpG740oPfRdsKRY6jbXHCeEDXwTlnVFUYiTi";
+
+                //Initialize Parse
+                Parse.initialize(parseAPPID,parseJSID);
+
+                var parseFile = new Parse.File("mypic.jpg", {base64:data3});
+
+                parseFile.save().then(function() {
+                                                    //alert("Got it!");
+                                                    $rootScope.visitorAvatar = parseFile.url();
+                                                    pic_url = parseFile.url();
+                                                    uploadParse(pic_url);
+                                                    $rootScope.$broadcast("load_user_channel");
+                                                    $rootScope.$broadcast("feedbackImg_uploaded");
+                                                    //alert (parseFile.url());
+                                                    console.log("Ok");
+
+                                                }, function(error) {
+                                                    console.log("Error");
+                                                    console.log(error);
+                                                });
+            }
+    };
+       
+    var onFailCust = function(e) {
+        console.log("On fail " + e);
+    };
+    
+    var uploadParseCust = function(url){
+        var query = new Parse.Query("PlaceSweetness");
+        
+                            //query.equalTo("userId", scope.userid);
+                            //alert('Upload Parse Called');
+                            query.equalTo("objectId", $rootScope.sweetofplaceid );
+                            //alert("SweetofPlaceID: " + $rootScope.sweetofplaceid);
+                            //alert("---sweetfleseelect---- userId"+$scope.userid);
+                            query.first({
+                                success:function(rUserChannel) {
+                                    console.log("---sweetfileselect--- "+rUserChannel.id);
+                                    rUserChannel.set("receiverPicture",url);
+                                    rUserChannel.save(null,{
+                                        success:function(sUserChannel) {
+                                            //alert("Saved "+sUserChannel);
+                                            $scope.$apply(function() {
+                                                console.log("--About to setUserAvatar--- "+sUserChannel.get("avatarURL"));
+                                                //$rootScope.userAvatar = sUserChannel.get("avatarURL");
+                                                userService.setUserChannel(sUserChannel);
+                                                //$rootScope.$broadcast("load_user_channel");
+                                                //$rootScope.$broadcast("feedbackImg_uploaded");
+                                                // scope.setuseravatar(data.url);
+                                            });
+                                        }
+                                    });
+                                }
+                            });
+        var query2 = new Parse.Query("UserChannel");
+        query2.equalTo("channel", $rootScope.userPName); 
+        query2.first({
+            success:function(rUserChannel) {
+                                    console.log("---sweetfileselect--- "+rUserChannel.id);
+                                    rUserChannel.set("avatarUrl",url);
+                                    rUserChannel.set("avatarURL",url);
+                                    rUserChannel.save(null,{
+                                        success:function(sUserChannel) {
+                                            //alert("Saved "+sUserChannel);
+                                            $scope.$apply(function() {
+                                                console.log("--About to setUserAvatar--- "+sUserChannel.get("avatarURL"));
+                                                
+                                            });
+                                        }
+                                    });
+                                }
+                            });
+        
+    }
+    
+    
 }
                         

@@ -1,5 +1,5 @@
 <header class="header new-page-style">
-    <div class="heading-title-holder"> <span class="heading-title">Register</span> </div>
+    <div class="heading-title-holder"> <span class="heading-title-register">Join Place</span> </div>
 </header>
 <form name="kiosk_user">
 <div class="container_ROW">
@@ -8,19 +8,19 @@
                 <fieldset>
                     <div class="inputfile-holder" ng-controller="CameraCtrl">
                        
-                        <span class="profile-img-main heart-big-profile">
+                        <span class="profile-img-register register-big-profile">
                            <img src="images/capture-img.png" ng-click="capturePhoto()" alt="Profile Picture"  ng-show='!userAvatar'>
-                           <img ng-show='userAvatar' ng-click="capturePhoto()" ng-src="{{userAvatar}}" class="imgavatar"/>                           
+                           <img ng-show='userAvatar' ng-src="{{userAvatar}}" class="imgavatar"/>                           
                         </span>
                     </div>
                     <div ng-hide="editInfo">
-                        <input type="text" class="textfield-holder" name="fullname" placeholder="Full name" ng-model="kiosk.fullname" required
-                               ng-minlength=3  ng-class="{error: kiosk_user.fullname.$invalid}" >
-                        <!--<input type="text" name="#" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.vocation" required>-->
-                        <input type="email" name="email" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.email" required
-                               ng-class="{error: kiosk_user.email.$invalid}" >
+                        <input type="text" class="textfield-holder" name="#" placeholder="Full name" ng-model="kiosk.fullname"
+                               ng-minlength=3  ng-class="{error: kiosk_user.fullname.$invalid}">
+                        <input type="email" name="email" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.email"
+                               ng-class="{error: kiosk_user.email.$invalid}">
+<!--                        <input type="text" name="vocation" placeholder="I make awesome espresso" class="textfield-holder" ng-model="kiosk.vocation">-->
                     </div>
-                    <div ng-show="editInfo" >
+                    <div ng-show="editInfo">
                         <div class="editlabal" >{{infoUserChannal.fullNmae}}</div>
                         <div class="editlabal">{{infoUserChannal.email}}</div>
                     </div>
@@ -35,7 +35,7 @@
     <div class="footer_HOLDER">
         <div class="profile-connect-bottom no_PADDING_TOP">
             <ul class="submit-holder register_BUTTON_HOLDER">
-                <li><a ng-click="kioskRegisterCancel()">Cancel</a></li>
+                <li><a class="back-button" ng-click="kioskRegisterCancel()">Cancel</a></li>
                 <li>
                     <!--<a ng-click="kioskRegister()" class="send-button register-button"
                        ng-disabled="kiosk_user.fullname.$pristine || kiosk_user.fullname.$dirty && kiosk_user.fullname.$invalid || kiosk_user.email.$pristine || kiosk_user.email.$dirty && kiosk_user.email.$invalid"

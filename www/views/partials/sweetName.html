@@ -45,7 +45,7 @@ jQuery(function($) {
             </header>
             <div class="banner">
                 <!--<img src="images_blue/banner-1.png" alt="banner">-->
-                <img src="images/main-circle-img-banner.png" alt="img" ng-src='{{ imagePlaceBanner }}'>
+                <img src="images/banner-2.png" alt="img" ng-src='{{ imagePlaceBanner }}'>
             </div>
             <span class="thankyou-title">{{gplace.get("placeTitle")}}</span>
             <!--<span class="top-heading"> ${{gplace.get("placeName")}} </span>-->
@@ -151,8 +151,8 @@ jQuery(function($) {
         <div class="footer_HOLDER">
             <div class="profile-connect-bottom">
                 <ul class="submit-holder">
-                    <li><a ng-click="cancelSweetPlace(placeInfo)">Back</a></li>
-                    <li><a ng-click="sendSweetnessPlaceGesture(placeInfo)" class="send-button">Send</a></li>
+                    <li><a class="back-button" ng-click="cancelSweetPlace(placeInfo)">Back</a></li>
+                    <li><a class="done-button" ng-click="sendSweetnessPlaceGesture(placeInfo)" class="send-button">Send</a></li>
                 </ul>
             </div>
 
@@ -197,20 +197,23 @@ jQuery(function($) {
                 <span class="thanks_heading" ng-show="thanksheading">
                     You just thanked {{userName}}!
                 </span>
+                <span class="thanks_heading" ng-show="thanksfooter">
+                    Thankyou for writing to us!
+                </span>
                 <span class="profile-img-main bot-40" style="background-color:transparent;">
-                    <img src="images/main-circle-img.png" alt="img" ng-src='{{magicButtonImage || images/main-circle-img.png}}'
-                         ng-click="feedback()" class="circle-main-img">
+                    <img src="images/capture-img.png" alt="img" ng-src='{{magicButtonImage || images/capture-img.png}}'
+                         ng-click="feedback()" class="circle-main-img2">
                     <span class="heart-icon"><img src="images/heart-icon.png" ng-click="feedback()"></span>
                 </span>
 
                 <div class='timer-app'>
                     <div class="holder-grip">
                         <div ang:round:progress data-round-progress-model="roundProgressData"
-                             data-round-progress-width="320"
-                             data-round-progress-height="320"
-                             data-round-progress-outer-circle-width="60"
+                             data-round-progress-width="271"
+                             data-round-progress-height="271"
+                             data-round-progress-outer-circle-width="50"
                              data-round-progress-inner-circle-width="10"
-                             data-round-progress-outer-circle-radius="120"
+                             data-round-progress-outer-circle-radius="110"
                              data-round-progress-inner-circle-radius="70"
                              data-round-progress-label-font="100pt Arial"
                              data-round-progress-outer-circle-background-color="#fff"
@@ -219,7 +222,11 @@ jQuery(function($) {
                              data-round-progress-label-color="#fff"></div>
                     </div>
                 </div>
-
+                <div class="connector"></div>
+                <span class="profile-img-main customer-img-profile" ng-controller="CameraCtrl">
+                        <img src="images/capture-img.png" alt="img" ng-src='{{magicButtonImage || images/capture-img.png}}'
+                            ng-click="capturePhotoCust()" class="circle-main-img-cust">
+                </span>
 
                 <form name="mobileForm" onkeypress="return event.keyCode != 13;">
                     <fieldset>
@@ -269,9 +276,7 @@ jQuery(function($) {
                     </fieldset>
                 </form>
 
-                <span class="thanks_footer" ng-show="thanksfooter">
-                    Thankyou for writing to us!
-                </span>
+                
 
             </div>
         </div>
@@ -283,8 +288,8 @@ jQuery(function($) {
             <div class="profile-connect-bottom">
                 <ul class="submit-holder">
 
-                    <li class="feedback-btn">
-                        <a ng-click="feedback()" class="send-button">Send a message to {{userName.split(" ")[0]}}</a></li>
+                    <li class="feedback-btn" ng-show="thanksheading">
+                        <a ng-click="feedback()" class="send-button">We'd love to read your feedback about {{userName.split(" ")[0]}}</a></li>
                 </ul>
                 
                 <!-- -----------------------------Feedback form ------------------------------------------- -->
@@ -309,14 +314,14 @@ jQuery(function($) {
                                 <span class="chkText" style="color: #fff;margin-left: 10px;font-size: 25px;">Copy the general manager</span>
                         </fieldset>
                     <ul class="submit-holder">
-                        <li><a ng-click="newAuthPlaceCancel()">Cancel</a></li>
+                        <li><a class="back-button" ng-click="newAuthPlaceCancel()">Cancel</a></li>
                         <li>
                             <!--<a ng-disabled="mobileForm.mnumber.$dirty && mobileForm.mnumber.$invalid && !mobileForm.mnumber.$valid"
                            ng-class="{enable : !mobileForm.mnumber.$invalid , disable : mobileForm.mnumber.$invalid && !mobileForm.mnumber.$valid }"
                            ng-click="newAuthPlace()" class="send-button">Done</a>-->
                             <a ng-disabled="mobileForm.name.$dirty && mobileForm.name.$invalid"
                                ng-class="{enable : !mobileForm.comment.$invalid , disable : mobileForm.comment.$invalid && !mobileForm.comment.$valid }"
-                               ng-click="newAuthPlace(userName)" class="send-button">Done</a>
+                               ng-click="newAuthPlace(userName)" class="done-button">Done</a>
                             <!--<input type="submit" value="Done" ng-disabled="mobileForm.comment.$dirty && mobileForm.comment.$invalid"
                                ng-class="{enable : !mobileForm.comment.$invalid , disable : mobileForm.comment.$invalid && !mobileForm.comment.$valid }"
                                ng-click="newAuthPlace()" class="submit-button">-->

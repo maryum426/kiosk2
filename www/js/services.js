@@ -99,9 +99,9 @@ angular.module('DataServices', ['ngResource'])
             },
             generateGuidSms:function () {
 //            TODO: Confirm uniqueness of guid
-                return 'xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                return 'xxxxxx'.replace(/[xy]/g, function (c) {
                     var r = Math.random() * 8 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-                    console.log("SMS Code ==>" + v.toString(8));
+                    alert("SMS Code ==>" + v.toString(8));
                     return v.toString(8);
                 });
 
@@ -476,6 +476,12 @@ angular.module('DataServices', ['ngResource'])
                     }
                 });
             }, //authenticate
+            newUserChk:function(phone, cb){
+                userService.getUserChannelInfo(phone, function (user) {
+                    console.log("New user channel info :: " + user.length);
+                        cb(user);
+                })
+            },
             authenticateSms:function (guid, cb) {
                 checkGuidInDb(guid, function (foundAuth) {
 //                    console.log("Found Auth: "+ foundAuth.get("phone"));
