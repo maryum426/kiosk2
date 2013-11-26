@@ -5602,7 +5602,7 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
     }
     
     $scope.capturePhotoCust = function() {
-        $rootScope.$broadcast("feedbackImg_uploaded");
+        $rootScope.$broadcast("feedbackImg_upload");
         var options =   {
             quality: 50,
             cameraDirection:1,
