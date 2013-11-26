@@ -101,7 +101,7 @@ angular.module('DataServices', ['ngResource'])
 //            TODO: Confirm uniqueness of guid
                 return 'xxxxxx'.replace(/[xy]/g, function (c) {
                     var r = Math.random() * 8 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-                    alert("SMS Code ==>" + v.toString(8));
+                    console.log("SMS Code ==>" + v.toString(8));
                     return v.toString(8);
                 });
 

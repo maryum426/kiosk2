@@ -36,7 +36,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
         //$rootScope.userAvatar = null ;
         $rootScope.placeAvatar = null ;
-        $rootScope.visitorAvatar = [] ;
+        
 
         $scope.editorEnabled = false;
 
@@ -2967,6 +2967,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
                        facebookService, authService, sweetService, CONSTANTS, $rootScope, interactionService, localStorageService, utilService) {
 
     $rootScope.publicName = {};
+    $rootScope.visitorAvatar = '' ;
 
     $scope.safeApply = function (fn) {
         var phase = this.$root.$$phase;
@@ -3019,7 +3020,14 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
     //blue
     $scope.sendPlaceGesture = function (uplace) {
         console.log("---sendPlaceGesture2 ");
-
+        
+        if ($rootScope.visitorAvatar == false ||$rootScope.visitorAvatar == '' || $rootScope.visitorAvatar == 'null' ){
+            $rootScope.visitorAvatar = 'images/capture-img.png';
+        }
+        else{
+            $rootScope.visitorAvatar = $rootScope.visitorAvatar;
+        }
+        
         $rootScope.userEmail = '';
         $scope.showPlaceFeed = false ;
         $scope.showmobileActions = false;
@@ -3087,7 +3095,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
 
     //alpha
     $scope.sendSweetnessPlaceGesture = function (placeInfo, sweetId) {
-
+        
         $scope.counterPage = 'gotofeedback';
         $timeout($scope.onTimeoutPage,1000); //show the timer
 
@@ -5292,6 +5300,7 @@ function SweetCtrlPlace($window, UpdateService, $log, $scope, sweetService, inte
 
     $scope.sendPlaceGesture = function (uplace) {
         console.log("---sendPlaceGesture3 ");
+        
         $scope.setLastVisitedPage();
 
         $scope.placeInfo = [];
@@ -5314,6 +5323,7 @@ function SweetCtrlPlace($window, UpdateService, $log, $scope, sweetService, inte
 
     $scope.sendSweetnessPlaceGesture = function (placeInfo, sweetId) {
         //$scope.showmobileActions = false;
+        
         $scope.section.sending = true;
 
         //if(sweetId) $scope.newSweet.replyToSweet = sweetId;
@@ -5698,6 +5708,7 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
        
     var onFailCust = function(e) {
         console.log("On fail " + e);
+        $rootScope.$broadcast("feedbackImg_uploaded");
     };
     
     var uploadParseCust = function(url){
