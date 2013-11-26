@@ -5738,24 +5738,7 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                                     });
                                 }
                             });
-        var query2 = new Parse.Query("UserChannel");
-        query2.equalTo("channel", $rootScope.userPName); 
-        query2.first({
-            success:function(rUserChannel) {
-                                    console.log("---sweetfileselect--- "+rUserChannel.id);
-                                    rUserChannel.set("avatarUrl",url);
-                                    rUserChannel.set("avatarURL",url);
-                                    rUserChannel.save(null,{
-                                        success:function(sUserChannel) {
-                                            //alert("Saved "+sUserChannel);
-                                            $scope.$apply(function() {
-                                                console.log("--About to setUserAvatar--- "+sUserChannel.get("avatarURL"));
-                                                
-                                            });
-                                        }
-                                    });
-                                }
-                            });
+        
         
     }
     
