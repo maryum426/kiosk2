@@ -2863,6 +2863,10 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
                 if (results.length > 0) {
                     $scope.placeMsg = true ;
+                    console.log("place search :--> " + _.pairs(results));
+                    console.log("place search :--> " + results[0].get('gname'));
+                    console.log("place search :--> " + results[0].get('placeName'));
+                    $rootScope.placeClaimLunch = results[0].get('placeName') ;
                     $scope.$apply();
                 }
             });
@@ -2939,7 +2943,18 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             //$scope.clearDataLogin();
             
         }
+        
+        $scope.launchKioskClaim = function(){
+            console.log("-- Logout kiosk from claim --");
+            console.log("--> " + $rootScope.placeClaimLunch);
 
+            userService.logout();
+            $scope.safeApply(function () {
+                //$location.path((($rootScope.placeSearchResults.gname).replace(/[\s\$\&\!\. ,:-]+/g, "")).toLowerCase());
+                $location.path($rootScope.placeClaimLunch);
+            });
+        }
+        
         $scope.previewKiosk = function(){
             console.log("-- Preview Kiosk -- ");
             console.log("--> " + $rootScope.placeSearchResults);
@@ -4691,7 +4706,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
 
         $rootScope.userAvatar = '' ;
 //        $scope.safeApply(function(){
-//            $scope.section.loginInProgress = true;
+            $scope.section.loginInProgress = true;
 //        });
 
         console.log("smsLogin Step1--->");
