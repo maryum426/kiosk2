@@ -4690,9 +4690,9 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
         //User clicked on SMS auth
 
         $rootScope.userAvatar = '' ;
-        $scope.safeApply(function(){
-            $scope.section.loginInProgress = true;
-        });
+//        $scope.safeApply(function(){
+//            $scope.section.loginInProgress = true;
+//        });
 
         console.log("smsLogin Step1--->");
         console.log("User authenticate code : " + $scope.user.sms);
