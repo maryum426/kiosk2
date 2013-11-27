@@ -64,7 +64,15 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             fullname:null,
             vocation:null
         };
-
+        
+        $scope.$watch($rootScope.infoUserChannal, function () {
+            $scope.kiosk = {
+                fullname:$rootScope.infoUserChannal.fullNmae,
+                vocation:$rootScope.infoUserChannal.vocation,
+                email:$rootScope.infoUserChannal.email
+            };
+        })
+        
         /*$scope.resetNewSweetValues = function () {
 
             $scope.newSweet.gestureType = CONSTANTS.DEFAULT_GESTURE_TYPE;
@@ -2347,7 +2355,12 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.loadPlace();
             $location.path('/kiosk/search');
         }
-
+        
+        $scope.editProfile = function(){
+            $rootScope.editInfo = true ;
+            $location.path('/kiosk/register');
+        }
+        
         $scope.searchPlaceKiosk = function () {
 
             //$location.path('/kiosk/createSweetPlace');
@@ -3021,13 +3034,13 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
     $scope.sendPlaceGesture = function (uplace) {
         console.log("---sendPlaceGesture2 ");
         
-        if ($rootScope.visitorAvatar == false ||$rootScope.visitorAvatar == '' || $rootScope.visitorAvatar == 'null' ){
+        /*if ($rootScope.visitorAvatar == false ||$rootScope.visitorAvatar == '' || $rootScope.visitorAvatar == 'null' ){
             $rootScope.visitorAvatar = 'images/capture-img.png';
         }
         else{
             $rootScope.visitorAvatar = $rootScope.visitorAvatar;
-        }
-        
+        }*/
+        $rootScope.visitorAvatar = '';
         $rootScope.userEmail = '';
         $scope.showPlaceFeed = false ;
         $scope.showmobileActions = false;
@@ -4677,6 +4690,9 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
         //User clicked on SMS auth
 
         $rootScope.userAvatar = '' ;
+        $scope.safeApply(function(){
+            $scope.section.loginInProgress = true;
+        });
 
         console.log("smsLogin Step1--->");
         console.log("User authenticate code : " + $scope.user.sms);
@@ -4760,9 +4776,10 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                 }
             }
             else {
-                console.log("smsLogin Step5--->");
-                redirectPage = CONSTANTS.ROUTES.AUTH;
-                $scope.loginRedirect(redirectPage);
+                    $scope.safeApply(function () {
+                        $rootScope.errorMsg = true ;
+                        $scope.section.loginInProgress = false;
+                    });
             }
 
             /*$scope.safeApply(function () {
@@ -4772,11 +4789,22 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
         });
         $scope.user.sms = null;
     }
-
+    
+    $scope.errorMsgClose = function(){
+        $rootScope.errorMsg = false ;
+    }
+    
+    $scope.backLogin = function() {
+        $scope.safeApply(function () {
+            $scope.loginRedirect(CONSTANTS.ROUTES.AUTH);
+        });
+    }
+    
     $scope.loginRedirect = function(redirectPage) {
         $scope.safeApply(function () {
             console.log("Redirect --->");
-            $location.path(redirectPage)
+            $scope.section.loginInProgress = false;
+            $location.path(redirectPage);
         });
     }
     //phonegap login
@@ -5693,7 +5721,7 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                                                     //alert("Got it!");
                                                     $rootScope.visitorAvatar = parseFile.url();
                                                     pic_url = parseFile.url();
-                                                    uploadParse(pic_url);
+                                                    uploadParseCust(pic_url);
                                                     $rootScope.$broadcast("load_user_channel");
                                                     $rootScope.$broadcast("feedbackImg_uploaded");
                                                     //alert (parseFile.url());

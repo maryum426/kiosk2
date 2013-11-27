@@ -21,8 +21,11 @@
 <!--                        <input type="text" name="vocation" placeholder="I make awesome espresso" class="textfield-holder" ng-model="kiosk.vocation">-->
                     </div>
                     <div ng-show="editInfo">
-                        <div class="editlabal" >{{infoUserChannal.fullNmae}}</div>
-                        <div class="editlabal">{{infoUserChannal.email}}</div>
+                        <input type="text" class="textfield-holder" name="fullnameEdit" placeholder="Full name" ng-model="kiosk.fullname"
+                               ng-minlength=3  ng-class="{error: kiosk_user.fullnameEdit.$invalid}">
+                        <input type="email" name="emailEdit" class="textfield-holder" ng-model="kiosk.email"
+                               ng-class="{error: kiosk_user.emailEdit.$invalid}">
+<!--                        <input type="text" name="vocationEdit" class="textfield-holder" ng-model="kiosk.vocation">-->
                     </div>
                     
 
@@ -41,15 +44,25 @@
 <div class="footer_GROUP">
     <div class="footer_HOLDER">
         <div class="profile-connect-bottom no_PADDING_TOP">
-            <ul class="submit-holder register_BUTTON_HOLDER">
-                <li><a class ="back-button" ng-click="kioskRegisterCancel()">Cancel</a></li>
-                <li>
-                    <!--<a ng-click="kioskRegister()" class="send-button register-button">Register</a>-->
-                    <input type="submit" ng-click="kioskRegister()" class="register-button ios-btn" value="Register"
-                           ng-disabled="kiosk_user.fullname.$pristine || kiosk_user.fullname.$dirty && kiosk_user.fullname.$invalid || kiosk_user.email.$pristine || kiosk_user.email.$dirty && kiosk_user.email.$invalid"
-                           ng-class="{enable : !kiosk_user.fullname.$invalid || !kiosk_user.email.$invalid, disable : kiosk_user.fullname.$invalid || kiosk_user.email.$invalid}" />
-                </li>
-            </ul>
+            <div ng-hide="editInfo">
+                <ul class="submit-holder register_BUTTON_HOLDER">
+                    <li><a class ="back-button" ng-click="kioskRegisterCancel()">Cancel</a></li>
+                    <li>
+                        <!--<a ng-click="kioskRegister()" class="send-button register-button">Register</a>-->
+                        <input type="submit" ng-click="kioskRegister()" class="register-button ios-btn" value="Register"
+                               ng-disabled="kiosk_user.fullname.$pristine || kiosk_user.fullname.$dirty && kiosk_user.fullname.$invalid || kiosk_user.email.$pristine || kiosk_user.email.$dirty && kiosk_user.email.$invalid"
+                               ng-class="{enable : !kiosk_user.fullname.$invalid || !kiosk_user.email.$invalid, disable : kiosk_user.fullname.$invalid || kiosk_user.email.$invalid}" />
+                    </li>
+                </ul>
+            </div>
+            <div ng-show="editInfo">
+                <ul class="submit-holder register_BUTTON_HOLDER">
+                    <li><a class ="back-button" ng-click="backRegister()">Cancel</a></li>
+                    <li>
+                        <input type="submit" ng-click="kioskRegister()" class="register-button ios-btn" value="Register" />
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

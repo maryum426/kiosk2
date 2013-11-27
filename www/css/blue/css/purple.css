@@ -349,26 +349,9 @@ textarea {
 	top: 205px;
 	width: 80px;
 }
-.profile-attach {
-	display: block;
-	height: 156px;
-	padding: 13px;
-	width: 156px;
-	background-color: #672971;
-	margin: 0 auto;
-	border-radius: 50%;
-	-webkit-border-radius: 50%;
-	position: relative;
-}
-.profile-attach > img {
-	width: 156px;
-	height: 156px;
-	border-radius: 50%;
-	-webkit-border-radius: 50%;
-}
+
 .strip-top-line {
 	/*background: url(../images/strip.gif) repeat-y 50% 50%;*/
-	padding-top: 40px;
 	margin-bottom: 15px;
 }
 .strip-line {
@@ -1778,8 +1761,6 @@ ul.rating {
 	text-shadow: 1px 1px 1px #fafafa;
 }
 .profile-img-main {
-	
-	
 	background-color: #9966CB;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
@@ -1971,7 +1952,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     background: #9966CB;
     color: #fff;
     font-size: 24px;
-    left: 220px;
+    left: 150px;
     padding: 35px 80px;
     position: absolute;
     right: auto;
@@ -2289,4 +2270,89 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     text-align: center;
     top: 556px;
     z-index: 999;
+}
+.col02-errorMsg {
+    background: #ed145b;
+    color: #fff;
+    font-size: 24px;
+    left: 170px;
+    padding: 35px 80px 52px;
+    position: absolute;
+    right: auto;
+    text-align: center;
+    top: 556px;
+    z-index: 999;
+}
+.error-msg-holder li a.error-msg-btn-ok{
+        display: block;
+	font-size: 30px;
+	color: #fff;
+	text-decoration: none;
+	background-color: #9966cb;
+	text-align: center;
+	width: 165px;
+        padding: 15px 0;
+        margin-top: 0 !important;
+        text-transform: uppercase;
+}
+.error-msg-btn:hover{
+	text-decoration:none;
+}
+.error-msg-holder{
+        padding: 0;
+	list-style: none;
+	overflow: hidden;
+        width: 337px;
+}
+.error-msg-holder li {
+	float: left;
+	margin-left: 1%;
+}
+.error-msg-holder li:first-child {
+	margin-left: 0;
+	width: 50%;
+}
+.error-msg-holder li a.error-msg-btn-cancel {
+	display: block;
+	font-size: 30px;
+	color: #fff;
+	text-decoration: none;
+	background-color: #b7b7b7;
+	text-align: center;
+	width: 165px;
+        padding: 15px 0;
+        margin-top: 0 !important;
+        text-transform: uppercase;
+}
+.launch-ok-btn {
+    background: #ed145b;
+    color: #FFFFFF;
+    display: block;
+    font-size: 30px;
+    margin-left: 5px;
+    width: 165px;
+    padding: 15px 0;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    float:left;
+}
+.exist-ok-btn {
+    background: #ed145b;
+    color: #FFFFFF;
+    display: block;
+    font-size: 30px;
+    margin: 0 auto;
+    width: 165px;
+    padding: 15px 0;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    float:left;
+}
+.launch-ok-btn:hover{
+	text-decoration:none;
+}
+.send-btn{
+    display: inline-block;
 }

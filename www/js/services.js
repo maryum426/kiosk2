@@ -367,7 +367,7 @@ angular.module('DataServices', ['ngResource'])
                         cb(r_auth[0])
                     }
                     else {
-//                       cb(null);
+                       cb(null);
                     }
                 },
                 error:function (error) {
@@ -485,11 +485,12 @@ angular.module('DataServices', ['ngResource'])
             authenticateSms:function (guid, cb) {
                 checkGuidInDb(guid, function (foundAuth) {
 //                    console.log("Found Auth: "+ foundAuth.get("phone"));
-                    var uname;
-                    if (foundAuth.get("phone")) uname = foundAuth.get("phone");
-                    else if (foundAuth.get("email")) uname = foundAuth.get("email");
+                   
                     if (foundAuth) {
                         // userService.checkUserInDb(uname,function(user) {
+                         var uname;
+                            if (foundAuth.get("phone")) uname = foundAuth.get("phone");
+                            else if (foundAuth.get("email")) uname = foundAuth.get("email");
                         userService.getUserByChannel(uname, function (user) {
                             if (user) {
                                 userService.loginUser(user.get("username"), user.get("username"), function (success) {
@@ -509,6 +510,10 @@ angular.module('DataServices', ['ngResource'])
                                 });
                             }
                         });
+                    }
+                    else{
+                        console.log("No Found Auth ");
+                        cb(null);
                     }
                 });
             }, //authenticate

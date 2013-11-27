@@ -2,17 +2,19 @@
     <div class="container_ROW">
         <a class="logo"><img src="images/logo.png" alt="sweet"></a>
         <section ng-hide="section.loginInProgress" class="kiosk-login-holder">
-            <form ng-submit="newAuthSms()">
+            <form name="user_login" ng-submit="newAuthSms()">
                 <fieldset>
                     <!--<span class="login-title">Login</span>-->
-                    <input name="" placeholder="enter your mobile number" class="texfield" type="tel" ng-model="user.phone">
+                    <input name="phone" placeholder="enter your mobile number" class="texfield" type="tel" ng-model="user.phone" ng-class="{error: user_login.phone.$invalid}">
                     <!--<input type="password" name="#" placeholder="Password" class="texfield">
                     <div class="login-holder">
                         <span class="login-span-title">Forgot your password?</span>
                         <span class="login-span-right">click here to <a href="#">Sign up now</a></span>
                     </div>-->
                     <!--<input name="" class="login-btn bot-margin" value="Login" type="button" ng-click="newAuthSms()">-->
-                    <input name="login" class="login-btn bot-margin ios-btn" value="Login" type="submit">
+                    <input name="login" class="login-btn bot-margin ios-btn" value="Login" type="submit" 
+                           ng-disabled="user_login.phone.$pristine || user_login.phone.$dirty && user_login.phone.$invalid"
+                           ng-class="{enable : !user_login.phone.$invalid ,disable : user_login.phone.$invalid}">
                 </fieldset>
             </form>
         </section>

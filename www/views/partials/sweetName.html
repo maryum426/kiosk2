@@ -223,10 +223,13 @@ jQuery(function($) {
                     </div>
                 </div>
                 <div class="connector"></div>
-                <span class="profile-img-main customer-img-profile" ng-controller="CameraCtrl">
-                        <img src="images/capture-img.png" alt="img" ng-src='{{visitorAvatar || images/capture-img.png}}'
-                            ng-click="capturePhotoCust()" class="circle-main-img-cust">
-                </span>
+                    <div class="{{showprogressline}} strip-top-line">
+                        <span class="profile-img-main customer-img-profile" ng-controller="CameraCtrl">
+                            <img class="circle-main-img-cust" ng-show='!visitorAvatar' ng-src="images/bg-capture2.png" ng-click="capturePhotoCust()"/>
+                            <img  class="circle-main-img-cust" ng-show='visitorAvatar' ng-src="{{visitorAvatar}}" ng-click="capturePhotoCust()"/>
+
+                        </span>
+                    </div>
 
                 <form name="mobileForm" onkeypress="return event.keyCode != 13;">
                     <fieldset>

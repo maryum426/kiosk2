@@ -20,8 +20,11 @@
             </session>
 
             <div class="col02-placeMsg" ng-show="placeMsg">
-                <span class="place-msg">Place already exist.</span>
-				<div class="send-btn" ng-click="placeClaimBack()"><a class="send-ok-btn">Ok</a></div>
+                <span class="place-msg">Place already exists.</span>
+                    <div class="send-btn" ng-click="placeClaimBack()">
+                        <a class="exist-ok-btn">Ok</a>
+                        <a class="launch-ok-btn" ng-click="launchKiosk()">Launch</a>
+                    </div>
             </div>
 
             <!-- ************************************************************************************** -->
