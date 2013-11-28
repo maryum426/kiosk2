@@ -2275,12 +2275,12 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     background: #ed145b;
     color: #fff;
     font-size: 24px;
-    left: 170px;
+    left: 150px;
     padding: 35px 80px 52px;
     position: absolute;
     right: auto;
     text-align: center;
-    top: 556px;
+    top: 390px;
     z-index: 999;
 }
 .error-msg-holder li a.error-msg-btn-ok{

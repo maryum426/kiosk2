@@ -227,7 +227,9 @@ jQuery(function($) {
                         <span class="profile-img-main customer-img-profile" ng-controller="CameraCtrl">
                             <img class="circle-main-img-cust" ng-show='!visitorAvatar' ng-src="images/bg-capture2.png" ng-click="capturePhotoCust()"/>
                             <img  class="circle-main-img-cust" ng-show='visitorAvatar' ng-src="{{visitorAvatar}}" ng-click="capturePhotoCust()"/>
-
+                            <span ng-show='showprogress'>
+                                <span><img src='images/animation.gif'/> </span>
+                            </span>
                         </span>
                     </div>
 

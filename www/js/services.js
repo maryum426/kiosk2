@@ -2859,6 +2859,59 @@ angular.module('DataServices', ['ngResource'])
                     }
 
                 });
+            },
+            addKioskOwnerToPlace:function (kioskUserInfo,placeInfo, cb) {
+
+                console.log("---- Add user to place table ----");
+
+                var Kiosk = Parse.Object.extend("SweetPlaceUsers");
+                //var uKiosk = new Parse.Query(Kiosk);
+                var uKiosk = new Kiosk();
+                var channal = kioskUserInfo[0].get('channels') ;
+                /*console.log(">> " + kioskUserInfo[0].get('userId'));
+                 console.log(">> " + kioskUserInfo[0].get('channels'));
+                 console.log(">> " + channal[0]);
+                 console.log(">> " + placeInfo[0].get('placeName'));
+                 console.log(">>- " + kioskUserInfo[0].get('fullName'));
+                 console.log(">>-- " + kioskUserInfo[0].get('email'));*/
+
+                uKiosk.set("placeCreatorId", placeInfo.get('placeCreatorId'));
+                uKiosk.set("placeName", placeInfo.get('placeName'));
+                uKiosk.set("placeSweetName", placeInfo.get('placeSweetName'));
+                uKiosk.set("placeDesc", placeInfo.get('placeDesc'));
+                uKiosk.set("placeURL", placeInfo.get('placeURL'));
+                uKiosk.set("placeLatitude", placeInfo.get('placeLatitude'));
+                uKiosk.set("placeLongitude", placeInfo.get('placeLongitude'));
+                uKiosk.set("userID", kioskUserInfo[0].get('userId'));
+                uKiosk.set("userPhone", channal[0] );
+                uKiosk.set("userName", kioskUserInfo[0].get('fullName'));
+                uKiosk.set("email", kioskUserInfo[0].get('email'));
+                uKiosk.set("userNetwork", 'phone');
+                uKiosk.set("userPic", kioskUserInfo[0].get('avatarURL'));
+                uKiosk.set("joinReq", '1');
+                /*if (addsweetplace.joinReq == "1") {
+                 uKiosk.set("joinReq", '1');
+                 } else {
+                 uKiosk.set("joinReq", '0');
+                 }*/
+
+                uKiosk.set("LatLong", placeInfo.get('LatLong'));
+                //pSweet.set("photo" , placeInfo[0].get('photo'));
+                //pSweet.set("address" , placeInfo[0].get('formatted_address'));
+                uKiosk.set("gname", placeInfo.get('gname'));
+                uKiosk.set("icon", placeInfo.get('icon'));
+
+                //-------------------------------------------------------------------
+                uKiosk.save(null, {
+                    success:function (pSweet) {
+                        console.log(pSweet + " saved successfully");
+                        cb(pSweet);
+                    },
+                    error:function (pSweet, error) {
+                        console.log("service: saveSweet() -> " + error.code + " " + error.message);
+                    }
+
+                });
             }
         }
     })

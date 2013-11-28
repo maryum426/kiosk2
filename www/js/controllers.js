@@ -2268,8 +2268,10 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 $scope.kioskSetUser.vocation = $scope.kiosk.vocation ;
                 $scope.kioskSetUser.email = $scope.kiosk.email ;
                 $scope.kioskSetUser.userPhone = $rootScope.userPName ;
+                                
                 if ($rootScope.userAvatar == false || $rootScope.userAvatar == ' ' || $rootScope.userAvatar == null){
                     $scope.kioskSetUser.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/29ec2710-bc27-4aff-bbfd-199e024c07b5-capture-img.png';
+                    $rootScope.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/29ec2710-bc27-4aff-bbfd-199e024c07b5-capture-img.png';
                 } else {
                     $scope.kioskSetUser.userAvatar = $rootScope.userAvatar ;
                 }
@@ -2329,8 +2331,14 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 $scope.kioskSetUser.vocation = $scope.kiosk.vocation ;
                 $scope.kioskSetUser.email = $scope.kiosk.email ;
                 $scope.kioskSetUser.userPhone = $rootScope.userPName ;
+                
+                $rootScope.infoUserChannal.fullNmae = $scope.kiosk.fullname ;
+                $rootScope.infoUserChannal.email = $scope.kiosk.email ;
+                $rootScope.infoUserChannal.vocation = $scope.kiosk.vocation ;
+                
                 if ($rootScope.userAvatar == false || $rootScope.userAvatar == ' ' || $rootScope.userAvatar == null){
                     $scope.kioskSetUser.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/29ec2710-bc27-4aff-bbfd-199e024c07b5-capture-img.png';
+                    $rootScope.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/29ec2710-bc27-4aff-bbfd-199e024c07b5-capture-img.png';
                 } else {
                     $scope.kioskSetUser.userAvatar = $rootScope.userAvatar ;
                 }
@@ -2854,6 +2862,9 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 console.log("results --> " + results.id);
                 $rootScope.newplaceid = results.id ;
                 console.log("$rootScope.newplaceid --> " + $rootScope.newplaceid);
+                //------------use this in place info in launch place------------------------//
+                $rootScope.newplaceInfoLaunch = results ;
+                //------
                 if(results.length === 0){
                     $scope.safeApply(function () {
                         //$rootScope.placeSearchResults.gname = $scope.newPlace.placeName ;
@@ -2939,8 +2950,15 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         };
         
         $scope.launchKiosk = function(){
-            $scope.logoutKiosk();
-            //$scope.clearDataLogin();
+            userService.getUserChannelInfo($rootScope.userPName, function(result){
+                console.log("result -> " + _.pairs(result[0]));
+                sweetService.addKioskOwnerToPlace(result,$rootScope.newplaceInfoLaunch, function () {
+                    $scope.logoutKiosk();
+                    /*$scope.safeApply(function () {
+                        $location.path("#/"+ $rootScope.newplaceInfoLaunch.get("placeName"));
+                    });*/
+                });
+            });
             
         }
         
@@ -4811,6 +4829,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
     
     $scope.backLogin = function() {
         $scope.safeApply(function () {
+            $scope.errorMsgClose();
             $scope.loginRedirect(CONSTANTS.ROUTES.AUTH);
         });
     }
@@ -5669,7 +5688,7 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
     };
     
     var onSuccessCust = function(data3) {
-        
+            $rootScope.showprogress = true;
             var thumbnail = 400;
             var ppWidth, ppHeight;
             var data;
@@ -5737,6 +5756,7 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                                                     $rootScope.visitorAvatar = parseFile.url();
                                                     pic_url = parseFile.url();
                                                     uploadParseCust(pic_url);
+                                                    $rootScope.showprogress = false;
                                                     $rootScope.$broadcast("load_user_channel");
                                                     $rootScope.$broadcast("feedbackImg_uploaded");
                                                     //alert (parseFile.url());
