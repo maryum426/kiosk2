@@ -1549,11 +1549,12 @@ ul.rating {
 	background: #F00 !important;
 }
 .progress_animation {
-	height: 100%;
-	left: -55px;
+	
 	position: absolute;
-	top: 75px;
-	width: 188px;
+	height: 214px;
+        width: 214px;
+        margin-top: -2px;
+        margin-left: -2px;
 }
 /*page3-CSS-End*/
 .login-btn {
@@ -2109,12 +2110,12 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 .heading-fixed {
     height: 38px;
     overflow: hidden;
-    max-width: 676px;
+    max-width: 650px;
 }
 .sub-heading-fixed {
     height: 16px;
     overflow: hidden;
-    max-width: 676px;
+    max-width: 650px;
 }
 .upload-title {
     display: block;

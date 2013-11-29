@@ -2254,7 +2254,6 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         $scope.kioskRegister = function(){
             console.log("----kioskRegister----");
             console.log($rootScope.pageUserFlag);
-            
 
             if ($rootScope.pageUserFlag == true){
                 console.log("----kioskRegister Add user to place----");
@@ -2268,10 +2267,9 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 $scope.kioskSetUser.vocation = $scope.kiosk.vocation ;
                 $scope.kioskSetUser.email = $scope.kiosk.email ;
                 $scope.kioskSetUser.userPhone = $rootScope.userPName ;
-                                
                 if ($rootScope.userAvatar == false || $rootScope.userAvatar == ' ' || $rootScope.userAvatar == null){
-                    $scope.kioskSetUser.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/29ec2710-bc27-4aff-bbfd-199e024c07b5-capture-img.png';
-                    $rootScope.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/29ec2710-bc27-4aff-bbfd-199e024c07b5-capture-img.png';
+                    $scope.kioskSetUser.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/698f766f-0603-4a7b-b91d-1b9c75fc385c-capture-img2.png';
+                    $rootScope.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/698f766f-0603-4a7b-b91d-1b9c75fc385c-capture-img2.png';
                 } else {
                     $scope.kioskSetUser.userAvatar = $rootScope.userAvatar ;
                 }
@@ -2294,7 +2292,6 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 if ($scope.editInfo == true){
                     userService.getUserChannelInfo($rootScope.userPName, function(result){
                         console.log("result -> " + _.pairs(result[0]));
-                        console.log("Current place->" + $rootScope.currentPlace);
                         sweetService.addKioskUserToPlace(result,$rootScope.currentPlace, function () {
                             userService.logout();
                             $scope.safeApply(function () {
@@ -2303,8 +2300,8 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                         });
                     });
                 } else {
-                    sweetService.setKioskUser($scope.kioskSetUser, function (userinfo) {
-                        console.log("User registered, know add to place");
+                    sweetService.setKioskUser($scope.kioskSetUser, function () {
+                        console.log("User registered, now add to place");
                         userService.getUserChannelInfo($rootScope.userPName, function(result){
                             console.log("result -> " + _.pairs(result[0]));
                             sweetService.addKioskUserToPlace(result,$rootScope.currentPlace, function () {
@@ -2331,21 +2328,22 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 $scope.kioskSetUser.vocation = $scope.kiosk.vocation ;
                 $scope.kioskSetUser.email = $scope.kiosk.email ;
                 $scope.kioskSetUser.userPhone = $rootScope.userPName ;
-                
-                $rootScope.infoUserChannal.fullNmae = $scope.kiosk.fullname ;
-                $rootScope.infoUserChannal.email = $scope.kiosk.email ;
-                $rootScope.infoUserChannal.vocation = $scope.kiosk.vocation ;
-                
                 if ($rootScope.userAvatar == false || $rootScope.userAvatar == ' ' || $rootScope.userAvatar == null){
-                    $scope.kioskSetUser.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/29ec2710-bc27-4aff-bbfd-199e024c07b5-capture-img.png';
-                    $rootScope.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/29ec2710-bc27-4aff-bbfd-199e024c07b5-capture-img.png';
+                    $scope.kioskSetUser.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/698f766f-0603-4a7b-b91d-1b9c75fc385c-capture-img2.png';
+                    $rootScope.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/698f766f-0603-4a7b-b91d-1b9c75fc385c-capture-img2.png';
                 } else {
                     $scope.kioskSetUser.userAvatar = $rootScope.userAvatar ;
                 }
 
+                $rootScope.infoUserChannal.fullNmae = $scope.kiosk.fullname ;
+                $rootScope.infoUserChannal.email = $scope.kiosk.email ;
+                $rootScope.infoUserChannal.vocation = $scope.kiosk.vocation ;
+
                     //if user again come(edit mode) goto place search
                     if($rootScope.editInfo == true ){
-                        $scope.searchPlaceKiosk();
+                        sweetService.setKioskUser($scope.kioskSetUser, function () {
+                            $scope.searchPlaceKiosk();
+                        });
                     }else{
                         sweetService.setKioskUser($scope.kioskSetUser, function () {
                             $scope.searchPlaceKiosk();
@@ -2950,16 +2948,62 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         };
         
         $scope.launchKiosk = function(){
-            userService.getUserChannelInfo($rootScope.userPName, function(result){
+            //Add user to newly created place
+            //////////////////////////////////
+            /*console.log("User PhoneNumber/UserName :: " + $rootScope.userPName);
+            console.log("::--> " + $rootScope.newplaceInfoLaunch);
+            console.log("::--> " + $rootScope.newplaceInfoLaunch.get("placeName"));
+            console.log("::--> " + $rootScope.newplaceInfoLaunch.get("gname"));
+            console.log("::--> " + $rootScope.newplaceInfoLaunch.get("placeCreatorId"));
+            console.log("::--> " + $rootScope.newplaceInfoLaunch.get("address"));
+            console.log("::--> " + $rootScope.newplaceInfoLaunch.get("icon"));
+            console.log("::--> " + $rootScope.newplaceInfoLaunch.get("placePhoto"));
+            console.log("::--> " + $rootScope.newplaceInfoLaunch.get("LatLong"));
+            console.log("Edit Place Name :: " + $rootScope.placeSearchResults.gname);
+            console.log("Edit Place Address :: " + $rootScope.placeSearchResults.formatted_address);
+
+            $rootScope.newplaceInfoLaunch.placeName = $rootScope.placeSearchResults.gname ;
+            $rootScope.newplaceInfoLaunch.address = $rootScope.placeSearchResults.formatted_address ;*/
+
+            sweetService.getPlacesInfo(((($rootScope.placeSearchResults.gname).replace(/[\s\$\&\!\. ,:-]+/g, "")).toLowerCase()) + $rootScope.hiddennum, function (placeInfo) {
+                console.log("Successfully retrieved place info custom" + placeInfo.length + " scores.");
+                //console.log("Successfully retrieved place info custom" + placeInfo[0].get("placeName"));
+                $rootScope.newplaceInfoLaunch = placeInfo;
+                //$rootScope.currentPlace = placeInfo;
+                userService.getUserChannelInfo($rootScope.userPName, function(result){
+                    console.log("result -> " + _.pairs(result[0]));
+                    sweetService.addKioskUserToPlace(result,$rootScope.newplaceInfoLaunch, function () {
+                        $scope.logoutKiosk();
+                        /*$scope.safeApply(function () {
+                         $location.path("#/"+ $rootScope.newplaceInfoLaunch.get("placeName"));
+                         });*/
+                    });
+                });
+
+                /*$scope.safeApply(function () {
+                    $rootScope.currentPlace = placeInfo;
+
+                    if (placeInfo[0].get("placePhoto") == '' || placeInfo[0].get("placePhoto") == null){
+                        $scope.imagePlaceBanner = 'images/main-circle-img-banner.jpg';
+                    } else {
+                        $scope.imagePlaceBanner = placeInfo[0].get("placePhoto");
+                    }
+
+                    $scope.gustPageInfo = true;
+                });*/
+            });
+
+            /*userService.getUserChannelInfo($rootScope.userPName, function(result){
                 console.log("result -> " + _.pairs(result[0]));
                 sweetService.addKioskOwnerToPlace(result,$rootScope.newplaceInfoLaunch, function () {
                     $scope.logoutKiosk();
-                    /*$scope.safeApply(function () {
+                   *//*$scope.safeApply(function () {
                         $location.path("#/"+ $rootScope.newplaceInfoLaunch.get("placeName"));
-                    });*/
+                    });*//*
                 });
-            });
-            
+            });*/
+            //////////////////////////////////
+            //$scope.logoutKiosk();
         }
         
         $scope.launchKioskClaim = function(){
@@ -2976,7 +3020,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         $scope.previewKiosk = function(){
             console.log("-- Preview Kiosk -- ");
             console.log("--> " + $rootScope.placeSearchResults);
-
+            $scope.saveEditKiosk();
             $scope.previewdisable = false;
             $scope.launch = true ;
         }
@@ -5675,6 +5719,8 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
     
     $scope.capturePhotoCust = function() {
         $rootScope.$broadcast("feedbackImg_upload");
+        
+        //alert("Animation: " + $rootScope.showprogress);
         var options =   {
             quality: 50,
             cameraDirection:1,
@@ -5684,17 +5730,18 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
             //saveToPhotoAlbum: true
         };
         // Take picture using device camera and retrieve image as base64-encoded string
+        $rootScope.showprogress = true;
         navigator.camera.getPicture(onSuccessCust,onFailCust,options);
     };
     
     var onSuccessCust = function(data3) {
-            $rootScope.showprogress = true;
+            //$rootScope.showprogress = true;
             var thumbnail = 400;
             var ppWidth, ppHeight;
             var data;
             data = "data:image/jpeg;base64," + data3;
             
-            //alert("Image: " + data);
+            
             var image = new Image();
             image.src = data;
             
@@ -5772,6 +5819,7 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
     var onFailCust = function(e) {
         console.log("On fail " + e);
         $rootScope.$broadcast("feedbackImg_uploaded");
+        $rootScope.showprogress = false;
     };
     
     var uploadParseCust = function(url){

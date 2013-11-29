@@ -2633,29 +2633,55 @@ angular.module('DataServices', ['ngResource'])
                         object.set("channel", kioskUserInfo.userPhone);
                         object.set("email", kioskUserInfo.email);
                         object.set("vocation", kioskUserInfo.vocation);
-                        object.save();
-                        cb(object);
+                        object.save(null,{
+                                            success:function(result) {
+                                                console.log("Saved "+ result);
+                                                
+                                            },
+                                            error: function (error){
+                                                console.log("Error: " + error.code + " " + error.message);
+                                            }
+                                        });
+                        
 
                         //TODO: update User table with fullName
-                        var kioskUsers = Parse.Object.extend("User");
-                        var query = new Parse.Query(kioskUsers);
+                        var kioskUser = Parse.Object.extend("User");
+                            var query = new Parse.Query(kioskUser);
+                            console.log("Username" + kioskUserInfo.userPhone);
+                            query.equalTo("username", kioskUserInfo.userPhone);
+                            query.first({
+                                success:function (object) {
+                                    //console.log("Successfully update user info " + object.length );
+                                    console.log("ObjectID: " + object.get("objectId"));
+                                    console.log("ObjectUsername: " + object.get("username"));
+                                    object.set("fullName", kioskUserInfo.fullName);
+                                    object.set("email", kioskUserInfo.email);
+                                    //object.set("phones", kioskUserInfo.userPhone);
+                                    object.set("avatarUrl", kioskUserInfo.userAvatar);
+                                    object.set("vocation", kioskUserInfo.vocation);
 
-                        query.equalTo("username", kioskUserInfo.userPhone);
-                        query.first({
-                            success:function (object) {
-                                console.log("Successfully update user info " +  object.length);
-                                object.set("fullName", kioskUserInfo.fullName);
-                                object.set("email", kioskUserInfo.email);
-                                //object.set("phones", kioskUserInfo.userPhone);
-                                object.set("avatarUrl", kioskUserInfo.userAvatar);
-                                object.set("vocation", kioskUserInfo.vocation);
-                                object.save();
-                                //cb(object);
-                            },
-                            error:function (error) {
-                                console.log("Error: " + error.code + " " + error.message);
-                            }
-                        });
+                                    console.log("fullName"+ kioskUserInfo.fullName);
+                                    console.log("email"+ kioskUserInfo.email);
+                                    console.log("avatarUrl"+ kioskUserInfo.userAvatar);
+                                    console.log("vocation"+ kioskUserInfo.vocation);
+                                    object.save(null,{
+                                                success:function(result) {
+                                                    console.log("Saved "+ result);
+                                                    //cb();
+                                                },
+                                                error: function (error){
+                                                    console.log("Error: " + error.code + " " + error.message);
+                                                }
+                                            });
+
+                                },
+                                error:function (error) {
+                                    console.log("Error: " + error.code + " " + error.message);
+                                }
+
+                            });
+                        cb();
+                        
                     },
                     error:function (error) {
                         //incase of first time we need to add user in table
@@ -2685,7 +2711,7 @@ angular.module('DataServices', ['ngResource'])
                                         console.log("Successfully update user info " +  object.length);
                                         object.set("fullName", kioskUserInfo.fullName);
                                         object.save();
-                                        cb(object);
+                                        //cb();
                                     },
                                     error:function (error) {
                                         console.log("Error: " + error.code + " " + error.message);
@@ -2697,8 +2723,13 @@ angular.module('DataServices', ['ngResource'])
                                 console.log("service: saveSweet() -> " + error.code + " " + error.message);
                             }
                         });
+                        cb();
                     }
                 });
+                
+                
+                
+                cb();
             },
 
             /*setKioskUser:function (kioskUserInfo, cb) {
