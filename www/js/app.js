@@ -65,6 +65,12 @@ sweetApp.config(
                 action:"auth.sms"
             }
         )
+        .when(
+            "/u/auth/join",
+            {
+                action:"auth.join"
+            }
+        )
             /*.when(
             "/sweet/show",
             {
@@ -563,6 +569,7 @@ sweetApp.config(
             "AUTH":"/u/auth",
             "AUTH_SENT":"/u/auth/sent",
             "AUTH_SMS":"/u/auth/sms",
+            "AUTH_JOIN":"/u/auth/join",
             "KIOSK_REGISTER":"/kiosk/register",
             "KIOSK_REGISTER_ADDUSER":"/kiosk/register_adduser",
             "KIOSK_USERPROFILE" : "/kiosk/userprofile",

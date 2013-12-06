@@ -1,54 +1,18 @@
-<script>
-    jQuery(function($) {
-        var open = false;
-        $('#footerSlideButton').click(function () {
-            if(open === false) {
-                $('#footerSlideContent').animate({ height: '253px' });
-                $(this).css('backgroundPosition', 'bottom left');
-                $(this).removeClass( "upClass" ).addClass( "downClass" );
-                open = true;
-            } else {
-                $('#footerSlideContent').animate({ height: '0px'});
-                $(this).css('backgroundPosition', 'top left');
-                $(this).removeClass( "downClass" ).addClass( "upClass" );
-                open = false;
-            }
-        });
-    });
-</script>
 <header class="header new-page-style">
-    <div class="heading-title-holder"> <span class="heading-title-register">Profile</span> </div>
+    <div class="heading-title-holder"> <span class="heading-title-register">Sorry For trouble</span> </div>
 </header>
 <div class="container_ROW">
     <div class="profile-connect">
-        <span class="profile-img-main heart-big-profile">
-            <img src="images/main-circle-img.png" alt="img" ng-src='{{userAvatar || images/main-circle-img.png}}'
-                 ng-click="" class="circle-main-img">
-        </span>
-        <span class="profile_TITLE">{{infoUserChannal.fullNmae}}</span>
-        <span class="small_FONT"> {{infoUserChannal.vocation}}</span>
-    </div>
-</div>
-<div id="footer_GROUP1" class="footer-GROUP">
-    <div id="footerSlideContainer">
-        <div id="footerSlideButton" class="detail openClass" style="background-position: 0% 100%;"></div>
-        <div id="footerSlideContent">
-            <div class="footer-Slider">
-                <div class="setting_buttons">
-                    <ul class="setting_buttons_holder">
-                      <li>
-                          <a ng-click="kioskRegisterCancel()"><span><img src="css/blue/images/logout_icon.png" alt="Log out"></span><strong>logout</strong></a>
-                      </li>
-                      <li>
-                          <a ng-click="editProfile()"><span><img src="css/blue/images/setting_icon.png" alt="Setting icon"></span><strong>Edit Profile</strong></a>
-                      </li>
-                      <li>
-                          <a ng-click="searchPlaceKiosk()"><span><img src="css/blue/images/favourit_icon.png" alt="favourit icon"></span><strong>Place</strong></a>
-                      </li>
-                      <!--<li><a ng-click="" class="business"><span><img src="css/blue/images/business_icon.png" alt="business icon"></span><strong>Business</strong></a> </li>-->
-                    </ul>
-                </div>
-            </div>
+        <div class="adderss-holder">
+            <span class="address-icon"><img alt="image" src="images/address-icon2.png"></span>
+            <span class="address-title">Oops. We ran into a problem. Please shut down and login again while we fix it. Thanks!</span>
         </div>
     </div>
 </div>
+
+<div class="footer_GROUP">
+    <div class="footer_HOLDER">
+        <a ng-click="kioskRegisterCancel()" class="login-btn-cancel2">Logout</a>
+    </div>
+</div>
+

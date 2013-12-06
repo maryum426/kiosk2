@@ -11,6 +11,22 @@
                         <span class="profile-img-register register-big-profile">
                            <img src="images/capture-img.png" ng-click="capturePhoto()" alt="Profile Picture"  ng-show='!userAvatar'>
                            <img ng-show='userAvatar' ng-click="capturePhoto()" ng-src="{{userAvatar}}" class="imgavatar"/>                           
+                           
+                           <section ng-show="section.loginInProgress">
+
+                                <br/><br/><br/><br/><br/><br/><br/><br/>
+
+                                <!--        <div align="center"><img src="images/spinner.gif" class="authanimation"/></div>-->
+                                    <div id="spinner2" align="center"></div>
+
+                                <br/><br/><br/><br/><br/>
+                                <!--<p>-->
+                                <!--<span>-->
+                                <!--<h1 style="color:#b3ee0e" data-ng-bind="section.loginInProgressMsg"></h1>-->
+                                <!--</span>-->
+                                <!--</p>-->
+                            </section>
+                           
                         </span>
                     </div>
                     <div ng-hide="editInfo">
@@ -43,7 +59,7 @@
         <div class="profile-connect-bottom no_PADDING_TOP">
             <div ng-hide="editInfo">
                 <ul class="submit-holder register_BUTTON_HOLDER">
-                    <li><a class ="back-button" ng-click="kioskRegisterCancel()">Cancel</a></li>
+                    <li><a class ="back-button" ng-click="kioskRegisterCancel()">Logout</a></li>
                     <li>
                         <!--<a ng-click="kioskRegister()" class="send-button register-button">Register</a>-->
                         <input type="submit" ng-click="kioskRegister()" class="register-button ios-btn" value="Register"
@@ -54,9 +70,9 @@
             </div>
             <div ng-show="editInfo">
                 <ul class="submit-holder register_BUTTON_HOLDER">
-                    <li><a class ="back-button" ng-click="backRegister()">Cancel</a></li>
+                    <li><a class ="back-button" ng-click="kioskRegisterCancel()">Logout</a></li>
                     <li>
-                        <input type="submit" ng-click="kioskRegister()" class="register-button ios-btn" value="Register" />
+                        <input type="submit" ng-click="kioskRegisterUpdate()" class="register-button ios-btn" value="Update" />
                     </li>
                 </ul>
             </div>

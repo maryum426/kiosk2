@@ -1576,7 +1576,11 @@ sweetApp.directive('sweetplacepicselect', function($rootScope, userService) {
             /*element.bind("click", function() {
                 $rootScope.$broadcast("feedbackImg_upload");
             });*/
-
+            
+            element.bind("click", function() {
+                $rootScope.$broadcast("feedbackImg_progress");
+            });
+            
             element.bind("change", function(e) {
 
                 var files = e.target.files || e.dataTransfer.files;
@@ -1590,6 +1594,7 @@ sweetApp.directive('sweetplacepicselect', function($rootScope, userService) {
                 console.log("---sweetfileselect --- "+serverUrl);
                 scope.$apply(function(){
                     scope.showprogress = 'true';
+                   
                 });
                 $.ajax({
                     type: "POST",
@@ -1651,18 +1656,18 @@ sweetApp.directive('sweetplacepicselect', function($rootScope, userService) {
 
         template: '<div class="upload-title"><input type="file" accept="image/*" id="capture" capture="camera" class="text-field" size="0" ></div>'
             + "<span ng-show='showprogress' class='showupload'>"
-            + "<span class='progress_animation'>Uploading...</span>"
+            //+ "<div id='spinner3' align='center'></div>"
             + "</span>",
 
         //+"</div>",
-
         controller:function($scope, $rootScope, userService) {
             $scope.$on("load_user_channel", function(rUserChannel) {
                 //console.log("---loadUserAvatar called--- " +userService.getUserChannel().get("avatarURL"));
                 //$rootScope.userChannel.set("avatarURL",userService.getUserChannel().get("avatarURL"));
                 //$rootScope.userAvatar = $rootScope.userChannel.get("avatarURL");
                 //$rootScope.loadUserChannel();
-
+                $rootScope.loginInProgress_place = false;
+                console.log("Login Progress: " + $rootScope.loginInProgress_place);
                 $scope.showprogress = 'false';
 
             });

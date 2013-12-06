@@ -3,7 +3,7 @@
         <div class="heading-title-holder">
             <div class="overflow-holder" ng-hide="editorEnabled">
                 <div>
-                    <div class="alignLEFT"><span class="heading-title heading-fixed">{{placeSearchResults.gname}}</span>
+                    <div class="alignLEFT"><span class="heading-title heading-fixed">{{placeSearchResults.placeSweetName}}</span>
                     <em class="heading-sub-title sub-heading-fixed">{{placeSearchResults.formatted_address}}</em> </div>
                   </div>
                     <a class="edit-holder" ng-click="enableEditor()" ng-show="previewdisable" ></a>
@@ -27,17 +27,33 @@
         <img ng-show='!placeAvatar' src="images/banner-2.png" alt="banner">
         <img  ng-show='placeAvatar' ng-src="{{placeAvatar}}"/>
         <!--<a href="#" class="camera-icon camera-icon-right"></a>-->
+<!--        <div ng-show="previewdisable" ng-controller="CameraCtrl">
+            <div class="upload-title"><div  class="camera-icon camera-icon-right" ng-click="capturePlacePhoto()"></div></div>
+            <span ng-show='showprogress' class='showupload'>
+            <span class='progress_pic'>Uploading...</span>
+            </span>
+        </div>-->
         <div ng-show="previewdisable">
             <sweetplacepicselect align="center" showprogress="util.showProgress" swfile="user.avatarUrl" attr1="50" class="camera-icon camera-icon-right">
             </sweetplacepicselect>
+            <section ng-show="loginInProgress_place">
+                    <div id='spinner3' align='center'></div>
+            </section>
         </div>
     </div>
 
-    <div ng-hide="editorEnabledTitle">
-        <span class="thankyou-title">{{placeSearchResults.kioskthankyoutitle}}
-    		<a class="edit-holder" ng-click="enableEditorTitle()" ng-show="previewdisable"></a>
-        </span>
-    </div>
+    
+        <div ng-hide="editorEnabledTitle" class="overflow-holder">
+            <div class="header">
+    <!--        <span class="thankyou-title">{{placeSearchResults.kioskthankyoutitle}}
+                    <a class="edit-holder" ng-click="enableEditorTitle()" ng-show="previewdisable"></a>
+            </span>-->
+                <div class="alignCENTER">
+                      <span class="thankyou-title heading-fixed">{{placeSearchResults.kioskthankyoutitle}}</span>
+                </div>
+                <a class="edit-holder" ng-click="enableEditorTitle()" ng-show="previewdisable" href="" style=""></a>
+            </div>
+         </div>
     <div ng-show="editorEnabledTitle" class="overflow-holder thankyou-title">
         <div class="editable-input">
         <input ng-model="kiosk.editablethankyouTitle">

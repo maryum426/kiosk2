@@ -767,6 +767,25 @@ angular.module('DataServices', ['ngResource'])
 
                 });
             },
+            
+            getUserInfoByChannel:function (channel, cb) {
+
+                console.log("Place user phone --> " + channel);
+                var getphone = [];
+                getphone.push(channel);
+
+                var queryUserChannel = new Parse.Query("UserChannel");
+                queryUserChannel.containedIn("channels", getphone);
+                queryUserChannel.find({
+                    success:function (rUserChannel) {
+                        cb(rUserChannel);
+                    },
+                    error:function (error) {
+                        console.log("service: getUserChannelByChannel() -> " + error.code + " " + error.message);
+                    }
+
+                });
+            },
 
             getUserChannelsByIds:function (userChannels, cb) {
                 var queryUserChannel = new Parse.Query("UserChannel");
@@ -1790,6 +1809,7 @@ angular.module('DataServices', ['ngResource'])
                     success:function(rKiosk) {
                         rKiosk.set("gname",kiosk.gname);
                         rKiosk.set("placeName",((kiosk.gname).replace(/[\s\$\&\!\. ,:-]+/g, "")).toLowerCase()+placenum);
+                        rKiosk.set("placeSweetName",kiosk.placeSweetName);
                         rKiosk.set("address",kiosk.formatted_address);
                         rKiosk.save(null,{
                             success:function(result) {
@@ -1917,6 +1937,7 @@ angular.module('DataServices', ['ngResource'])
                 var placeUserArray = [];
                 var SweetPlaceUsers = Parse.Object.extend("SweetPlace");
                 var query = new Parse.Query("SweetPlace");
+                var placeResults;
 
                 console.log("Successfully retrieved userid" + userService.currentUser().id);
 
@@ -1930,12 +1951,14 @@ angular.module('DataServices', ['ngResource'])
                          placeSweetsArray.push(results[i]);
                          }
                          cb(placeSweetsArray);*/
+                        placeResults = results;
                         cb(results);
                     },
                     error:function (error) {
                         console.log("Error: " + error.code + " " + error.message);
                     }
                 });
+                cb(placeResults);
             },
 
             getUserCreatedPlaces:function (userid, cb) {
@@ -2149,6 +2172,27 @@ angular.module('DataServices', ['ngResource'])
                 query.find({
                     success:function (results) {
                         //console.log("Successfully retrieved SweetPlaceInfo" +  results.length);
+                        cb(results);
+                    },
+                    error:function (error) {
+                        console.log("Error: " + error.code + " " + error.message);
+                    }
+                });
+
+            },
+            
+            getPlacesInfoByPhone:function (userId, cb) {
+
+                var SweetPlace = Parse.Object.extend("SweetPlace");
+                var query = new Parse.Query("SweetPlace");
+
+                console.log("Successfully retrieved userid" + userId);
+
+                query.equalTo("placeCreatorId", userId);
+                query.find({
+                    success:function (results) {
+                        console.log("Successfully retrieved PlaceInfo" +  results.length);
+
                         cb(results);
                     },
                     error:function (error) {
@@ -2667,7 +2711,7 @@ angular.module('DataServices', ['ngResource'])
                                     object.save(null,{
                                                 success:function(result) {
                                                     console.log("Saved "+ result);
-                                                    //cb();
+                                                    cb();
                                                 },
                                                 error: function (error){
                                                     console.log("Error: " + error.code + " " + error.message);
@@ -2861,6 +2905,7 @@ angular.module('DataServices', ['ngResource'])
                 uKiosk.set("placeLatitude", placeInfo[0].get('placeLatitude'));
                 uKiosk.set("placeLongitude", placeInfo[0].get('placeLongitude'));
                 uKiosk.set("userID", kioskUserInfo[0].get('userId'));
+                uKiosk.set("vocation", kioskUserInfo[0].get('vocation'));
                 uKiosk.set("userPhone", channal[0] );
                 uKiosk.set("userName", kioskUserInfo[0].get('fullName'));
                 uKiosk.set("email", kioskUserInfo[0].get('email'));
@@ -2878,6 +2923,61 @@ angular.module('DataServices', ['ngResource'])
                 //pSweet.set("address" , placeInfo[0].get('formatted_address'));
                 uKiosk.set("gname", placeInfo[0].get('gname'));
                 uKiosk.set("icon", placeInfo[0].get('icon'));
+
+                //-------------------------------------------------------------------
+                uKiosk.save(null, {
+                    success:function (pSweet) {
+                        console.log(pSweet + " saved successfully");
+                        cb(pSweet);
+                    },
+                    error:function (pSweet, error) {
+                        console.log("service: saveSweet() -> " + error.code + " " + error.message);
+                    }
+
+                });
+            },
+            addKioskUserToPlace2:function (kioskUserInfo,placeInfo, cb) {
+
+                console.log("---- Add user to place table ----");
+
+                var Kiosk = Parse.Object.extend("SweetPlaceUsers");
+                //var uKiosk = new Parse.Query(Kiosk);
+                var uKiosk = new Kiosk();
+                var channal = kioskUserInfo[0].get('channels') ;
+
+                /*console.log(">> " + kioskUserInfo[0].get('userId'));
+                 console.log(">> " + kioskUserInfo[0].get('channels'));
+                 console.log(">> " + channal[0]);*/
+                console.log(">> " + placeInfo.placeName);
+                console.log(">>- fullName " + kioskUserInfo[0].get('fullName'));
+                console.log(">>-- email " + kioskUserInfo[0].get('email'));
+
+                uKiosk.set("userID", kioskUserInfo[0].get('userId'));
+                uKiosk.set("userName", kioskUserInfo[0].get('fullName'));
+                uKiosk.set("email", kioskUserInfo[0].get('email'));
+                uKiosk.set("userPic", kioskUserInfo[0].get('avatarURL'));
+                uKiosk.set("vocation", kioskUserInfo[0].get('vocation'));
+                uKiosk.set("placeCreatorId", placeInfo.placeCreatorId);
+                uKiosk.set("placeName", placeInfo.placeName);
+                uKiosk.set("placeSweetName", placeInfo.placeSweetName);
+                uKiosk.set("placeDesc", placeInfo.placeDesc);
+                uKiosk.set("placeURL", placeInfo.placeURL);
+                uKiosk.set("placeLatitude", placeInfo.placeLatitude);
+                uKiosk.set("placeLongitude", placeInfo.placeLongitude);
+                uKiosk.set("LatLong", placeInfo.LatLong);
+                uKiosk.set("gname", placeInfo.gname);
+                uKiosk.set("icon", placeInfo.icon);
+                //pSweet.set("photo" , placeInfo.get('photo'));
+                //pSweet.set("address" , placeInfo.get('formatted_address'));
+
+                uKiosk.set("userPhone", channal[0] );
+                uKiosk.set("userNetwork", 'phone');
+                uKiosk.set("joinReq", '1');
+                /*if (addsweetplace.joinReq == "1") {
+                 uKiosk.set("joinReq", '1');
+                 } else {
+                 uKiosk.set("joinReq", '0');
+                 }*/
 
                 //-------------------------------------------------------------------
                 uKiosk.save(null, {

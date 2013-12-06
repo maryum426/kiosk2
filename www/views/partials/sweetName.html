@@ -39,7 +39,7 @@ jQuery(function($) {
     <div ng-show="gustPageInfo">
         <div ng-repeat="gplace in currentPlace">
             <header class="header">
-                <div class="heading-title-holder"><span class="heading-title">{{gplace.get("gname")}}</span>
+                <div class="heading-title-holder"><span class="heading-title">{{gplace.get("placeSweetName")}}</span>
                     <em class="heading-sub-title">{{gplace.get("address")}}</em>
                 </div>
             </header>
@@ -47,7 +47,9 @@ jQuery(function($) {
                 <!--<img src="images_blue/banner-1.png" alt="banner">-->
                 <img src="images/banner-2.png" alt="img" ng-src='{{ imagePlaceBanner }}'>
             </div>
-            <span class="thankyou-title">{{gplace.get("placeTitle")}}</span>
+            <div class="header">
+                <span class="thankyou-title">{{gplace.get("placeTitle")}}</span>
+            </div>
             <!--<span class="top-heading"> ${{gplace.get("placeName")}} </span>-->
             <!--<span class="top-heading">{{gplace.get("placeSweetName")}}</span>-->
             <!--<span class="top-subheading"> Enjoyed exceptional service? </span>-->
@@ -91,7 +93,7 @@ jQuery(function($) {
         <input name="" class="create-place-btn-search" type="button" value="Join This Place"
                ng-click=addPlace(currentPlace)>
     </div>
-    <div id="footer_GROUP1" class="footer-GROUP">
+<!--    <div id="footer_GROUP1" class="footer-GROUP">
     <div id="footerSlideContainer">
       <div id="footerSlideButton" class="detail closeClass"></div>
       <div id="footerSlideContent">
@@ -104,7 +106,7 @@ jQuery(function($) {
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
 
 
 </section>
@@ -121,7 +123,7 @@ jQuery(function($) {
 <!-- -------------------------------------------------------------------------------------- -->
 <div class="header" ng-show="showPlaceGestureSendActionsPlace">
     <div class="heading-title-holder"><span class="heading-title">{{userName}}</span>
-        <em class="heading-sub-title">{{currentPlace[0].get('placeTitle')}}</em>
+        <em class="heading-sub-title">{{placeInfo.get('vocation')}}</em>
 
     </div>
     <ul class="social-features">
@@ -177,7 +179,7 @@ jQuery(function($) {
 <div ng-show="showmobileActions">
     <div class="header">
         <div class="heading-title-holder"><span class="heading-title">{{userName}}</span>
-            <em class="heading-sub-title">{{currentPlace[0].get('placeTitle')}}</em>
+            <em class="heading-sub-title">{{placeInfo.get('vocation')}}</em>
         </div>
         <ul class="social-features">
             <li>
@@ -195,10 +197,10 @@ jQuery(function($) {
         <div class="container">
             <div class="profile-connect-other holder-time">
                 <span class="thanks_heading" ng-show="thanksheading">
-                    You just thanked {{userName}}!
+                    You just thanked {{userName.split(" ")[0]}}!
                 </span>
                 <span class="thanks_heading" ng-show="thanksfooter">
-                    Thankyou for writing to us!
+                    Thanks for the message!
                 </span>
                 <span class="profile-img-main bot-40" style="background-color:transparent;">
                     <img src="images/capture-img.png" alt="img" ng-src='{{magicButtonImage || images/capture-img.png}}'
@@ -295,7 +297,7 @@ jQuery(function($) {
                 <ul class="submit-holder">
 
                     <li class="feedback-btn" ng-show="thanksheading">
-                        <a ng-click="feedback()" class="send-button">We'd love to read your feedback about {{userName.split(" ")[0]}}</a></li>
+                        <a ng-click="feedback()" class="send-button">Send a message to {{userName.split(" ")[0]}}</a></li>
                 </ul>
                 
                 <!-- -----------------------------Feedback form ------------------------------------------- -->

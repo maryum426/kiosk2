@@ -5,8 +5,9 @@
             <form name="sms_login" ng-submit="smsLogin()">
                 <div class="enter-NUMBER-holder">
                     <label class="labelfield">Please check your SMS</label>
-                    <input name="sms" placeholder="enter login code" class="texfield" type="tel" ng-model="user.sms" ng-class="{error: sms_login.sms.$invalid}">
-                    <input type="submit" name="" value="Login" class="login-btn ios-btn"
+                    <input name="sms" placeholder="Enter Login Code" class="texfield" type="tel" ng-model="user.sms" ng-class="{error: sms_login.sms.$invalid}">
+                    <a ng-click="backLogin()" class="login-btn-cancel">Cancel</a>
+                    <input type="submit" name="" value="Login" class="login-btn2 ios-btn"
                            ng-disabled="sms_login.sms.$pristine || sms_login.sms.$dirty && sms_login.sms.$invalid"
                            ng-class="{enable : !sms_login.sms.$invalid ,disable : sms_login.sms.$invalid}">
                 </div>

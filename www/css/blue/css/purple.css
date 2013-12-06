@@ -251,10 +251,9 @@ textarea {
 	display: block;
 	color: #fff;
 	font-size: 25px;
-	margin-bottom: 20px;
 	padding: 20px 0;
-	width: 90%;
-	margin: 0 auto;
+	width: 72%;
+	margin: 20px auto 0;
 	background-color: #ed145b;
 }
 /*20-Aug-page-2-css-Start*/
@@ -340,7 +339,7 @@ textarea {
 .profile-connect-other {
 	overflow: hidden;
 	/*padding: 102px 25px 77px;*/
-	padding: 2px 25px 0 0;
+	padding: 0 25px 0 0;
 }
 .heart-icon {
 	left: 332px;
@@ -399,7 +398,7 @@ textarea {
 }
 .submit-holder li {
 	float: left;
-	margin-left: 1%;
+	margin-left: 6px;
 	width: 49%;
 }
 .submit-holder li:first-child {
@@ -424,10 +423,11 @@ textarea {
 	background-color: #b7b7b7;
 	text-align: center;
 	padding: 28px 0 28px 0;
+        width: 300px;
         margin-top: 0 !important;
 }
 .submit-holder li a.send-button {
-	background-color: #9966cb;
+	background-color: #ed145b;
         margin-top: 60px;
         
 }
@@ -514,10 +514,23 @@ textarea {
     display: inline;
     height: 56px;
     margin-top:11px;
-    margin-left:90px;
+    margin-left:100px;
 }
 .remove-holder a:hover{
     text-decoration: none;
+}
+.search-holder{
+    position: relative;
+    float: left;
+    display: inline;
+    height: 56px;
+    margin-top:11px;
+}
+.search-holder a:hover{
+    text-decoration: none;
+}
+.search-holder a{
+    background-image: url(images/search-icon.png);
 }
 #target:focus{
     outline: 0;
@@ -530,18 +543,33 @@ textarea {
 	padding: 0 25px;
 	text-decoration: none;
         height: 66px;
-        margin-top:10px;
+        margin-bottom:10px;
+        -webkit-transform: rotate(180deg);
 }
 .remove-color {
 	background-color: #b08cd4;
 	color: #EEEEEE;
 	float: left;
 	font-size: 20px;
-	padding: 16px 4px;
+	padding: 15px 12px 15px 4px;
 	text-decoration: none;
         /*height: 56px;
         margin-top:11px;
         margin-left:90px;*/
+}
+.remove-color-search {
+	background-color: #b08cd4;
+	color: #EEEEEE;
+	float: left;
+	font-size: 20px;
+	padding: 15px 0px 6px 12px;
+	text-decoration: none;
+}
+.remove-color-search > img{
+        height: 28px;
+        width: 28px;
+        margin-right: 0;
+        padding-right: 0;
 }
 .reorder-color:hover {
 	text-decoration: none;
@@ -566,7 +594,7 @@ textarea {
 }
 .search-field {
 	float: left;
-	margin: 11px 0 11px 25px;
+	margin: 11px 0 11px 0;
 	width: 400px;
 }
 .search-field input {
@@ -576,7 +604,7 @@ textarea {
 	float: left;
 	font-size: 36px;
 	padding: 2px 0 0 10px;
-	width: 480px;
+	width: 490px;
         height:54px;
 	border-radius:0;
 	-webkit-border-radius:0;
@@ -593,6 +621,7 @@ textarea {
 .search-field .text-field::-ms-input-placeholder { /* Internet Explorer 10+ */
     color:    #fff;
 }
+
 .profile-status {
 	float: right;
 	height: 79px;
@@ -993,13 +1022,15 @@ textarea {
 }
 .heart-big {
     height: 100px;
-    left: 37%;
+    left: 35.5%;
     opacity: 0.5;
-    top: 37%;
+    top: 38%;
     width: 100px;
 }
 .heart-big > img {
 	display:block;
+        height: 100px;
+        width: 115px;
 }
 .staric-holder {
 	text-align: center;
@@ -1269,7 +1300,8 @@ ul.rating {
 	/* left: 230px;
     position: absolute;
     top: 22px;*/
-	margin-top: -305px;
+	margin-top: -304px;
+        margin-right: 50px;
 	line-height: 0;
 }
 .ui-accordion {
@@ -1309,10 +1341,10 @@ ul.rating {
         color: #FFFFFF;
 	display: block;
 	font-size: 25px;
-	text-align: left;
-        padding: 15px 30px 0;
+	text-align: center;
+        padding: 15px 0;
         height: 47px;
-        width: 120%;
+        width: 800px;
 }
 .thanks_footer {
 	color: #ED145B;
@@ -1529,7 +1561,7 @@ ul.rating {
 }
 .feedbackFACEBOOK {
 	background-color: #9966cc;
-	margin: 150px auto 0;
+	margin: 170px auto 0;
 	max-width: 614px;
 	padding: 20px;
 }
@@ -1556,11 +1588,18 @@ ul.rating {
         margin-top: -2px;
         margin-left: -2px;
 }
+.progress_pic {
+    height: 100%;
+    left: 710px;
+    position: absolute;
+    top: 100px;
+    width: 188px;
+}
 /*page3-CSS-End*/
 .login-btn {
 	background: #ed145b;
 	display: block;
-	margin: 30px auto 0;
+	margin: 30px auto;
 	width: 213px;
 	padding: 6px 20px 10px;
 	color: #fff;
@@ -1570,8 +1609,55 @@ ul.rating {
         height: 91px;
 	font-family: 'Helvetica-Light';
 }
+.login-btn2 {
+	background: #ed145b;
+	display: block;
+	margin: 30px 0px 30px 392px;
+	width: 213px;
+	padding: 6px 20px 10px;
+	color: #fff;
+	cursor: pointer;
+	border: none;
+	font-size: 44px;
+        height: 91px;
+	font-family: 'Helvetica-Light';
+}
+.login-btn-cancel {
+	background: #b7b7b7;
+	display: block;
+	margin: 21px 5px 21px 168px;
+	width: 192px;
+	padding: 18px 10px;
+	color: #fff;
+	cursor: pointer;
+	border: none;
+	font-size: 44px;
+        float: left;
+        text-align: center;
+	font-family: 'Helvetica-Light';
+}
+.login-btn-cancel:hover{
+    text-decoration: none;
+}
+.login-btn-cancel2 {
+	background: #b7b7b7;
+	display: block;
+	margin: 21px 5px 21px 275px;
+	width: 192px;
+	padding: 18px 10px;
+	color: #fff;
+	cursor: pointer;
+	border: none;
+	font-size: 44px;
+        float: left;
+        text-align: center;
+	font-family: 'Helvetica-Light';
+}
+.login-btn-cancel2:hover{
+    text-decoration: none;
+}
 .bot-margin {
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 /*Footer-Slide-Css-Start*/
 #footerSlideButton {
@@ -1730,6 +1816,7 @@ ul.rating {
     padding: 0px 72px;
     height: 105px;
     font-size: 44px;
+    width: 300px;
     color: #fff;
     border:none;
 }
@@ -1980,7 +2067,21 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 .send-ok-btn:hover{
 	text-decoration:none;
 }
-
+.send-ok-btn2 {
+    background: #9966cb;
+    color: #FFFFFF;
+    display: block;
+    font-size: 38px;
+    margin: 0 auto;
+    padding: 12px 70px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 60px;
+}
+.send-ok-btn2:hover{
+	text-decoration:none;
+}
 .editlabal {
      background-color: #EBEBEB;
      color: #949494;
@@ -2042,7 +2143,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     display: block;
     height: 24px;
     line-height: 24px;
-    margin: 5px 0;
+    margin: 5px 0 26px;
     padding: 2px;
     width: 340px;
     border-radius:0;
@@ -2150,19 +2251,22 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 }
 .banner {
 	position: relative;
+        background-color: #bf9fde;
 }
 .banner > img {
     display: block;
     height: 304px;
-    width: 100%;
-	overflow:hidden;
+    width: auto;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: hidden;
 }
 .thankyou-title {
 	display: block;
 	text-transform: uppercase;
 	color: #fff;
 	font-size: 30px;
-	padding: 20px;
+	padding: 20px 20px 0 20px;
 	background-color: #9966CB;
 	text-align: center;
 	overflow: hidden;
@@ -2195,7 +2299,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 
 .kiosk_ADJUST{
     width: 100%;
-    height: 77px;
+    height: 130px;
 }
 
 .welcome-holder-box {
@@ -2208,7 +2312,51 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 }
 #spinner {
 	position: absolute;
-	top: 75%;
+	top: 85%;
+	left: 50%;
+	margin: -50px 0 0 -50px;
+	height: 100px;
+	width: 100px;
+	white-space: nowrap;
+	overflow: hidden;
+        -webkit-mask-image: url(../images/spinner.png);
+        mask-image: url(../images/spinner.png);
+	background-color: #fff;
+        animation-name: spinnerRotate;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        /*  Safari and Chrome */
+        -webkit-animation-name: spinnerRotate;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+#spinner2 {
+	position: absolute;
+	top: 14%;
+	left: 14%;
+	margin: -50px 0 0 -50px;
+	height: 348px;
+	width: 348px;
+	white-space: nowrap;
+	overflow: hidden;
+        -webkit-mask-image: url(../images/spinner2.png);
+        mask-image: url(../images/spinner2.png);
+	background-color: #fff;
+        animation-name: spinnerRotate;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        /*  Safari and Chrome */
+        -webkit-animation-name: spinnerRotate;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+#spinner3 {
+	position: absolute;
+	top: 50%;
 	left: 50%;
 	margin: -50px 0 0 -50px;
 	height: 100px;
@@ -2252,7 +2400,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     width: 28px;
     -webkit-transform: rotate(90deg);
     background-color: #b7b7b7;
-    margin: 12px 0 14px 356px;
+    margin: 14px 0 14px 356px;
 }
 .imgavatar{
     border-radius: 50%;
@@ -2264,12 +2412,24 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     background: #9966CB;
     color: #fff;
     font-size: 24px;
-    left: 220px;
+    left: 192px;
     padding: 35px 80px;
     position: absolute;
     right: auto;
     text-align: center;
-    top: 556px;
+    top: 430px;
+    z-index: 999;
+}
+.col02-placeUserMsg2 {
+    background: #ed145b;
+    color: #fff;
+    font-size: 24px;
+    left: 162px;
+    padding: 35px 80px;
+    position: absolute;
+    right: auto;
+    text-align: center;
+    top: 535px;
     z-index: 999;
 }
 .col02-errorMsg {
@@ -2356,4 +2516,42 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 }
 .send-btn{
     display: inline-block;
+}
+.alignCENTER{
+    text-align:center;
+    float: left;
+    width: 690px;     
+}
+.join-text {
+    /*float: right;*/
+    font-size: 24px;
+    color: #fff;
+    margin-left: 3px;
+}
+.email-footer{
+    font-size: 24px;
+    color: #fff;
+    margin-left: 157px;
+}
+.launch-button {
+    background-color: #9966cb;
+}
+.adderss-holder {
+    margin: 204px 0 30px;
+}
+.address-icon {
+    display: block;
+    margin: 0 0 45px;
+}
+.address-title {
+    color: #535353;
+    display: block;
+    font-size: 33px;
+    margin: 0 auto 100px;
+    max-width: 500px;
+}
+.address-icon > img {
+    display: block;
+    margin: 0 auto;
+    width: auto;
 }
