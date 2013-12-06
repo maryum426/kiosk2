@@ -1642,7 +1642,7 @@ ul.rating {
 .login-btn-cancel2 {
 	background: #b7b7b7;
 	display: block;
-	margin: 21px 5px 21px 275px;
+	margin: 21px 5px 21px 285px;
 	width: 192px;
 	padding: 18px 10px;
 	color: #fff;
@@ -1801,7 +1801,7 @@ ul.rating {
 	letter-spacing: -1px;
 	text-transform: uppercase;
 	text-align:left;
-        padding: 8px 28px 0;
+        padding: 8px 28px 0 !important;
 }
 .heading-title-register {
 	display: block;
@@ -1809,7 +1809,7 @@ ul.rating {
 	letter-spacing: -1px;
 	text-transform: uppercase;
 	text-align:left;
-        padding: 20px 28px 0;
+        padding: 20px 28px 0 !important;
 }
 .submit-holder .register-button {
     background-color: #ed145b;
