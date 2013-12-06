@@ -5950,7 +5950,7 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                                                     $rootScope.userAvatar = parseFile.url();
                                                     pic_url = parseFile.url();
                                                     uploadParse(pic_url);
-                                                    $scope.section.loginInProgress = false;
+                                                    
                                                     $rootScope.$broadcast("load_user_channel");
                                                     $rootScope.$broadcast("feedbackImg_uploaded");
                                                     //alert (parseFile.url());
@@ -5961,10 +5961,12 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                                                     console.log(error);
                                                 });
             }
+            $scope.section.loginInProgress = false;
     };
        
     var onFail = function(e) {
         console.log("On fail " + e);
+        $scope.section.loginInProgress = false;
     };
     
     var uploadParse = function(url){

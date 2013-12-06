@@ -1801,7 +1801,7 @@ ul.rating {
 	letter-spacing: -1px;
 	text-transform: uppercase;
 	text-align:left;
-        padding: 8px 28px 0 !important;
+        padding: 10px 28px 0 !important;
 }
 .heading-title-register {
 	display: block;
@@ -1809,7 +1809,7 @@ ul.rating {
 	letter-spacing: -1px;
 	text-transform: uppercase;
 	text-align:left;
-        padding: 20px 28px 0 !important;
+        padding: 22px 28px 0 !important;
 }
 .submit-holder .register-button {
     background-color: #ed145b;
