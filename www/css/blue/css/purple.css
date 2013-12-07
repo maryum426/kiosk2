@@ -551,7 +551,7 @@ textarea {
 	color: #EEEEEE;
 	float: left;
 	font-size: 20px;
-	padding: 15px 12px 15px 4px;
+	padding: 15px 12px 13px 4px;
 	text-decoration: none;
         /*height: 56px;
         margin-top:11px;
@@ -1301,7 +1301,7 @@ ul.rating {
     position: absolute;
     top: 22px;*/
 	margin-top: -304px;
-        margin-right: 50px;
+        margin-right: 55px;
 	line-height: 0;
 }
 .ui-accordion {
@@ -1342,8 +1342,8 @@ ul.rating {
 	display: block;
 	font-size: 25px;
 	text-align: center;
-        padding: 15px 0;
-        height: 47px;
+        padding: 21px 0;
+        height: 34px;
         width: 800px;
 }
 .thanks_footer {
@@ -1813,7 +1813,7 @@ ul.rating {
 }
 .submit-holder .register-button {
     background-color: #ed145b;
-    padding: 0px 72px;
+    padding: 0px 68px;
     height: 105px;
     font-size: 44px;
     width: 300px;
