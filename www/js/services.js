@@ -2661,6 +2661,25 @@ angular.module('DataServices', ['ngResource'])
             },
 
             //blue
+            updateKioskUserPlaces : function (userInfo, cb) {
+
+                Parse.Cloud.run("updatePlace",
+                    {
+                        userID:userInfo.userID,
+                        email:userInfo.email,
+                        userName:userInfo.fullName,
+                        vocation:userInfo.vocation
+                    },
+                    {
+                        success:function (msg) {
+                            cb(true);
+                        },
+                        error:function (error, msg) {
+                            //console.log(error.code);
+                            cb(false);
+                        }
+                    });
+            },
             setKioskUser:function (kioskUserInfo, cb) {
 
                 var getphone = [];

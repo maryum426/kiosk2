@@ -2459,6 +2459,11 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
                 sweetService.setKioskUser($scope.kioskSetUser, function (userInfo) {
                     //$scope.searchPlaceKiosk();
+                    $scope.kioskSetUser.userID = userService.currentUser().id ;
+
+                    sweetService.updateKioskUserPlaces($scope.kioskSetUser, function (result){
+                        console.log("Update user places");
+                    });
                     sweetService.getCreatedPlaces($rootScope.infoUserChannal.userId, function (placeUserSweets) {
 
                         console.log("Result Length --> " + placeUserSweets.length);
