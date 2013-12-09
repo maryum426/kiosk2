@@ -6020,8 +6020,8 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
         $scope.safeApply(function () {
         $rootScope.loginInProgress_profile = false;
         });
-        alert("On fail " + e);
-        alert("Profile Picture Progress: " + $rootScope.loginInProgress_profile);
+        //alert("On fail " + e);
+        //alert("Profile Picture Progress: " + $rootScope.loginInProgress_profile);
         $rootScope.$broadcast("feedbackImg_profile");
     };
     
@@ -6078,7 +6078,7 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
         
         //alert("Animation: " + $rootScope.showprogress);
         var options =   {
-            quality: 100,
+            quality: 50,
             cameraDirection:1,
             sourceType: 1,      // 0:Photo Library, 1=Camera, 2=Saved Photo Album
             correctOrientation: true,
