@@ -2365,7 +2365,12 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 console.log("vocation --> " + $scope.kiosk.vocation);
                 console.log("userAvatar --> " + $rootScope.userAvatar);
                 console.log("userPName --> " + $rootScope.userPName);
-
+                
+                if($scope.kiosk.fullname == '' ||$scope.kiosk.email == '' || $scope.kiosk.fullname == null || $scope.kiosk.email == null){
+                  console.log("JOIN CHECK!");  
+                }
+                else {
+                
                 $scope.kioskSetUser = [];
                 $scope.kioskSetUser.fullName = $scope.kiosk.fullname ;
                 $scope.kioskSetUser.vocation = $scope.kiosk.vocation ;
@@ -2408,8 +2413,15 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                     });
                 } else {
                     console.log("Edit Info false");
-                    sweetService.setKioskUser($scope.kioskSetUser, function () {
-
+                    sweetService.setKioskUserCloud($scope.kioskSetUser, function () {
+                        
+                        
+                        console.log("User registered, know add to place");
+                        //console.log("User registered --> " + result.length);
+                        //console.log("User registered --> " + result.id);
+                        console.log("User Phone : " + $rootScope.userPName);
+                        
+                        
                         console.log("User registered, know add to place");
                         console.log("User Phone : " + $rootScope.userPName);
 
@@ -2431,7 +2443,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                         //$scope.kioskSetUser.placeName = $rootScope.userAddedPlace ;
                     });
                 }
-
+                }
                 //$rootScope.pageUserFlag = false ;
             //}
 
@@ -4688,11 +4700,11 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
     };
 
     $scope.$watch($rootScope.publicName, function () {
-        StatusBar.overlaysWebView(false);
-        
-        if (StatusBar.isVisible) {
-            StatusBar.hide();
-        }
+//        StatusBar.overlaysWebView(false);
+//        
+//        if (StatusBar.isVisible) {
+//            StatusBar.hide();
+//        }
         //try {
                                       //alert('Device is ready! Make sure you set your app_id below this alert.');
                                       

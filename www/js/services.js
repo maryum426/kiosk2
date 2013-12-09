@@ -298,9 +298,53 @@ angular.module('DataServices', ['ngResource'])
                         }
                     }
                 );
+            },
+            
+            //run cloud code
+            getPlaceInfoByPhone:function (phoneNumber, cb) {
+
+                console.log("Place Creator " + phoneNumber);
+
+                Parse.Cloud.run("getPlaceInfoByPhone",
+                    {
+                        placeCreatorPhone:phoneNumber
+                    },
+                    {
+                        success:function (result) {
+                            cb(result);
+                        },
+                        error:function () {
+                            cb(false);
+                        }
+                    }
+                );
+            },
+            
+            
+            //run cloud code
+            addUser:function (info, cb) {
+
+                Parse.Cloud.run("addUser",
+                    {
+                        userPhone   : info.userPhone,
+                        fullName    : info.fullName,
+                        userAvatar  : info.userAvatar,
+                        email       : info.email,
+                        vocation    : info.vocation
+                    },
+                    {
+                        success:function (result) {
+                            cb(result);
+                        },
+                        error:function () {
+                            cb(false);
+                        }
+                    }
+                );
             }
         }
     })
+    
     .service('authService', function (utilService, userService, constantService,CONSTANTS) {
 
         var m_guid, m_phone, m_fullName;
@@ -2201,7 +2245,7 @@ angular.module('DataServices', ['ngResource'])
                 });
 
             },
-
+            
             getPlacestoJoin:function (placename, currentUser, cb) {
                 var placeUserArray = [];
                 var SweetPlaceUsers = Parse.Object.extend("SweetPlaceUsers");
@@ -2661,6 +2705,12 @@ angular.module('DataServices', ['ngResource'])
             },
 
             //blue
+            setKioskUserCloud : function(kioskUserInfo, cb){
+                console.log("call cloud code to add user in kiosk");
+                utilService.addUser(kioskUserInfo, function (user) {
+                    cb(user);
+                });
+            },
             updateKioskUserPlaces : function (userInfo, cb) {
 
                 Parse.Cloud.run("updatePlace",
