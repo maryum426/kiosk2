@@ -71,6 +71,18 @@ sweetApp.config(
                 action:"auth.join"
             }
         )
+            .when(
+            "/u/auth/loginpage",
+            {
+                action:"auth.loginpage"
+            }
+        )
+            .when(
+            "/u/auth/launch",
+            {
+                action:"auth.launch"
+            }
+        )
             /*.when(
             "/sweet/show",
             {

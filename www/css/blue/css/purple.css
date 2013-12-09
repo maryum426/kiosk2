@@ -114,11 +114,15 @@ textarea {
 	background-color: transparent;
 }
 .container_ROW {
-	width: 100%;
+	width: 768px;;
 	overflow: hidden;
 }
 .footer_GROUP {
-	width: 100%;
+	width: 768px;
+	overflow: hidden;
+}
+.footer_HOLDER {
+	width: 768px;
 	overflow: hidden;
 }
 .logo {
@@ -250,10 +254,10 @@ textarea {
 	text-align: center;
 	display: block;
 	color: #fff;
-	font-size: 25px;
-	padding: 20px 0;
-	width: 72%;
-	margin: 20px auto 0;
+	font-size: 35px;
+	padding: 17px 0;
+	width: 547px;
+	margin: 44px auto 0;
 	background-color: #ed145b;
 }
 /*20-Aug-page-2-css-Start*/
@@ -261,6 +265,7 @@ textarea {
 	/*padding: 11px 25px 11px;*/
 	background-color: #672971;
         height: 79px;
+        width: 768px;
 	color: #fff;
 }
 /*.header:after {
@@ -339,13 +344,13 @@ textarea {
 .profile-connect-other {
 	overflow: hidden;
 	/*padding: 102px 25px 77px;*/
-	padding: 0 25px 0 0;
+	padding: 0;
 }
 .heart-icon {
 	left: 332px;
 	opacity: 0.5;
 	position: absolute;
-	top: 205px;
+	top: 218px;
 	width: 80px;
 }
 
@@ -1291,7 +1296,7 @@ ul.rating {
 /* ******************************************************************* */
 /* ******************************************************************* */
 .notable { /*	display: table;*/
-	width: 100%;
+	width: 768px;
 }
 .timer-app {
 	text-align: center;
@@ -1301,7 +1306,7 @@ ul.rating {
     position: absolute;
     top: 22px;*/
 	margin-top: -304px;
-        margin-right: 55px;
+        margin-right: 24px;
 	line-height: 0;
 }
 .ui-accordion {
@@ -1344,7 +1349,7 @@ ul.rating {
 	text-align: center;
         padding: 21px 0;
         height: 34px;
-        width: 800px;
+        width: 768px;
 }
 .thanks_footer {
 	color: #ED145B;
@@ -1352,10 +1357,12 @@ ul.rating {
 	font-size: 34px;
 	text-align: center;
 	margin-top: 44px;
+        width: 768px;
 }
 /*NEW-SCREEN-CSS-START*/
 .container {
 	position: relative;
+        width:768px;
 }
 .previous-slide {
 	position: absolute;
@@ -1558,6 +1565,8 @@ ul.rating {
 .submit-holder .feedback-btn a {
 	font-size: 25px;
 	padding: 18px 0;
+        width: 620px;
+        margin-left: 8px !important;
 }
 .feedbackFACEBOOK {
 	background-color: #9966cc;
@@ -1570,7 +1579,7 @@ ul.rating {
 }
 .feedbackFACEBOOK-HOLDER {
 	background: url(../images/bg-white.png);
-	height: 110%;
+	height: 100%;
 	left: 0;
 	position: absolute;
 	top: 0;
@@ -1599,7 +1608,7 @@ ul.rating {
 .login-btn {
 	background: #ed145b;
 	display: block;
-	margin: 30px auto;
+        margin: 30px 0px 30px 320px;
 	width: 213px;
 	padding: 6px 20px 10px;
 	color: #fff;
@@ -1654,6 +1663,23 @@ ul.rating {
 	font-family: 'Helvetica-Light';
 }
 .login-btn-cancel2:hover{
+    text-decoration: none;
+}
+.login-btn-cancel3 {
+	background: #b7b7b7;
+	display: block;
+	margin: 21px 5px 21px 92px;
+	width: 192px;
+	padding: 18px 10px;
+	color: #fff;
+	cursor: pointer;
+	border: none;
+	font-size: 44px;
+        float: left;
+        text-align: center;
+	font-family: 'Helvetica-Light';
+}
+.login-btn-cancel3:hover{
     text-decoration: none;
 }
 .bot-margin {
@@ -1787,6 +1813,7 @@ ul.rating {
 }
 .header {
 	background-color: #9966cb;
+        width: 768px;
 }
 .publicPage .social-connection li{
     float: left;
@@ -1911,7 +1938,7 @@ ul.rating {
 	overflow: hidden;
 }
 .profile-connect-bottom {
-	padding: 10px 77px 50px;
+	padding: 10px 77px 0;
 }
 .publicPage .profile-connect{
 	padding: 164px 78px 187px;
@@ -2299,7 +2326,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 
 .kiosk_ADJUST{
     width: 100%;
-    height: 130px;
+    height: 245px;
 }
 
 .welcome-holder-box {
@@ -2308,7 +2335,10 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 	margin: 0;
 }
 .kiosk-login-holder{
-	padding:70px 76px 0;
+	padding:0 76px;
+}
+.kiosk-login-holder2{
+	padding:80px 76px 0;
 }
 #spinner {
 	position: absolute;

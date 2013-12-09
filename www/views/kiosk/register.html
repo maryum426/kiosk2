@@ -12,19 +12,10 @@
                            <img src="images/capture-img.png" ng-click="capturePhoto()" alt="Profile Picture"  ng-show='!userAvatar'>
                            <img ng-show='userAvatar' ng-click="capturePhoto()" ng-src="{{userAvatar}}" class="imgavatar"/>                           
                            
-                           <section ng-show="section.loginInProgress">
-
+                           <section ng-show="loginInProgress_profile">
                                 <br/><br/><br/><br/><br/><br/><br/><br/>
-
-                                <!--        <div align="center"><img src="images/spinner.gif" class="authanimation"/></div>-->
                                     <div id="spinner2" align="center"></div>
-
                                 <br/><br/><br/><br/><br/>
-                                <!--<p>-->
-                                <!--<span>-->
-                                <!--<h1 style="color:#b3ee0e" data-ng-bind="section.loginInProgressMsg"></h1>-->
-                                <!--</span>-->
-                                <!--</p>-->
                             </section>
                            
                         </span>

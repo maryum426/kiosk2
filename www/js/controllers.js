@@ -3697,6 +3697,13 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
 
         
     });
+    
+    $scope.$on('feedbackImg_profile', function() {
+        console.log("feedbackImg_profile");
+        $rootScope.loginInProgress_profile = false;
+
+        
+    });
 
     $scope.$on('feedbackImg_uploaded', function() {
         console.log("feedbackImg_uploaded");
@@ -4060,6 +4067,8 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
             case "auth.new":
             case "auth.sms":
             case "auth.join":
+            case "auth.launch":
+            case "auth.loginpage":
                 $scope.no_bg = "";
                 
                 break;
@@ -4156,6 +4165,18 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
             console.log("Rendering Step6 join --->");
             //console.log("constant auth: " + CONSTANTS.ROUTES.AUTH);
             $location.path(CONSTANTS.ROUTES.AUTH_JOIN);
+        }
+        
+        if ($location.path() == '/u/auth/launch' && !$scope.isUserLoggedIn) {
+            console.log("Rendering Step6 --->");
+            //console.log("constant auth: " + CONSTANTS.ROUTES.AUTH);
+            $location.path('/u/auth/launch');
+        }
+
+        if ($location.path() == '/u/auth/loginpage' && !$scope.isUserLoggedIn) {
+            console.log("Rendering Step6 --->");
+            //console.log("constant auth: " + CONSTANTS.ROUTES.AUTH);
+            $location.path('/u/auth/loginpage');
         }
 
         // Non user + logout state + this device >
@@ -5186,6 +5207,18 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
         //$location.path(CONSTANTS.ROUTES.AUTH_JOIN);
         $location.path('u/auth/join');
     }
+    
+    $scope.loginPage = function(){
+        console.log("Call Login Page");
+        $location.path('u/auth/loginpage');
+    }
+
+    $scope.launchPage = function(){
+        console.log("Call Launch Page");
+        $location.path('u/auth/launch');
+    }
+    
+    
     //phonegap login
     //var authData,id,access_token,expiration_date;
 
@@ -5873,7 +5906,7 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
     var imageData,pic_url;
     //Profile Picture
     $scope.capturePhoto = function() {
-        $scope.section.loginInProgress = true;
+        $rootScope.loginInProgress_profile = true;
         //alert("Login Progress: " + $scope.section.loginInProgress);
         var options =   {
             quality: 100,
@@ -5885,6 +5918,8 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
         };
         // Take picture using device camera and retrieve image as base64-encoded string
         navigator.camera.getPicture(onSuccess,onFail,options);
+        //$rootScope.$broadcast("feedbackImg_profile");
+        
     };
     var onSuccess = function(data3) {
         
@@ -5958,6 +5993,7 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                                                     
                                                     $rootScope.$broadcast("load_user_channel");
                                                     $rootScope.$broadcast("feedbackImg_uploaded");
+                                                    $rootScope.$broadcast("feedbackImg_profile");
                                                     //alert (parseFile.url());
                                                     console.log("Ok");
 
@@ -5966,12 +6002,15 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                                                     console.log(error);
                                                 });
             }
-            $scope.section.loginInProgress = false;
     };
        
     var onFail = function(e) {
-        console.log("On fail " + e);
-        $scope.section.loginInProgress = false;
+        $scope.safeApply(function () {
+        $rootScope.loginInProgress_profile = false;
+        });
+        alert("On fail " + e);
+        alert("Profile Picture Progress: " + $rootScope.loginInProgress_profile);
+        $rootScope.$broadcast("feedbackImg_profile");
     };
     
     var uploadParse = function(url){

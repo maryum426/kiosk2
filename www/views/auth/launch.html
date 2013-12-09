@@ -1,36 +1,35 @@
 <div ng-controller="AuthController">
     <div class="container_ROW">
         <a class="logo"><img src="images/logo.png" alt="sweet"></a>
-        <section ng-hide="section.loginInProgress" class="kiosk-login-holder">
+        <section ng-hide="section.loginInProgress" class="kiosk-login-holder2">
             <form name="user_login">
                 <fieldset>
                     <!--<span class="login-title">Login</span>-->
-<!--                    <input name="phone" placeholder="Enter Mobile Number" class="texfield" type="tel" ng-model="user.phone" ng-class="{error: user_login.phone.$invalid}">-->
+                    <div class="enter-NUMBER-holder">
+                        <input name="phone" placeholder="Enter Team Code" class="texfield" type="tel" ng-minlength=7 ng-model="user.phone" ng-class="{error: user_login.phone.$invalid}" required>
                     <!--<input type="password" name="#" placeholder="Password" class="texfield">
                     <div class="login-holder">
                         <span class="login-span-title">Forgot your password?</span>
                         <span class="login-span-right">click here to <a href="#">Sign up now</a></span>
                     </div>-->
                     <!--<input name="" class="login-btn bot-margin" value="Login" type="button" ng-click="newAuthSms()">-->
-                    <input name="login" class="enterprice-title ios-btn" value="Login" type="button" 
-                           ng-disabled="user_login.phone.$pristine || user_login.phone.$dirty && user_login.phone.$invalid"
+                    <a ng-click="backLogin()" class="login-btn-cancel3">Cancel</a>
+                    <input name="login" class="login-btn ios-btn" value="Launch" type="button" 
+                           ng-disabled="user_login.phone.$pristine || user_login.phone.$dirty && user_login.phone.$invalid || user_login.phone.$error.required || user_login.phone.$error.minlength"
                            ng-class="{enable : !user_login.phone.$invalid ,disable : user_login.phone.$invalid}"
-                           ng-click="loginPage()">
-                    <input name="login" class="enterprice-title ios-btn" value="Launch Place" type="button" 
-                           ng-disabled="user_login.phone.$pristine || user_login.phone.$dirty && user_login.phone.$invalid"
-                           ng-class="{enable : !user_login.phone.$invalid ,disable : user_login.phone.$invalid}"
-                           ng-click="launchPage()">
+                           ng-click="launchKioskPhone()">
 <!--                    <span class="join-text">Click here to <a ng-click="joinKioskPlace()">Join</a></span>-->
+                    </div>
                 </fieldset>
             </form>
-            <input name="join" class="enterprice-title ios-btn" value="Join Team" type="button" ng-click="joinKioskPlace()">
+          
         </section>
     </div>
     <div class="kiosk_ADJUST"></div>
     <div class="footer_GROUP">
         <div class="footer_HOLDER">
 <!--             <span class="enterprice-title" ng-click="launchKioskPhone()">Launch Place</span>-->
-                <span class="email-footer">Need help? Email us at <a class="join-text" href="mailto:maker@sweetnesslabs.com?Subject=Sweetness%20Help" target="_top">help@sweetness.io</a></span>
+<!--                <span class="email-footer">Need help? Email us at <a class="join-text">help@sweetness.io</a></span>-->
         </div>
     </div>
     <section ng-show="section.loginInProgress">

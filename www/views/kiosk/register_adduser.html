@@ -31,17 +31,17 @@
                     </div>
                     <div ng-hide="editInfo">
                         <input type="text" class="textfield-holder" name="#" placeholder="Full name" ng-model="kiosk.fullname"
-                               ng-minlength=3  ng-class="{error: kiosk_user.fullname.$invalid}">
+                               ng-minlength=3  ng-class="{error: kiosk_user.fullname.$invalid}" disabled="disabled">
                         <input type="email" name="email" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.email"
-                               ng-class="{error: kiosk_user.email.$invalid}">
-                        <input type="text" name="vocation" placeholder="I make awesome espresso" class="textfield-holder" ng-model="kiosk.vocation">
+                               ng-class="{error: kiosk_user.email.$invalid}" disabled="disabled">
+                        <input type="text" name="vocation" placeholder="I make awesome espresso" class="textfield-holder" ng-model="kiosk.vocation" disabled="disabled">
                     </div>
                     <div ng-show="editInfo">
                         <input type="text" class="textfield-holder" name="fullname" ng-model="kiosk.fullname" required
-                               ng-minlength=3  ng-class="{error: kiosk_user.fullname.$invalid}" >
+                               ng-minlength=3  ng-class="{error: kiosk_user.fullname.$invalid}" disabled="disabled">
                         <input type="email" name="email" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.email" required
-                               ng-class="{error: kiosk_user.email.$invalid}" >
-                        <input type="text" name="vocation" placeholder="I make awesome espresso" class="textfield-holder" ng-model="kiosk.vocation">
+                               ng-class="{error: kiosk_user.email.$invalid}" disabled="disabled">
+                        <input type="text" name="vocation" placeholder="I make awesome espresso" class="textfield-holder" ng-model="kiosk.vocation" disabled="disabled">
                         
                     </div>
                 </fieldset>
