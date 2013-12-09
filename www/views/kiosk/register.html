@@ -21,14 +21,14 @@
                         </span>
                     </div>
                     <div ng-hide="editInfo">
-                        <input type="text" class="textfield-holder" name="#" placeholder="Full name" ng-model="kiosk.fullname"
+                        <input type="text" class="textfield-holder" name="#" placeholder="Full Name" ng-model="kiosk.fullname"
                                ng-minlength=3  ng-class="{error: kiosk_user.fullname.$invalid}">
                         <input type="email" name="email" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.email"
                                ng-class="{error: kiosk_user.email.$invalid}">
                         <input type="text" name="vocation" placeholder="I make awesome espresso" class="textfield-holder" ng-model="kiosk.vocation">
                     </div>
                     <div ng-show="editInfo">
-                        <input type="text" class="textfield-holder" name="fullnameEdit" placeholder="Full name" ng-model="kiosk.fullname"
+                        <input type="text" class="textfield-holder" name="fullnameEdit" placeholder="Full Name" ng-model="kiosk.fullname"
                                ng-minlength=3  ng-class="{error: kiosk_user.fullnameEdit.$invalid}">
                         <input type="email" name="emailEdit" class="textfield-holder" ng-model="kiosk.email"
                                ng-class="{error: kiosk_user.emailEdit.$invalid}">

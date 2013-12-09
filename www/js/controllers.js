@@ -2643,7 +2643,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 $rootScope.placeSearchResults.placeSweetName = place.name;
                 $rootScope.placeSearchResults.icon = place.icon;
                 $rootScope.placeSearchResults.formatted_address = place.formatted_address;
-                $rootScope.placeSearchResults.kioskthankyoutitle = "Love your barista?say thank you!" ;
+                $rootScope.placeSearchResults.kioskthankyoutitle = "LOVE YOUR BARISTA? SAY THANK YOU!" ;
                 console.log("placeSearchResults -->" + $rootScope.placeSearchResults.gname);
 
                 $scope.placeClaim($rootScope.placeSearchResults);
@@ -2948,7 +2948,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.newPlace.placeLatitude = '';
             $scope.newPlace.placeLongitude = '';
 
-            $scope.newPlace.placeName = ((($rootScope.placeSearchResults.gname).replace(/[\s\$\&\!\. ,:-]+/g, "")).toLowerCase()) + num;
+            $scope.newPlace.placeName = ((($rootScope.placeSearchResults.gname).replace(/[0-9\s\$\&\!\. ,:-]+/g, "")).toLowerCase()) + num;
             $scope.newPlace.LatLong = $rootScope.placeSearchResults.LatLong;
             //$scope.newPlace.photo = $rootScope.placeSearchResults.photo ;
             $scope.newPlace.gname = $rootScope.placeSearchResults.gname;
@@ -2984,7 +2984,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
         // Inline editing
         $rootScope.placeSearchResults = [];
-        $rootScope.placeSearchResults.kioskthankyoutitle = "Love your barista? say thank you!";
+        $rootScope.placeSearchResults.kioskthankyoutitle = "LOVE YOUR BARISTA? SAY THANK YOU!";
         $scope.editorEnabledTitle = false;
         $scope.launch = false ;
 
@@ -3068,7 +3068,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             
             
             if ($rootScope.editInfo == true){
-                sweetService.getPlacesInfo(((($rootScope.placeSearchResults.gname).replace(/[\s\$\&\!\. ,:-]+/g, "")).toLowerCase()) + $rootScope.hiddennum, function (placeInfo) {
+                sweetService.getPlacesInfo(((($rootScope.placeSearchResults.gname).replace(/[0-9\s\$\&\!\. ,:-]+/g, "")).toLowerCase()) + $rootScope.hiddennum, function (placeInfo) {
                     console.log("Successfully retrieved place info custom" + placeInfo.length + " scores.");
                     $rootScope.newplaceInfoLaunch = placeInfo;
                     //$rootScope.currentPlace = placeInfo;
@@ -3078,7 +3078,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                     });
                 });
             } else {
-                sweetService.getPlacesInfo(((($rootScope.placeSearchResults.gname).replace(/[\s\$\&\!\. ,:-]+/g, "")).toLowerCase()) + $rootScope.hiddennum, function (placeInfo) {
+                sweetService.getPlacesInfo(((($rootScope.placeSearchResults.gname).replace(/[0-9\s\$\&\!\. ,:-]+/g, "")).toLowerCase()) + $rootScope.hiddennum, function (placeInfo) {
                     console.log("Successfully retrieved place info custom" + placeInfo.length + " scores.");
                     $rootScope.newplaceInfoLaunch = placeInfo;
                     //$rootScope.currentPlace = placeInfo;
@@ -3145,7 +3145,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 $rootScope.editInfo = false ;
                 //$rootScope.enurl = encodeURIComponent($rootScope.placeSearchResults.gname);
                 //console.log("Encoded URL: " + $rootScope.enurl);
-                $location.path((($rootScope.placeSearchResults.gname).replace(/[\s\$\&\!\. ,:-]+/g, "")).toLowerCase() + $rootScope.hiddennum);
+                $location.path((($rootScope.placeSearchResults.gname).replace(/[0-9\s\$\&\!\. ,:-]+/g, "")).toLowerCase() + $rootScope.hiddennum);
                 //$location.path($rootScope.placeSearchResults.gname);
                 //b%C3%BCxa687647    %C3%A9
                
