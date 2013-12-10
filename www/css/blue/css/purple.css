@@ -2602,6 +2602,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     font-size: 33px;
     margin: 0 auto 100px;
     max-width: 500px;
+    text-align: justify;
 }
 .address-icon > img {
     display: block;
