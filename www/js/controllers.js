@@ -6074,9 +6074,10 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
     }
     
     $scope.capturePhotoCust = function() {
+        $rootScope.showprogress = true;
+        console.log("Progress: " + $rootScope.showprogress);
         $rootScope.$broadcast("feedbackImg_upload");
         
-        //alert("Animation: " + $rootScope.showprogress);
         var options =   {
             quality: 50,
             cameraDirection:1,
@@ -6086,7 +6087,7 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
             //saveToPhotoAlbum: true
         };
         // Take picture using device camera and retrieve image as base64-encoded string
-        $rootScope.showprogress = true;
+        
         navigator.camera.getPicture(onSuccessCust,onFailCust,options);
     };
     
