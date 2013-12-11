@@ -47,7 +47,7 @@ jQuery(function($) {
                 <!--<img src="images_blue/banner-1.png" alt="banner">-->
                 <img src="images/banner-2.png" alt="img" ng-src='{{ imagePlaceBanner }}'>
             </div>
-            <div class="header">
+            <div class="header banner-footer">
                 <span class="thankyou-title">{{gplace.get("placeTitle")}}</span>
             </div>
             <!--<span class="top-heading"> ${{gplace.get("placeName")}} </span>-->
@@ -227,7 +227,7 @@ jQuery(function($) {
                 <div class="connector"></div>
                     <div class="{{showprogressline}} strip-top-line">
                         <span class="profile-img-main customer-img-profile" ng-controller="CameraCtrl">
-                            <img class="circle-main-img-cust" ng-hide='showprogress' ng-show='!visitorAvatar' ng-src="images/bg-capture2.png" ng-click="capturePhotoCust()"/>
+                            <img class="circle-main-img-cust" ng-show='!visitorAvatar' ng-src="images/bg-capture2.png" ng-click="capturePhotoCust()"/>
                             <span ng-show='showprogress' class="progress_animation">
                                 <span><div id="spinner4" align="center"></div></span>
                             </span>

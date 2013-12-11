@@ -2268,8 +2268,8 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 $scope.kioskSetUser.email = $scope.kiosk.email ;
                 $scope.kioskSetUser.userPhone = $rootScope.userPName ;
                 if ($rootScope.userAvatar == false || $rootScope.userAvatar == ' ' || $rootScope.userAvatar == null){
-                    $scope.kioskSetUser.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/698f766f-0603-4a7b-b91d-1b9c75fc385c-capture-img2.png';
-                    $rootScope.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/698f766f-0603-4a7b-b91d-1b9c75fc385c-capture-img2.png';
+                    $scope.kioskSetUser.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/7fa58921-1d33-4127-b5df-367777d1391d-profile_image.png';
+                    $rootScope.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/7fa58921-1d33-4127-b5df-367777d1391d-profile_image.png';
                 } else {
                     $scope.kioskSetUser.userAvatar = $rootScope.userAvatar ;
                 }
@@ -2300,20 +2300,35 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                         });
                     });
                 } else {
-                    sweetService.setKioskUser($scope.kioskSetUser, function () {
-                        console.log("User registered, now add to place");
-                        userService.getUserChannelInfo($rootScope.userPName, function(result){
-                            console.log("result -> " + _.pairs(result[0]));
-                            sweetService.addKioskUserToPlace(result,$rootScope.currentPlace, function () {
-                                userService.logout();
-                                $scope.safeApply(function () {
-                                    $location.path("#/"+ $rootScope.currentPlace[0].get('placeName'));
-                                });
-                            });
-                        });
-                        //$scope.kioskSetUser.placeName = $rootScope.userAddedPlace ;
+                    
+                    sweetService.uniqueEmailCloud($scope.kioskSetUser.email , function(result) {
+                        //if email address is unique return "true"
+                        //if email address found return "false" mean email is not unique
+                        console.log("User Unique Email result :: " + result);
+                        if(result == true){
 
+                            sweetService.setKioskUser($scope.kioskSetUser, function () {
+                                console.log("User registered, now add to place");
+                                userService.getUserChannelInfo($rootScope.userPName, function(result){
+                                    console.log("result -> " + _.pairs(result[0]));
+                                    sweetService.addKioskUserToPlace(result,$rootScope.currentPlace, function () {
+                                        userService.logout();
+                                        $scope.safeApply(function () {
+                                            $location.path("#/"+ $rootScope.currentPlace[0].get('placeName'));
+                                        });
+                                    });
+                                });
+                                //$scope.kioskSetUser.placeName = $rootScope.userAddedPlace ;
+
+                            });
+
+                        }else{
+                            $scope.safeApply(function () {
+                                $rootScope.placeUserMsg = true ;
+                            });
+                        }
                     });
+                    
                 }
 
                 //$rootScope.pageUserFlag = false ;
@@ -2329,8 +2344,8 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 $scope.kioskSetUser.email = $scope.kiosk.email ;
                 $scope.kioskSetUser.userPhone = $rootScope.userPName ;
                 if ($rootScope.userAvatar == false || $rootScope.userAvatar == ' ' || $rootScope.userAvatar == null){
-                    $scope.kioskSetUser.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/698f766f-0603-4a7b-b91d-1b9c75fc385c-capture-img2.png';
-                    $rootScope.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/698f766f-0603-4a7b-b91d-1b9c75fc385c-capture-img2.png';
+                    $scope.kioskSetUser.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/7fa58921-1d33-4127-b5df-367777d1391d-profile_image.png';
+                    $rootScope.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/7fa58921-1d33-4127-b5df-367777d1391d-profile_image.png';
                 } else {
                     $scope.kioskSetUser.userAvatar = $rootScope.userAvatar ;
                 }
@@ -2345,8 +2360,25 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                             $scope.searchPlaceKiosk();
                         });
                     }else{
-                        sweetService.setKioskUser($scope.kioskSetUser, function () {
+                        /*sweetService.setKioskUser($scope.kioskSetUser, function () {
                             $scope.searchPlaceKiosk();
+                        });*/
+                        
+                        sweetService.uniqueEmailCloud($scope.kioskSetUser.email , function(result) {
+                            //if email address is unique return "true"
+                            //if email address found return "false" mean email is not unique
+                            console.log("User Unique Email result :: " + result);
+                            if(result == true){
+                                sweetService.setKioskUserCloud($scope.kioskSetUser, function () {
+                                    $scope.safeApply(function () {
+                                        $scope.searchPlaceKiosk();
+                                    });
+                                });
+                            }else{
+                                $scope.safeApply(function () {
+                                    $rootScope.placeUserMsg = true ;
+                                });
+                            }
                         });
                     }
 
@@ -2366,7 +2398,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 console.log("userAvatar --> " + $rootScope.userAvatar);
                 console.log("userPName --> " + $rootScope.userPName);
                 
-                if($scope.kiosk.fullname == '' ||$scope.kiosk.email == '' || $scope.kiosk.fullname == null || $scope.kiosk.email == null){
+                if($scope.kiosk.fullname == '' ||$scope.kiosk.email == '' || $scope.kiosk.vocation == '' || $scope.kiosk.fullname == null || $scope.kiosk.email == null || $scope.kiosk.vocation == null){
                   console.log("JOIN CHECK!");  
                 }
                 else {
@@ -2469,7 +2501,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 $rootScope.infoUserChannal.vocation = $scope.kiosk.vocation ;
                 console.log("UsedId :: --> " + $rootScope.infoUserChannal.userId) ;
 
-                sweetService.setKioskUser($scope.kioskSetUser, function (userInfo) {
+                /*sweetService.setKioskUser($scope.kioskSetUser, function (userInfo) {
                     //$scope.searchPlaceKiosk();
                     $scope.kioskSetUser.userID = userService.currentUser().id ;
 
@@ -2531,7 +2563,79 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                             });
                         }
                     });
-                });
+                });*/
+            
+            sweetService.uniqueEmailEditCloud($scope.kiosk.email ,userService.currentUser().id, function(result) {
+                //if email address is unique return "true"
+                //if email address found return "false" mean email is not unique
+                console.log("unique email :: " + result);
+                 if (result == true){
+                     sweetService.setKioskUser($scope.kioskSetUser, function (userInfo) {
+                         //$scope.searchPlaceKiosk();
+                         console.log("current user --> " + userService.currentUser());
+                         console.log("current user ID --> " + userService.currentUser().id);
+                         console.log("full name --> " + $scope.kiosk.fullname);
+                         console.log("vocation --> " + $scope.kiosk.vocation);
+                         console.log("userPName --> " + $rootScope.userPName);
+
+                         $scope.kioskSetUser.userID = userService.currentUser().id ;
+
+                         sweetService.updateKioskUserPlaces($scope.kioskSetUser, function (result){
+                             console.log("Update user plaes");
+                         });
+
+
+                         sweetService.getCreatedPlaces($rootScope.infoUserChannal.userId, function (placeUserSweets) {
+
+
+                             if(placeUserSweets.length > 0){
+
+                                 console.log("Result Length --> " + placeUserSweets.length);
+                                 console.log(" -- > " + _.pairs(placeUserSweets[0])) ;
+                                 console.log("Result ObjectId --> " + placeUserSweets[0].id);
+                                 console.log("Result gname --> " + placeUserSweets[0].get('gname'));
+                                 console.log("Result placeName --> " + placeUserSweets[0].get('placeName'));
+                                 console.log("Edit Info --> " + $rootScope.editInfo);
+
+                                 $rootScope.newplaceid = placeUserSweets[0].id;
+
+                                 var id = placeUserSweets[0].get('placeName') ;
+                                 var lastSix = id.substr(id.length - 6);
+                                 var pname = id.substr(0, id.length - 7);
+                                 $rootScope.hiddennum = lastSix ;
+
+                                 console.log("last six -->" + lastSix);
+                                 console.log("remaning -->" + pname);
+
+                                 $rootScope.placeSearchResults.placePhoto = placeUserSweets[0].get('placePhoto');
+                                 $rootScope.placeSearchResults.placeName = placeUserSweets[0].get('placeName');
+                                 $rootScope.placeSearchResults.kioskthankyoutitle = placeUserSweets[0].get('placeTitle');
+                                 $rootScope.placeSearchResults.gname = pname;
+                                 $rootScope.placeSearchResults.placeSweetName = placeUserSweets[0].get('placeSweetName');
+                                 //$rootScope.placeSearchResults.gname = placeUserSweets[0].get('gname');
+                                 //$rootScope.placeSearchResults.LatLong = placeUserSweets[0].get('LatLong') ;
+                                 $rootScope.placeSearchResults.icon = placeUserSweets[0].get('icon');
+                                 $rootScope.placeSearchResults.formatted_address = placeUserSweets[0].get('address');
+
+                                 $scope.previewdisable = true;
+
+                                 $scope.safeApply(function () {
+                                    $location.path('/kiosk/claimPlaceCreated');
+                                 });
+
+                             } else {
+                                 $scope.safeApply(function () {
+                                    $scope.searchPlaceKiosk();
+                                 });
+                             }
+                         });
+                     });
+                 }else{
+                     $scope.safeApply(function () {
+                         $rootScope.placeUserMsg = true ;
+                     });
+                 }
+            });
 
         }
 
@@ -2920,7 +3024,8 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 $location.path(CONSTANTS.ROUTES.KIOSK_REGISTER);
             }else{
                 $scope.placeMsg = false ;
-                $scope.searchPlaceKiosk();
+                $location.path(CONSTANTS.ROUTES.KIOSK_REGISTER);
+//                $scope.searchPlaceKiosk();
             }
 
         }
@@ -3051,6 +3156,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
         $scope.backRegister = function(){
             $scope.previewdisable = true;
+            $rootScope.placeUserMsg = false;
             $location.path('/kiosk/register');
         }
         
@@ -3430,7 +3536,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
             console.log("counter --> " + 'feedback');
             $scope.counter = 'end';
 
-        } else if ($scope.counter == 3) {
+        } else if ($scope.counter == 6) {
             console.log("counter --> " + '6');
             $scope.newValue = 100 ;
 
@@ -3458,7 +3564,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
             /***************************************************/
 
 
-        } else if ($scope.counter <= 3) {
+        } else if ($scope.counter <= 6) {
             console.log("counter --> " + $scope.counter);
             $scope.counter++;
             var mytimeout = $timeout($scope.onTimeout,1000);
@@ -3466,7 +3572,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
             if( $scope.counter % 1 == 0 ) {
 
                 console.log("increment --> " + increment);
-                increment = increment + 33.333;
+                increment = increment + 16.667;
                 $scope.newValue = increment ;
 
                 $scope.roundProgressData = {
@@ -5101,6 +5207,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                                 console.log("--- user chanel " + result[0].get('userId'));
                                 console.log("--- user chanel " + result[0].get('avatarURL'));
                                 console.log("--- user chanel " + result[0].get('email'));
+                                console.log("--- user chanel " + result[0].get('vocation'));
 
                                 $rootScope.infoUserChannal.channel = result[0].get('channel') ;
                                 $rootScope.infoUserChannal.fullNmae = result[0].get('fullName') ;

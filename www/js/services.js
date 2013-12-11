@@ -341,6 +341,7 @@ angular.module('DataServices', ['ngResource'])
                         }
                     }
                 );
+                cb();
             }
         }
     })
@@ -2710,6 +2711,7 @@ angular.module('DataServices', ['ngResource'])
                 utilService.addUser(kioskUserInfo, function (user) {
                     cb(user);
                 });
+                cb();
             },
             updateKioskUserPlaces : function (userInfo, cb) {
 
@@ -2718,11 +2720,51 @@ angular.module('DataServices', ['ngResource'])
                         userID:userInfo.userID,
                         email:userInfo.email,
                         userName:userInfo.fullName,
-                        vocation:userInfo.vocation
+                        vocation:userInfo.vocation,
+                        userAvatar:userInfo.userAvatar
                     },
                     {
                         success:function (msg) {
                             cb(true);
+                        },
+                        error:function (error, msg) {
+                            //console.log(error.code);
+                            cb(false);
+                        }
+                    });
+            },
+          
+
+//Check user Email address is unique or not
+            uniqueEmailCloud : function (userEmail, cb) {
+
+                Parse.Cloud.run("uniqueEmail",
+                    {
+                        email:userEmail
+
+                    },
+                    {
+                        success:function (msg) {
+                            cb(msg);
+                        },
+                        error:function (error, msg) {
+                            //console.log(error.code);
+                            cb(false);
+                        }
+                    });
+            },
+
+            //Check user Email address is unique or not
+            uniqueEmailEditCloud : function (userEmail,userId, cb) {
+
+                Parse.Cloud.run("uniqueEmailEdit",
+                    {
+                        email:userEmail,
+                        userId:userId
+                    },
+                    {
+                        success:function (msg) {
+                            cb(msg);
                         },
                         error:function (error, msg) {
                             //console.log(error.code);

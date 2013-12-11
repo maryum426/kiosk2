@@ -462,7 +462,7 @@ textarea {
 }
 .banner img {
 	display: block;
-	height: 277px;
+	height: auto;
 }
 .social-connection {
 	list-style: none outside none;
@@ -474,15 +474,14 @@ textarea {
 .social-connection li .person-info {
 	display: block;
 	margin-bottom: 10px;
-	padding: 12px;
-	background-color: #9966cc;
+	padding: 11px;
+	background-color: #9966cb;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
 	cursor: pointer;
 }
 .social-connection li .person-info img {
-	width: 102px;
-	height:102px;
+	width: 100%;
 	display: block;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
@@ -548,7 +547,8 @@ textarea {
 	padding: 0 25px;
 	text-decoration: none;
         height: 66px;
-        margin-bottom:10px;
+        margin-bottom:10px !important;
+        margin-top: -5px;
         -webkit-transform: rotate(180deg);
 }
 .remove-color {
@@ -1815,12 +1815,17 @@ ul.rating {
 	background-color: #9966cb;
         width: 768px;
 }
+.banner-footer {
+	background-color: #9966cb;
+        height: 60px;
+        color: #fff;
+}
 .publicPage .social-connection li{
     float: left;
     margin-bottom: 10px;
-    margin-left: 30px;
+    margin-left: 28px;
     position: relative;
-    width: 126px;
+    width: 133px;
 }
 .heading-title {
 	display: block;
@@ -1898,6 +1903,7 @@ ul.rating {
 	height: 290px;
 	padding: 28px;
 	width: 290px;
+        overflow: hidden;
 }
 /*.profile-img-main > img {
 	width: 228px;
@@ -2203,6 +2209,14 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     height: 36px;
     margin: 22px 20px 0 0;
 }
+.edit-holder2 {
+    float: right;
+    background: url(../images/edit-icon.png) no-repeat;
+    width: 40px;
+    height: 36px;
+    margin: 12px 20px 0 0;
+}
+
 .camera-icon {
     background: url(../images/camera-icon-purple.png) no-repeat;
     width: 72px;
@@ -2279,27 +2293,32 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 .banner {
 	position: relative;
         background-color: #bf9fde;
+        height: 256px;
+        width: 768px;
+        overflow: hidden;
 }
-.banner > img {
-    display: block;
-    height: 304px;
-    width: auto;
-    margin-right: auto;
-    margin-left: auto;
+.banner > img {  
+    height: auto;
+    width: 768px;
     overflow: hidden;
 }
+/*.helper{
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}*/
 .thankyou-title {
 	display: block;
 	text-transform: uppercase;
 	color: #fff;
 	font-size: 30px;
-	padding: 20px 20px 0 20px;
+	padding: 12px 12px 0 12px;;
 	background-color: #9966CB;
 	text-align: center;
+        height: 48px;
 	overflow: hidden;
 }
 /*19-Nov-CSS-END*/
-
 .ios-btn {
     border: none;
     -webkit-appearance: none;
@@ -2410,7 +2429,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 #spinner4 {
 	position: absolute;
 	top: 24%;
-	left: 24%;
+	left: -66%;
 	margin: -50px 0 0 -50px;
 	height: 209px;
 	width: 209px;
@@ -2602,7 +2621,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     font-size: 33px;
     margin: 0 auto 100px;
     max-width: 500px;
-    text-align: justify;
+    text-align: center;
 }
 .address-icon > img {
     display: block;

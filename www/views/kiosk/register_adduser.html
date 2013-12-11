@@ -9,7 +9,7 @@
                     <div class="inputfile-holder" ng-controller="CameraCtrl">
                        
                         <span class="profile-img-register register-big-profile">
-                           <img src="images/capture-img.png" ng-click="capturePhoto()" alt="Profile Picture"  ng-show='!userAvatar'>
+                           <img src="images/profile_image.png" ng-click="capturePhoto()" alt="Profile Picture"  ng-show='!userAvatar'>
                            <img ng-show='userAvatar' ng-src="{{userAvatar}}" ng-click="capturePhoto()" class="imgavatar"/>    
                            
                            <section ng-show="loginInProgress_profile">
@@ -34,14 +34,16 @@
                                ng-minlength=3  ng-class="{error: kiosk_user.fullname.$invalid}">
                         <input type="email" name="email" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.email"
                                ng-class="{error: kiosk_user.email.$invalid}">
-                        <input type="text" name="vocation" placeholder="I make awesome espresso" class="textfield-holder" ng-model="kiosk.vocation">
+                        <input type="text" name="vocation" placeholder="I make awesome espresso" class="textfield-holder" ng-model="kiosk.vocation"
+                               ng-minlength=3>
                     </div>
                     <div ng-show="editInfo">
                         <input type="text" class="textfield-holder" name="fullname" ng-model="kiosk.fullname" required
                                ng-minlength=3  ng-class="{error: kiosk_user.fullname.$invalid}">
                         <input type="email" name="email" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.email" required
                                ng-class="{error: kiosk_user.email.$invalid}">
-                        <input type="text" name="vocation" placeholder="I make awesome espresso" class="textfield-holder" ng-model="kiosk.vocation">
+                        <input type="text" name="vocation" placeholder="I make awesome espresso" class="textfield-holder" ng-model="kiosk.vocation"
+                               ng-minlength=3>
                         
                     </div>
                 </fieldset>
@@ -60,7 +62,7 @@
                         Join</a>-->
                     <div ng-hide="editInfo">
                         <input type="submit" ng-click="kioskRegisterJoin()" class="add_user-button ios-btn" value="Join"
-                           ng-class="{enable : !kiosk_user.fullname.$invalid || !kiosk_user.email.$invalid, disable : kiosk_user.fullname.$invalid || kiosk_user.email.$invalid}" />
+                               ng-class="{enable : !kiosk_user.fullname.$invalid || !kiosk_user.email.$invalid, disable : kiosk_user.fullname.$invalid || kiosk_user.email.$invalid}" />
                     </div>
                     <div ng-show="editInfo" >
                         <input type="submit" ng-click="kioskRegisterJoin()" class="add_user-button ios-btn" value="Join" />
