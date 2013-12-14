@@ -196,8 +196,11 @@ jQuery(function($) {
     <div class="container_ROW">
         <div class="container">
             <div class="profile-connect-other holder-time">
-                <span class="thanks_heading" ng-show="thanksheading">
+                <span class="thanks_heading" ng-hide="thanksheading2"ng-show="thanksheading">
                     You just thanked {{userName.split(" ")[0]}}!
+                </span>
+                <span class="thanks_heading" ng-show="thanksheading2">
+                    Thanks for sending a picture to {{userName.split(" ")[0]}}!
                 </span>
                 <span class="thanks_heading" ng-show="thanksfooter">
                     Thanks for the message!
@@ -314,11 +317,34 @@ jQuery(function($) {
                                    type="text" ng-model="user.name" min="7" max="110" required>
                             <input class="texfield-grey" name="mnumber" id="mnumber" placeholder="Email Address (optional)"
                                     type="text" ng-model="user.mobile" min="7" max="110" >
-
+                            
+                            <div class="compliments">
+                                <div class="comp">
+                                    <input type='checkbox' name='thing1' value='valuable' id="thing1"/><label for="thing1"><img id="img1" class="img_comp" src="images/helpful1.png"></label>
+                                    <div class="comp_text">Helpful</div>
+                                </div>
+                                <div class="comp">
+                                    <input type='checkbox' name='thing2' value='valuable' id="thing2"/><label for="thing2"><img id="img2" class="img_comp" src="images/polite1.png"></label>
+                                    <div class="comp_text">Polite</div>
+                                </div>
+                                <div class="comp">
+                                    <input type='checkbox' name='thing3' value='valuable' id="thing3"/><label for="thing3"><img id="img3" class="img_comp" src="images/courteous1.png"></label>
+                                    <div class="comp_text">Courteous</div>
+                                </div>
+                                <div class="comp">
+                                    <input type='checkbox' name='thing4' value='valuable' id="thing4"/><label for="thing4"><img id="img4" class="img_comp" src="images/informed1.png"></label>
+                                    <div class="comp_text">Informed</div>
+                                </div>
+                                <div class="comp">
+                                    <input type='checkbox' name='thing5' value='valuable' id="thing5"/><label for="thing5"><img id="img5" class="img_comp" src="images/awesome1.png"></label>
+                                    <div class="comp_text">Awesome</div>
+                                </div>
+                            </div>
 
                                 <input type="checkbox" id="checkbox-2-1" class="regular-checkbox big-checkbox" ng-model="user.chkbox" />
                                 <label for="checkbox-2-1"></label>
                                 <span class="chkText" style="color: #fff;margin-left: 10px;font-size: 25px;">Copy the general manager</span>
+                                
                         </fieldset>
                     <ul class="submit-holder">
                         <li><a class="back-button" ng-click="newAuthPlaceCancel()">Cancel</a></li>
@@ -354,3 +380,52 @@ jQuery(function($) {
 
 </div>
 
+<script>
+               
+    
+    $('#thing1').click(function(){
+        if ($('#thing1').is(':checked')){
+            $('#img1').attr('src',"images/helpful2.png");
+        }
+        else{
+            $('#img1').attr('src',"images/helpful1.png");
+        }
+    });
+    
+    $('#thing2').click(function(){
+        if ($('#thing2').is(':checked')){
+            $('#img2').attr('src',"images/polite2.png");
+        }
+        else{
+            $('#img2').attr('src',"images/polite1.png");
+        }
+    });
+    
+    $('#thing3').click(function(){
+        if ($('#thing3').is(':checked')){
+            $('#img3').attr('src',"images/courteous2.png");
+        }
+        else{
+            $('#img3').attr('src',"images/courteous1.png");
+        }
+    });
+    
+    $('#thing4').click(function(){
+        if ($('#thing4').is(':checked')){
+            $('#img4').attr('src',"images/informed2.png");
+        }
+        else{
+            $('#img4').attr('src',"images/informed1.png");
+        }
+    });
+    
+    $('#thing5').click(function(){
+        if ($('#thing5').is(':checked')){
+            $('#img5').attr('src',"images/awesome2.png");
+        }
+        else{
+            $('#img5').attr('src',"images/awesome1.png");
+        }
+    });
+
+</script>

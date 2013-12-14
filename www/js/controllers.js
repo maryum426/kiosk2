@@ -2268,8 +2268,8 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 $scope.kioskSetUser.email = $scope.kiosk.email ;
                 $scope.kioskSetUser.userPhone = $rootScope.userPName ;
                 if ($rootScope.userAvatar == false || $rootScope.userAvatar == ' ' || $rootScope.userAvatar == null){
-                    $scope.kioskSetUser.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/7fa58921-1d33-4127-b5df-367777d1391d-profile_image.png';
-                    $rootScope.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/7fa58921-1d33-4127-b5df-367777d1391d-profile_image.png';
+                    $scope.kioskSetUser.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/b75a5227-cff4-4ee0-a333-974538f2b752-profile_image.png';
+                    $rootScope.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/b75a5227-cff4-4ee0-a333-974538f2b752-profile_image.png';
                 } else {
                     $scope.kioskSetUser.userAvatar = $rootScope.userAvatar ;
                 }
@@ -2344,8 +2344,8 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 $scope.kioskSetUser.email = $scope.kiosk.email ;
                 $scope.kioskSetUser.userPhone = $rootScope.userPName ;
                 if ($rootScope.userAvatar == false || $rootScope.userAvatar == ' ' || $rootScope.userAvatar == null){
-                    $scope.kioskSetUser.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/7fa58921-1d33-4127-b5df-367777d1391d-profile_image.png';
-                    $rootScope.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/7fa58921-1d33-4127-b5df-367777d1391d-profile_image.png';
+                    $scope.kioskSetUser.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/b75a5227-cff4-4ee0-a333-974538f2b752-profile_image.png';
+                    $rootScope.userAvatar = 'http://files.parse.com/7ddeea41-9b34-46f5-b20f-1e58e72ef6ee/b75a5227-cff4-4ee0-a333-974538f2b752-profile_image.png';
                 } else {
                     $scope.kioskSetUser.userAvatar = $rootScope.userAvatar ;
                 }
@@ -2444,36 +2444,47 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                         });
                     });
                 } else {
-                    console.log("Edit Info false");
-                    sweetService.setKioskUserCloud($scope.kioskSetUser, function () {
-                        
-                        
-                        console.log("User registered, know add to place");
-                        //console.log("User registered --> " + result.length);
-                        //console.log("User registered --> " + result.id);
-                        console.log("User Phone : " + $rootScope.userPName);
-                        
-                        
-                        console.log("User registered, know add to place");
-                        console.log("User Phone : " + $rootScope.userPName);
+                    sweetService.uniqueEmailCloud($scope.kioskSetUser.email , function(result) {
+                        //if email address is unique return "true"
+                        //if email address found return "false" mean email is not unique
+                        console.log("User Unique Email result :: " + result);
+                        if(result == true){
+                                console.log("Edit Info false");
+                                sweetService.setKioskUserCloud($scope.kioskSetUser, function () {
 
-                        userService.getUserChannelInfo($rootScope.userPName, function(result){
-                            console.log("result -> " + _.pairs(result[0]));
-                            console.log("fullName:result -> " + result[0].get('fullName'));
-                            console.log("email:result -> " + result[0].get('email'));
-                            console.log("avatarURL:result -> " + result[0].get('avatarURL'));
 
-                            sweetService.addKioskUserToPlace2(result,$rootScope.currentPlace, function (result) {
-                                console.log("Check user add to place " + result.id);
-                                userService.logout();
-                                $scope.safeApply(function () {
-                                    $rootScope.editInfo = false ;
-                                    $location.path($rootScope.currentPlace.placeName);
+                                    console.log("User registered, know add to place");
+                                    //console.log("User registered --> " + result.length);
+                                    //console.log("User registered --> " + result.id);
+                                    console.log("User Phone : " + $rootScope.userPName);
+
+
+                                    console.log("User registered, know add to place");
+                                    console.log("User Phone : " + $rootScope.userPName);
+
+                                    userService.getUserChannelInfo($rootScope.userPName, function(result){
+                                        console.log("result -> " + _.pairs(result[0]));
+                                        console.log("fullName:result -> " + result[0].get('fullName'));
+                                        console.log("email:result -> " + result[0].get('email'));
+                                        console.log("avatarURL:result -> " + result[0].get('avatarURL'));
+
+                                        sweetService.addKioskUserToPlace2(result,$rootScope.currentPlace, function (result) {
+                                            console.log("Check user add to place " + result.id);
+                                            userService.logout();
+                                            $scope.safeApply(function () {
+                                                $rootScope.editInfo = false ;
+                                                $location.path($rootScope.currentPlace.placeName);
+                                            });
+                                        });
+                                    });
+                                    //$scope.kioskSetUser.placeName = $rootScope.userAddedPlace ;
                                 });
+                        }else{
+                                    $scope.safeApply(function () {
+                                        $rootScope.placeUserMsg = true ;
+                                    });
+                                }
                             });
-                        });
-                        //$scope.kioskSetUser.placeName = $rootScope.userAddedPlace ;
-                    });
                 }
                 }
                 //$rootScope.pageUserFlag = false ;
@@ -2601,12 +2612,13 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
                                  var id = placeUserSweets[0].get('placeName') ;
                                  var lastSix = id.substr(id.length - 6);
-                                 var pname = id.substr(0, id.length - 7);
+                                 var pname = id.substr(0, id.length - 6);
                                  $rootScope.hiddennum = lastSix ;
 
                                  console.log("last six -->" + lastSix);
                                  console.log("remaning -->" + pname);
-
+                                 
+                                 $rootScope.placeAvatar = placeUserSweets[0].get('placePhoto');
                                  $rootScope.placeSearchResults.placePhoto = placeUserSweets[0].get('placePhoto');
                                  $rootScope.placeSearchResults.placeName = placeUserSweets[0].get('placeName');
                                  $rootScope.placeSearchResults.kioskthankyoutitle = placeUserSweets[0].get('placeTitle');
@@ -3157,6 +3169,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         $scope.backRegister = function(){
             $scope.previewdisable = true;
             $rootScope.placeUserMsg = false;
+            $rootScope.editInfo = true;
             $location.path('/kiosk/register');
         }
         
@@ -3192,7 +3205,26 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                     //$rootScope.currentPlace = placeInfo;
                     userService.getUserChannelInfo($rootScope.userPName, function(result){
                         console.log("result -> " + _.pairs(result[0]));
-                        $scope.logoutKiosk();
+                        console.log("PNAME: " + $rootScope.userPName);
+                        console.log("PLACENAME: " + $rootScope.newplaceInfoLaunch[0].get("placeName"));
+                        authService.chkPlaceUser($rootScope.userPName, $rootScope.newplaceInfoLaunch[0].get("placeName"), function (chkflag) {
+                            if (chkflag == true){
+                                console.log("Already a user of place --> ");
+                                $scope.safeApply(function () {
+                                    $scope.logoutKiosk();
+                                });
+
+                            }else{
+                                       sweetService.addKioskUserToPlace(result,$rootScope.newplaceInfoLaunch, function () {
+                                        $scope.safeApply(function () {
+                                            $scope.logoutKiosk();
+                                        });
+                                        /*$scope.safeApply(function () {
+                                         $location.path("#/"+ $rootScope.newplaceInfoLaunch.get("placeName"));
+                                         });*/
+                                        });
+                           }
+                        });
                     });
                 });
             } else {
@@ -3250,6 +3282,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             console.log("-- Preview Kiosk Back-- ");
             console.log("--> " + $rootScope.placeSearchResults);
             $scope.previewdisable = true;
+            $rootScope.editInfo = true;
             $scope.launch = false ;
         }
         
@@ -3413,7 +3446,11 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         
         $scope.counterPage = 'gotofeedback';
         $timeout($scope.onTimeoutPage,1000); //show the timer
-
+        
+        $scope.safeApply(function () {
+            $rootScope.thanksheading2 = false;
+        });
+        
         //timer.restart();
 
         $scope.section.sending = false;
@@ -3622,7 +3659,9 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
     $scope.newAuthPlace = function (userFname) {
 
         $scope.wrapper = "wrapper-feeds-place";
-
+        
+        
+        
         console.log("User phone: " + $scope.user.mobile);
         console.log("User comment: " + $scope.user.comment);
         console.log("User check box: " + $scope.user.chkbox);
@@ -3740,6 +3779,9 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         //$scope.publicPlaceHeader = false;
         $scope.thanksheading = false ;
         $scope.thanksfooter = true ;
+        $scope.safeApply(function () {
+            $rootScope.thanksheading2 = false;
+        });
         $scope.playBell = false;
     };
 
@@ -3750,7 +3792,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
 
     $scope.newAuthPlaceCancel = function () {
         console.log("call of cancel");
-
+        
         //$scope.wrapper = "wrapper-feeds-place";
 
         /*$scope.showmobileActions = false;
@@ -3780,6 +3822,9 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         $scope.section.sending = false ;
         //$scope.publicPlaceHeader = false;
         $scope.thanksheading = false ;
+        $scope.safeApply(function () {
+            $rootScope.thanksheading2 = false;
+        });
         $scope.thanksfooter = true ;
         $scope.playBell = false;
 
@@ -5884,7 +5929,10 @@ function SweetCtrlPlace($window, UpdateService, $log, $scope, sweetService, inte
         //$scope.showmobileActions = false;
         
         $scope.section.sending = true;
-
+        $scope.safeApply(function () {
+            $rootScope.thanksheading2 = false;
+        });
+        
         //if(sweetId) $scope.newSweet.replyToSweet = sweetId;
         $scope.newSweet.receiverPhone = placeInfo.get("userID");
         $scope.newSweet.receiverName = placeInfo.get("userName");
@@ -6032,8 +6080,8 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
             cameraDirection:1,
             sourceType: 1,      // 0:Photo Library, 1=Camera, 2=Saved Photo Album
             correctOrientation: true,
-            destinationType: navigator.camera.DestinationType.DATA_URL
-            //saveToPhotoAlbum: true
+            destinationType: navigator.camera.DestinationType.DATA_URL,
+            allowEdit: true
         };
         // Take picture using device camera and retrieve image as base64-encoded string
         navigator.camera.getPicture(onSuccess,onFail,options);
@@ -6268,6 +6316,7 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                                                     pic_url = parseFile.url();
                                                     uploadParseCust(pic_url);
                                                     $rootScope.showprogress = false;
+                                                    $rootScope.thanksheading2 = true;
                                                     $rootScope.$broadcast("load_user_channel");
                                                     $rootScope.$broadcast("feedbackImg_uploaded");
                                                     //alert (parseFile.url());
@@ -6278,12 +6327,14 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                                                     console.log(error);
                                                 });
             }
+            
     };
        
     var onFailCust = function(e) {
         console.log("On fail " + e);
         $rootScope.$broadcast("feedbackImg_uploaded");
         $rootScope.showprogress = false;
+        $rootScope.thanksheading2 = false;
     };
     
     var uploadParseCust = function(url){
@@ -6324,7 +6375,7 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
         var options =   {
             quality: 100,
             cameraDirection:0,
-                 // 0:Photo Library, 1=Camera, 2=Saved Photo Album
+            sourceType: 1,     // 0:Photo Library, 1=Camera, 2=Saved Photo Album
             correctOrientation: true,
             //allowEdit: true,
             destinationType: navigator.camera.DestinationType.DATA_URL

@@ -1853,7 +1853,7 @@ angular.module('DataServices', ['ngResource'])
                 query.first({
                     success:function(rKiosk) {
                         rKiosk.set("gname",kiosk.gname);
-                        rKiosk.set("placeName",((kiosk.gname).replace(/[\s\$\&\!\. ,:-]+/g, "")).toLowerCase()+placenum);
+                        rKiosk.set("placeName",((kiosk.gname).replace(/[0-9\s\$\&\!\. ,:-]+/g, "")).toLowerCase()+placenum);
                         rKiosk.set("placeSweetName",kiosk.placeSweetName);
                         rKiosk.set("address",kiosk.formatted_address);
                         rKiosk.save(null,{

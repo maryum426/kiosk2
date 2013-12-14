@@ -26,7 +26,7 @@
                         <input type="email" name="email" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.email"
                                ng-class="{error: kiosk_user.email.$invalid}">
                         <input type="text" name="vocation" placeholder="I make awesome espresso" class="textfield-holder" ng-model="kiosk.vocation"
-                               ng-minlength=1>
+                               ng-minlength=1 ng-class="{error: kiosk_user.vocation.$invalid}" required>
                     </div>
                     <div ng-show="editInfo">
                         <input type="text" class="textfield-holder" name="fullnameEdit" placeholder="Full Name" ng-model="kiosk.fullname"
@@ -34,7 +34,7 @@
                         <input type="email" name="emailEdit" class="textfield-holder" ng-model="kiosk.email"
                                ng-class="{error: kiosk_user.emailEdit.$invalid}">
                         <input type="text" name="vocationEdit" class="textfield-holder" ng-model="kiosk.vocation"
-                               ng-minlength=1>
+                               ng-minlength=1 ng-class="{error: kiosk_user.vocation.$invalid}" required>
                     </div>
                     
 
@@ -56,7 +56,7 @@
                     <li>
                         <!--<a ng-click="kioskRegister()" class="send-button register-button">Register</a>-->
                         <input type="submit" ng-click="kioskRegister()" class="register-button ios-btn" value="Register"
-                               ng-disabled="kiosk_user.fullname.$pristine || kiosk_user.fullname.$dirty && kiosk_user.fullname.$invalid || kiosk_user.email.$pristine || kiosk_user.email.$dirty && kiosk_user.email.$invalid ||kiosk_user.vocation.$error.minlength"
+                               ng-disabled="kiosk_user.fullname.$pristine || kiosk_user.fullname.$dirty && kiosk_user.fullname.$invalid || kiosk_user.email.$pristine || kiosk_user.email.$dirty && kiosk_user.email.$invalid || kiosk_user.vocation.$error.required"
                                ng-class="{enable : !kiosk_user.fullname.$invalid || !kiosk_user.email.$invalid, disable : kiosk_user.fullname.$invalid || kiosk_user.email.$invalid}" />
                     </li>
                 </ul>
@@ -65,7 +65,9 @@
                 <ul class="submit-holder register_BUTTON_HOLDER">
                     <li><a class ="back-button" ng-click="kioskRegisterCancel()">Logout</a></li>
                     <li>
-                        <input type="submit" ng-click="kioskRegisterUpdate()" class="register-button ios-btn" value="Update" />
+                        <input type="submit" ng-click="kioskRegisterUpdate()" class="register-button ios-btn" value="Update" 
+                               ng-disabled="kiosk_user.fullname.$invalid || kiosk_user.email.$invalid || kiosk_user.vocation.$error.minlength || kiosk_user.vocation.$error.required"
+                               ng-class="{enable : !kiosk_user.fullname.$invalid || !kiosk_user.email.$invalid, disable : kiosk_user.fullname.$invalid || kiosk_user.email.$invalid}" />
                     </li>
                 </ul>
             </div>
@@ -74,7 +76,7 @@
 </div>
 </form>
 
-<div class="col02-placeUserMsg" ng-show="placeUserMsg" ng-controller="AuthController">
-    <span class="place-msg">Email Address is not available</span>
+<div class="col02-emailMsg" ng-show="placeUserMsg" ng-controller="AuthController">
+    <span class="place-msg">Email Address already registered!</span>
     <div class="send-btn" ><a ng-click="closeMsgBox()" class="send-ok-btn">Ok</a></div>
 </div>

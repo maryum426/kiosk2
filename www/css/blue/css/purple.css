@@ -483,6 +483,7 @@ textarea {
 .social-connection li .person-info img {
 	width: 100%;
 	display: block;
+        height: 111px;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
 }
@@ -2298,8 +2299,10 @@ This is sample of the dropdown div. It will make it easy to set scc of div
         overflow: hidden;
 }
 .banner > img {  
-    height: auto;
-    width: 768px;
+    height: 256px;
+    width: auto;
+    margin: 0 auto;
+    max-width: 768px;
     overflow: hidden;
 }
 /*.helper{
@@ -2492,6 +2495,18 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     top: 430px;
     z-index: 999;
 }
+.col02-emailMsg {
+    background: #9966CB;
+    color: #fff;
+    font-size: 24px;
+    left: 192px;
+    padding: 35px 30px;
+    position: absolute;
+    right: auto;
+    text-align: center;
+    top: 616px;
+    z-index: 999;
+}
 .col02-placeUserMsg2 {
     background: #ed145b;
     color: #fff;
@@ -2628,3 +2643,45 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     margin: 0 auto;
     width: auto;
 }
+
+.compliments{
+    background-color: #fff;
+    padding: 10px 30px;
+}
+.comp{
+    display: inline-block;
+    text-align: center;
+}
+.comp_text{
+    font-family: Helvetica-Light;
+    font-size: 20px;
+    color: #999;
+}
+.compliments input[type=checkbox] {
+        display:none;
+      }
+
+.compliments input[type=checkbox] + label
+ {
+
+     height: auto;
+     width: auto;
+     display:inline-block;
+     padding: 0;
+     margin-right: 20px;
+ }
+
+ .compliments input[type=checkbox]:checked + label
+  {
+      height: auto;
+      width: auto;
+      display:inline-block;
+      padding: 0;
+      margin-right: 20px;
+  }
+
+.img_comp{
+      height: 60px;
+      width: 60px;
+      margin-left: 25px;
+  }
