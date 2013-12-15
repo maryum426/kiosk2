@@ -1853,7 +1853,7 @@ angular.module('DataServices', ['ngResource'])
                 query.first({
                     success:function(rKiosk) {
                         rKiosk.set("gname",kiosk.gname);
-                        rKiosk.set("placeName",((kiosk.gname).replace(/[0-9\s\$\&\!\. ,:-]+/g, "")).toLowerCase()+placenum);
+                        rKiosk.set("placeName",((kiosk.gname).replace(/[0-9\s\$\&\!\. ,'`:-]+/g, "")).toLowerCase()+placenum);
                         rKiosk.set("placeSweetName",kiosk.placeSweetName);
                         rKiosk.set("address",kiosk.formatted_address);
                         rKiosk.save(null,{
@@ -2062,6 +2062,7 @@ angular.module('DataServices', ['ngResource'])
                 //query.equalTo("userID",userService.currentUser().id);
                 query.equalTo("placeName", placename);
                 query.equalTo("joinReq", '1');
+                query.notEqualTo("userName", "");
                 query.ascending("userName");
                 query.find({
                     success:function (results) {

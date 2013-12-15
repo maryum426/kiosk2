@@ -2384,6 +2384,28 @@ This is sample of the dropdown div. It will make it easy to set scc of div
 	-webkit-animation-iteration-count: infinite;
 	-webkit-animation-timing-function: linear;
 }
+#spinner5 {
+	position: absolute;
+	top: 85%;
+	left: 50%;
+	margin: -50px 0 0 -50px;
+	height: 100px;
+	width: 100px;
+	white-space: nowrap;
+	overflow: hidden;
+        -webkit-mask-image: url(../images/spinner.png);
+        mask-image: url(../images/spinner.png);
+	background-color: #9966cb;
+        animation-name: spinnerRotate;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        /*  Safari and Chrome */
+        -webkit-animation-name: spinnerRotate;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
 #spinner2 {
 	position: absolute;
 	top: 14%;
@@ -2656,6 +2678,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
     font-family: Helvetica-Light;
     font-size: 20px;
     color: #999;
+    padding-left: 30px;
 }
 .compliments input[type=checkbox] {
         display:none;
@@ -2681,7 +2704,7 @@ This is sample of the dropdown div. It will make it easy to set scc of div
   }
 
 .img_comp{
-      height: 60px;
-      width: 60px;
-      margin-left: 25px;
+      height: 100px;
+      width: 100px;
+      margin-left: 50px;
   }

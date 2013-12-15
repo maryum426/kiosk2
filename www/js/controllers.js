@@ -3077,7 +3077,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.newPlace.placeLatitude = '';
             $scope.newPlace.placeLongitude = '';
 
-            $scope.newPlace.placeName = ((($rootScope.placeSearchResults.gname).replace(/[0-9\s\$\&\!\. ,:-]+/g, "")).toLowerCase()) + num;
+            $scope.newPlace.placeName = ((($rootScope.placeSearchResults.gname).replace(/[0-9\s\$\&\!\. ,'`:-]+/g, "")).toLowerCase()) + num;
             $scope.newPlace.LatLong = $rootScope.placeSearchResults.LatLong;
             //$scope.newPlace.photo = $rootScope.placeSearchResults.photo ;
             $scope.newPlace.gname = $rootScope.placeSearchResults.gname;
@@ -3180,6 +3180,8 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         };
         
         $scope.launchKiosk = function(){
+            $scope.section.loginInProgress_launch = true;
+            
             //Add user to newly created place
             //////////////////////////////////
             /*console.log("User PhoneNumber/UserName :: " + $rootScope.userPName);
@@ -3199,7 +3201,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             
             
             if ($rootScope.editInfo == true){
-                sweetService.getPlacesInfo(((($rootScope.placeSearchResults.gname).replace(/[0-9\s\$\&\!\. ,:-]+/g, "")).toLowerCase()) + $rootScope.hiddennum, function (placeInfo) {
+                sweetService.getPlacesInfo(((($rootScope.placeSearchResults.gname).replace(/[0-9\s\$\&\!\. ,'`:-]+/g, "")).toLowerCase()) + $rootScope.hiddennum, function (placeInfo) {
                     console.log("Successfully retrieved place info custom" + placeInfo.length + " scores.");
                     $rootScope.newplaceInfoLaunch = placeInfo;
                     //$rootScope.currentPlace = placeInfo;
@@ -3211,6 +3213,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                             if (chkflag == true){
                                 console.log("Already a user of place --> ");
                                 $scope.safeApply(function () {
+                                    
                                     $scope.logoutKiosk();
                                 });
 
@@ -3228,7 +3231,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                     });
                 });
             } else {
-                sweetService.getPlacesInfo(((($rootScope.placeSearchResults.gname).replace(/[0-9\s\$\&\!\. ,:-]+/g, "")).toLowerCase()) + $rootScope.hiddennum, function (placeInfo) {
+                sweetService.getPlacesInfo(((($rootScope.placeSearchResults.gname).replace(/[0-9\s\$\&\!\. ,'`:-]+/g, "")).toLowerCase()) + $rootScope.hiddennum, function (placeInfo) {
                     console.log("Successfully retrieved place info custom" + placeInfo.length + " scores.");
                     $rootScope.newplaceInfoLaunch = placeInfo;
                     //$rootScope.currentPlace = placeInfo;
@@ -3296,7 +3299,8 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 $rootScope.editInfo = false ;
                 //$rootScope.enurl = encodeURIComponent($rootScope.placeSearchResults.gname);
                 //console.log("Encoded URL: " + $rootScope.enurl);
-                $location.path((($rootScope.placeSearchResults.gname).replace(/[0-9\s\$\&\!\. ,:-]+/g, "")).toLowerCase() + $rootScope.hiddennum);
+                $scope.section.loginInProgress_launch = false;
+                $location.path((($rootScope.placeSearchResults.gname).replace(/[0-9\s\$\&\!\. ,'`:-]+/g, "")).toLowerCase() + $rootScope.hiddennum);
                 //$location.path($rootScope.placeSearchResults.gname);
                 //b%C3%BCxa687647    %C3%A9
                
